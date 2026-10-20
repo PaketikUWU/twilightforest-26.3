@@ -2,12 +2,13 @@ package twilightforest.client.event;
 
 import com.ibm.icu.text.RuleBasedNumberFormat;
 import com.mojang.blaze3d.vertex.*;
+import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.SplashRenderer;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.ShapeRenderer;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -86,6 +87,7 @@ public class ClientGameEvents {
 		NeoForge.EVENT_BUS.addListener(this::endAuroraFrame);
 		NeoForge.EVENT_BUS.addListener(this::killVignette);
 		NeoForge.EVENT_BUS.addListener(this::removeHostileMountHealth);
+		NeoForge.EVENT_BUS.addListener(this::prepareAurora);
 		NeoForge.EVENT_BUS.addListener(this::renderAurora);
 		NeoForge.EVENT_BUS.addListener(this::renderCustomBossbars);
 		NeoForge.EVENT_BUS.addListener(this::renderGiantBlockOutlines);
@@ -93,7 +95,9 @@ public class ClientGameEvents {
 		NeoForge.EVENT_BUS.addListener(this::translateBookAuthor);
 		NeoForge.EVENT_BUS.addListener(this::updateBowFOV);
 
+		NeoForge.EVENT_BUS.addListener(CloudEvents::preparePrecipitation);
 		NeoForge.EVENT_BUS.addListener(CloudEvents::renderPrecipitation);
+		NeoForge.EVENT_BUS.addListener(CloudEvents::renderPrecipitationOit);
 		NeoForge.EVENT_BUS.addListener(CloudEvents::tickWeatherEffects);
 
 		NeoForge.EVENT_BUS.addListener(FogHandler::colorFog);
@@ -134,32 +138,43 @@ public class ClientGameEvents {
 		}
 	}
 
-	private void renderAurora(RenderLevelStageEvent.AfterWeather event) {
+	private void prepareAurora(PrepareRenderBuffersEvent event) {
 		Minecraft mc = Minecraft.getInstance();
-		if (mc.level == null)
+		if (mc.level == null) {
+			this.auroraRenderer.prepare(null, 0.0F, 0, 0.0F, 0.0F, 0.0F);
 			return;
+		}
 
 		if (aurora > 0 || lastAurora > 0) {
-			BufferBuilder buffer = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+			try (ByteBufferBuilder byteBuffer = ByteBufferBuilder.exactlySized(4 * DefaultVertexFormat.POSITION_COLOR.getVertexSize())) {
+				BufferBuilder buffer = new BufferBuilder(byteBuffer, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_COLOR);
 
-			final float scale = 2048F * (mc.options.getEffectiveRenderDistance() * 16F / 32F);
-			Vec3 pos = event.getLevelRenderState().cameraRenderState.pos;
-			float y = (float) (256F - pos.y());
-			buffer.addVertex(-scale, y, scale).setColor(1F, 1F, 1F, 1F);
-			buffer.addVertex(-scale, y, -scale).setColor(1F, 1F, 1F, 1F);
-			buffer.addVertex(scale, y, -scale).setColor(1F, 1F, 1F, 1F);
-			buffer.addVertex(scale, y, scale).setColor(1F, 1F, 1F, 1F);
+				final float scale = 2048F * (mc.options.getEffectiveRenderDistance() * 16F / 32F);
+				Vec3 pos = event.getLevelRenderState().cameraRenderState.pos;
+				float y = (float) (256F - pos.y());
+				buffer.addVertex(-scale, y, scale).setColor(1F, 1F, 1F, 1F);
+				buffer.addVertex(-scale, y, -scale).setColor(1F, 1F, 1F, 1F);
+				buffer.addVertex(scale, y, -scale).setColor(1F, 1F, 1F, 1F);
+				buffer.addVertex(scale, y, scale).setColor(1F, 1F, 1F, 1F);
 
-			float alpha = Mth.lerp(mc.getDeltaTracker().getGameTimeDeltaTicks(), lastAurora, aurora) / 60F * 0.5F;
-			auroraRenderer.draw(
-				buffer.buildOrThrow(),
-				alpha,
-				Mth.abs((int) mc.level.getBiomeManager().biomeZoomSeed),
-				(float) pos.x(),
-				(float) pos.y(),
-				(float) pos.z()
-			);
+				float alpha = Mth.lerp(mc.getDeltaTracker().getGameTimeDeltaTicks(), lastAurora, aurora) / 60F * 0.5F;
+				auroraRenderer.prepare(
+					buffer.buildOrThrow(),
+					alpha,
+					Mth.abs((int) mc.level.getBiomeManager().biomeZoomSeed),
+					(float) pos.x(),
+					(float) pos.y(),
+					(float) pos.z()
+				);
+			}
+		} else {
+			this.auroraRenderer.prepare(null, 0.0F, 0, 0.0F, 0.0F, 0.0F);
 		}
+	}
+
+	// Drawn after opaque features so it works with both classic and improved (order independent) transparency
+	private void renderAurora(RenderLevelStageEvent.AfterOpaqueFeatures event) {
+		auroraRenderer.render(event.getRenderPass(), event.getModelViewMatrix());
 	}
 
 	private void endAuroraFrame(RenderFrameEvent.Post event) {
@@ -170,11 +185,11 @@ public class ClientGameEvents {
 		Minecraft minecraft = Minecraft.getInstance();
 		// only fire if we're in the twilight forest
 		if (minecraft.level != null && TFDimension.DIMENSION_KEY.equals(minecraft.level.dimension())) {
-			minecraft.gui.vignetteBrightness = 0.0F;
+			minecraft.gui.hud.vignetteBrightness = 0.0F;
 		}
 
 		if (minecraft.player != null && HostileMountEvents.isRidingUnfriendly(minecraft.player)) {
-			minecraft.gui.setOverlayMessage(Component.empty(), false);
+			minecraft.gui.hud.setOverlayMessage(Component.empty(), false);
 		}
 	}
 
@@ -237,9 +252,9 @@ public class ClientGameEvents {
 
 	private void shakeCamera(ViewportEvent.ComputeCameraAngles event) {
 		if (TFConfig.firstPersonEffects && !Minecraft.getInstance().isPaused() && shakeIntensity > 0 && Minecraft.getInstance().player != null) {
-			event.setYaw((float) Mth.lerp(event.getPartialTick(), event.getYaw(), event.getYaw() + (Minecraft.getInstance().player.getRandom().nextFloat() * 2F - 1F) * shakeIntensity));
-			event.setPitch((float) Mth.lerp(event.getPartialTick(), event.getPitch(), event.getPitch() + (Minecraft.getInstance().player.getRandom().nextFloat() * 2F - 1F) * shakeIntensity));
-			event.setRoll((float) Mth.lerp(event.getPartialTick(), event.getRoll(), event.getRoll() + (Minecraft.getInstance().player.getRandom().nextFloat() * 2F - 1F) * shakeIntensity));
+			event.setYaw(Mth.lerp(event.getPartialTick(), event.getYaw(), event.getYaw() + (Minecraft.getInstance().player.getRandom().nextFloat() * 2F - 1F) * shakeIntensity));
+			event.setPitch(Mth.lerp(event.getPartialTick(), event.getPitch(), event.getPitch() + (Minecraft.getInstance().player.getRandom().nextFloat() * 2F - 1F) * shakeIntensity));
+			event.setRoll(Mth.lerp(event.getPartialTick(), event.getRoll(), event.getRoll() + (Minecraft.getInstance().player.getRandom().nextFloat() * 2F - 1F) * shakeIntensity));
 			shakeIntensity = 0F;
 		}
 	}
@@ -302,15 +317,25 @@ public class ClientGameEvents {
 			return;
 		}
 
-		event.addCustomRenderer((renderState, buffer, poseStack, translucentPass, levelRenderState) -> {
+		event.addCustomRenderer((renderState, collector, poseStack, levelRenderState) -> {
 			LocalPlayer player = Minecraft.getInstance().player;
 			if (player != null && (player.getMainHandItem().getItem() instanceof GiantPickItem || (player.getMainHandItem().getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof GiantBlock))) {
 				if (!state.isAir() && player.level().getWorldBorder().isWithinBounds(pos)) {
 					BlockPos offsetPos = new BlockPos(pos.getX() & ~0b11, pos.getY() & ~0b11, pos.getZ() & ~0b11);
-					VertexConsumer consumer = buffer.getBuffer(RenderTypes.lines());
-					Vec3 xyz = Vec3.atLowerCornerOf(offsetPos).subtract(event.getCamera().position());
+					Vec3 xyz = Vec3.atLowerCornerOf(offsetPos).subtract(levelRenderState.cameraRenderState.pos);
 					int outlineColor = renderState.highContrast() ? 0xff_57_ff_e1 : 0x66_00_00_00;
-					ShapeRenderer.renderShape(poseStack, consumer, GIANT_BLOCK, xyz.x(), xyz.y(), xyz.z(), outlineColor, Minecraft.getInstance().gameRenderer.getGameRenderState().windowRenderState.appropriateLineWidth);
+					RenderType renderType;
+					if (renderState.highContrast()) {
+						renderType = RenderTypes.linesDepthBias();
+					} else if (Minecraft.getInstance().gameRenderer.useImprovedTransparency()) {
+						renderType = RenderTypes.linesTranslucentNoDepthWrite();
+					} else {
+						renderType = RenderTypes.linesTranslucent();
+					}
+					poseStack.pushPose();
+					poseStack.translate(xyz.x(), xyz.y(), xyz.z());
+					collector.submitShapeOutline(poseStack, GIANT_BLOCK, renderType, outlineColor, Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState.appropriateLineWidth, renderState.isTranslucent());
+					poseStack.popPose();
 				}
 				return true;
 			}

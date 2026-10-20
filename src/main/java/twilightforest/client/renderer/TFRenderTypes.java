@@ -12,6 +12,7 @@ import twilightforest.client.renderer.entity.LichRenderer;
 public class TFRenderTypes {
 
 	public static final RenderType RED_THREAD = RenderType.create("twilightforest:red_thread", RenderSetup.builder(TFRenderPipelines.RED_THREAD)
+		.setOitPipelines(TFRenderPipelines.OIT_RED_THREAD)
 		.withTexture("Sampler0", RedThreadRenderer.TEXTURE)
 		.affectsCrumbling()
 		.useLightmap()
@@ -20,12 +21,14 @@ public class TFRenderTypes {
 		.createRenderSetup());
 
 	public static final RenderType PROTECTION_BOX = RenderType.create("twilightforest:protection_box", RenderSetup.builder(TFRenderPipelines.PROTECTION_BOX)
+		.setOitPipelines(TFRenderPipelines.OIT_PROTECTION_BOX)
 		.withTexture("Sampler0", TwilightForestMod.getModelTexture("protectionbox.png"))
 		.setTextureTransform(new ProtectionBoxTextureTransform())
 		.sortOnUpload()
 		.createRenderSetup());
 
 	public static final RenderType SHADOW_CLONE = RenderType.create("twilightforest:shadow_clone", RenderSetup.builder(TFRenderPipelines.SHADOW_CLONE)
+		.setOitPipelines(TFRenderPipelines.OIT_SHADOW_CLONE)
 		.withTexture("Sampler0", LichRenderer.TEXTURE)
 		.useLightmap()
 		.useOverlay()

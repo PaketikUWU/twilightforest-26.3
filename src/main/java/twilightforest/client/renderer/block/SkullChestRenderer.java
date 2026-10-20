@@ -51,8 +51,8 @@ public class SkullChestRenderer<T extends BlockEntity & LidBlockEntity> implemen
 
 	public static void applyCasketPose(PoseStack stack, Direction facing) {
 		stack.translate(0.5F, 0.0F, 0.5F);
-		stack.mulPose(facing.getRotation());
-		stack.mulPose(Axis.XP.rotationDegrees(90.0F));
+		stack.rotate(facing.getRotation());
+		stack.rotateDegrees(Axis.XP, 90.0F);
 	}
 
 	public static void applyCasketItemPose(PoseStack stack) {

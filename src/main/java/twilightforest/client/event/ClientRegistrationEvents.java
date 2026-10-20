@@ -20,7 +20,6 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.entity.*;
@@ -45,11 +44,9 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
@@ -104,7 +101,6 @@ import twilightforest.item.travellers_gear.TravellersArmorBeltItem;
 import twilightforest.item.travellers_gear.TravellersArmorItem;
 import twilightforest.item.travellers_gear.TravellersGogglesItem;
 import twilightforest.potions.FrostedEffect;
-import twilightforest.util.woods.TFWoodTypes;
 
 import java.util.Objects;
 
@@ -115,7 +111,6 @@ public class ClientRegistrationEvents {
 	private void setup(IEventBus bus) {
 		bus.addListener(EntityRenderersEvent.AddLayers.class, this::attachRenderLayers);
 		bus.addListener(this::bakeCustomModels);
-		bus.addListener(this::clientSetup);
 		bus.addListener(this::registerStandalone);
 		bus.addListener(this::registerClientReloadListeners);
 		bus.addListener(this::registerAtlases);
@@ -210,19 +205,6 @@ public class ClientRegistrationEvents {
 				event.register(key, SimpleUnbakedStandaloneModel.simpleModelWrapper(lid.modelLocation()));
 			}
 		}
-	}
-
-	private void clientSetup(FMLClientSetupEvent evt) {
-		evt.enqueueWork(() -> {
-			Sheets.addWoodType(TFWoodTypes.TWILIGHT_OAK_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.CANOPY_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.MANGROVE_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.DARK_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.TIME_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.TRANSFORMATION_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.MINING_WOOD_TYPE);
-			Sheets.addWoodType(TFWoodTypes.SORTING_WOOD_TYPE);
-		});
 	}
 
 	private void registerAtlases(RegisterTextureAtlasesEvent event) {
@@ -536,12 +518,10 @@ public class ClientRegistrationEvents {
 	private void registerClientExtensions(RegisterClientExtensionsEvent event) {
 		event.registerBlock(new IClientBlockExtensions() {
 			@Override
-			public boolean addHitEffects(BlockState state, Level level, HitResult target, ParticleEngine manager) {
-				if (level.getRandom().nextBoolean() && target instanceof BlockHitResult hitResult) { // No clue why the parameter isn't blockHitResult, this should be always true, but we check just in case
-					BlockPos pos = hitResult.getBlockPos();
+			public boolean addHitEffects(BlockState state, Level level, BlockPos pos, Direction side, ParticleEngine manager) {
+				if (level.getRandom().nextBoolean()) {
 					BlockState blockstate = level.getBlockState(pos);
 					if (blockstate.getRenderShape() != RenderShape.INVISIBLE) {
-						Direction side = hitResult.getDirection();
 
 						int posX = pos.getX();
 						int posY = pos.getY();
@@ -674,16 +654,16 @@ public class ClientRegistrationEvents {
 	private void registerCustomRenderData(RegisterRenderStateModifiersEvent event) {
 		event.registerMapModifier(new MagicMapPlayerIconRenderer());
 		ConqueredMapIconRenderer conquered = new ConqueredMapIconRenderer();
-		event.registerMapDecorationModifier(TFMapDecorations.QUEST_GROVE.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.NAGA_COURTYARD.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.LICH_TOWER.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.LABYRINTH.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.HYDRA_LAIR.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.KNIGHT_STRONGHOLD.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.DARK_TOWER.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.YETI_LAIR.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.AURORA_PALACE.getKey(), conquered);
-		event.registerMapDecorationModifier(TFMapDecorations.FINAL_CASTLE.getKey(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.QUEST_GROVE.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.NAGA_COURTYARD.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.LICH_TOWER.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.LABYRINTH.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.HYDRA_LAIR.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.KNIGHT_STRONGHOLD.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.DARK_TOWER.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.YETI_LAIR.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.AURORA_PALACE.keyOrNull(), conquered);
+		event.registerMapDecorationModifier(TFMapDecorations.FINAL_CASTLE.keyOrNull(), conquered);
 
 		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<LivingEntity, LivingEntityRenderState, ?>>() {}, (LivingEntity living, LivingEntityRenderState state) -> {
 			if (living.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof BlockItem head && head.getBlock() instanceof AbstractTrophyBlock)
