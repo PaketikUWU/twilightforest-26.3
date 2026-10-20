@@ -41,7 +41,6 @@ public final class TwilightForestMod {
 
 	public TwilightForestMod(IEventBus bus, Dist dist) {
 		bus.addListener(TFItemComponents::modifyComponents);
-		PortSmokeTest.register();
 		Reflection.initialize(ConfigSetup.class);
 		ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> ConfigurationScreen::new);
 

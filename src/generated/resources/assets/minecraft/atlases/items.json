@@ -2,14 +2,14 @@
   "sources": [
     {
       "type": "minecraft:paletted_permutations",
-      "palette_key": "minecraft:trims/color_palettes/trim_palette",
+      "palette_key": "minecraft:trim_base",
       "permutations": {
-        "twilightforest_carminite": "twilightforest:trims/color_palettes/carminite",
-        "twilightforest_fiery": "twilightforest:trims/color_palettes/fiery",
-        "twilightforest_ironwood": "twilightforest:trims/color_palettes/ironwood",
-        "twilightforest_knightmetal": "twilightforest:trims/color_palettes/knightmetal",
-        "twilightforest_naga_scale": "twilightforest:trims/color_palettes/naga_scale",
-        "twilightforest_steeleaf": "twilightforest:trims/color_palettes/steeleaf"
+        "twilightforest_carminite": "twilightforest:trim/carminite",
+        "twilightforest_fiery": "twilightforest:trim/fiery",
+        "twilightforest_ironwood": "twilightforest:trim/ironwood",
+        "twilightforest_knightmetal": "twilightforest:trim/knightmetal",
+        "twilightforest_naga_scale": "twilightforest:trim/naga_scale",
+        "twilightforest_steeleaf": "twilightforest:trim/steeleaf"
       },
       "textures": [
         "minecraft:trims/items/helmet_trim",
