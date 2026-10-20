@@ -86,7 +86,7 @@ public class YetiCaveStructure extends ControlledSpawningStructure implements Cu
 		);
 		//if (true) return floorCeiling;
 
-		DensityFunction walls = DensityFunctions.yClampedGradient(-3 + riser, 21 + riser, -9.5, -2.5);
+		DensityFunction walls = DensityFunctions.yClampedGradient(-3 + riser, 21 + riser, -9.5F, -2.5F);
 
 		// Entrances & actual square interior, as a negative
 		DensityFunction interiorCarver = DensityFunctions.min(

@@ -17,6 +17,7 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.*;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
@@ -226,7 +227,7 @@ public class TwilightJigsawPiece extends TwilightTemplateStructurePiece implemen
 		for (StructureTemplate.StructureBlockInfo blockInfo : this.template.filterBlocks(this.templatePosition, this.placeSettings, Blocks.JIGSAW)) {
 			BlockPos infoPos = blockInfo.pos();
 			if (chunkBounds.isInside(infoPos)) {
-				chunkAt.markPosForPostprocessing(infoPos);
+				chunkAt.markPosForPostProcessing(infoPos);
 			}
 		}
 	}

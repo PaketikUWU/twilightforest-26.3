@@ -17,7 +17,9 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.*;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.TFRegistries;
@@ -127,7 +129,7 @@ public class LichTowerMagicGallery extends TwilightJigsawPiece implements PieceB
 				galleryPainting.setVariant(variantHolderOpt.get());
 
 				variantHolderOpt.get().value();
-				galleryPainting.snapTo(pos.getBottomCenter(), 0, 0);
+				galleryPainting.snapTo(Vec3.atBottomCenterOf(pos), 0, 0);
 
 				level.addFreshEntityWithPassengers(galleryPainting);
 			}
