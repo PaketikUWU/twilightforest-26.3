@@ -1,6 +1,5 @@
 package twilightforest.block;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -26,16 +25,9 @@ import twilightforest.loot.TFLootTables;
 
 public class MoonwormBlock extends CritterBlock implements SimpleWaterloggedBlock {
 
-	public static final MapCodec<MoonwormBlock> CODEC = simpleCodec(MoonwormBlock::new);
-
 	public MoonwormBlock(BlockBehaviour.Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.getStateDefinition().any().setValue(WATERLOGGED, false));
-	}
-
-	@Override
-	protected MapCodec<? extends BaseEntityBlock> codec() {
-		return CODEC;
 	}
 
 	@Override

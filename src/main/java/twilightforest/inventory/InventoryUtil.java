@@ -2,6 +2,7 @@ package twilightforest.inventory;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +36,7 @@ public final class InventoryUtil {
 			return;
 		}
 
-		ItemEntity drop = player.drop(stack, false);
+		ItemEntity drop = player.drop(stack, false, Prediction.PREDICTED);
 		if (drop == null)
 			return;
 		drop.setNoPickUpDelay();

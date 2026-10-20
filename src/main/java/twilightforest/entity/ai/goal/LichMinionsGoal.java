@@ -94,13 +94,13 @@ public class LichMinionsGoal extends Goal {
 				// melee attack
 				this.lich.doHurtTarget(serverLevel, targetedEntity);
 
-				this.lich.swing(InteractionHand.MAIN_HAND);
+				this.lich.swingForAttack(InteractionHand.MAIN_HAND);
 				this.lich.setAttackCooldown(20);
 			} else if (dist < ATTACK_RANGE && this.lich.getSensing().hasLineOfSight(targetedEntity)) {
 				if (this.lich.getNextAttackType() == 0) this.lich.launchProjectileAt(new LichBolt(serverLevel, this.lich));
 				else this.lich.launchProjectileAt(new LichBomb(serverLevel, this.lich));
 
-				this.lich.swing(InteractionHand.MAIN_HAND);
+				this.lich.swingForAttack(InteractionHand.MAIN_HAND);
 				this.lich.setNextAttackType(this.lich.getRandom().nextBoolean() ? 0 : 1);
 				this.lich.setAttackCooldown(60);
 			} else {
@@ -140,7 +140,7 @@ public class LichMinionsGoal extends Goal {
 			minion.spawnAnim();
 			minion.playSound(TFSounds.MINION_SUMMON.get(), 1.0F, ((this.lich.getRandom().nextFloat() - this.lich.getRandom().nextFloat()) * 0.7F + 1.0F) * 0.75F);
 
-			this.lich.swing(InteractionHand.MAIN_HAND);
+			this.lich.swingForAttack(InteractionHand.MAIN_HAND);
 			// make sparkles leading to it
 			this.lich.makeMagicTrail(this.lich.getEyePosition(), minion.getEyePosition(), this.lich.getRandom().nextFloat() * 0.0625F + 0.125F, this.lich.getRandom().nextFloat() * 0.0625F + 0.125F, this.lich.getRandom().nextFloat() * 0.0625F + 0.125F);
 		}

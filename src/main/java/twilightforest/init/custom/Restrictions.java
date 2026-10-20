@@ -2,7 +2,7 @@ package twilightforest.init.custom;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.codec.RegistryFileCodec;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import twilightforest.TFRegistries;
@@ -10,7 +10,7 @@ import twilightforest.init.TFBiomes;
 import twilightforest.util.Restriction;
 
 public class Restrictions {
-	public static final Codec<Holder<Restriction>> CODEC = RegistryFileCodec.create(TFRegistries.Keys.RESTRICTIONS, Restriction.CODEC, false);
+	public static final Codec<Holder<Restriction>> CODEC = RegistryCodecs.holder(TFRegistries.Keys.RESTRICTIONS, Restriction.CODEC, false);
 
 	public static final ResourceKey<Restriction> DARK_FOREST = makeKey(TFBiomes.DARK_FOREST.identifier());
 	public static final ResourceKey<Restriction> DARK_FOREST_CENTER = makeKey(TFBiomes.DARK_FOREST_CENTER.identifier());

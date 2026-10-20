@@ -46,7 +46,7 @@ public class ZombieWandItem extends ScepterItem {
 		zombie.setOwner(player);
 		zombie.addEffect(new MobEffectInstance(MobEffects.STRENGTH, 1200, 1));
 		if (player.getItemBySlot(EquipmentSlot.HEAD).is(TFItems.MYSTIC_CROWN) && level.getRandom().nextFloat() <= 0.1f) {
-			zombie.setBaby(true);
+			zombie.setLoyalBaby(true);
 		}
 		level.addFreshEntity(zombie);
 		level.gameEvent(player, GameEvent.ENTITY_PLACE, result.getBlockPos());

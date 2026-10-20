@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -692,13 +693,14 @@ public class HydraHeadContainer {
 					}
 
 					// bite it!
-					nearby.hurt(TFDamageTypes.getEntityDamageSource(living.level(), TFDamageTypes.HYDRA_BITE, this.hydra, TFEntities.HYDRA.get()), BITE_DAMAGE);
+					DamageSource biteSource = TFDamageTypes.getEntityDamageSource(living.level(), TFDamageTypes.HYDRA_BITE, this.hydra, TFEntities.HYDRA.get());
+					nearby.hurt(biteSource, BITE_DAMAGE);
 
 					//knockback!
 					if (living instanceof Player player) {
 						PacketDistributor.sendToPlayer((ServerPlayer) player, new MovePlayerPacket(-this.headEntity.getDirection().getStepX() * 0.5F, 0.1F, -this.headEntity.getDirection().getStepZ() * 0.5F));
 					} else {
-						living.knockback(-this.headEntity.getDirection().getStepX(), 0.1F, -this.headEntity.getDirection().getStepZ());
+						living.knockback(-this.headEntity.getDirection().getStepX(), 0.1F, -this.headEntity.getDirection().getStepZ(), biteSource, BITE_DAMAGE);
 					}
 				}
 			}

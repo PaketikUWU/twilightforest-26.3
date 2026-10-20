@@ -3,10 +3,10 @@ package twilightforest.init.custom;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.core.registries.codec.RegistryFileCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import twilightforest.TFRegistries;
@@ -21,7 +21,7 @@ public class MagicPaintingVariants {
 	public static final Map<Identifier, Pair<String, String>> MAGIC_PAINTING_LANG_HELPER = new HashMap<>();
 	public static final Map<Identifier, MagicPaintingVariant> MAGIC_PAINTING_ATLAS_HELPER = new HashMap<>();
 
-	public static final Codec<Holder<MagicPaintingVariant>> CODEC = RegistryFileCodec.create(TFRegistries.Keys.MAGIC_PAINTINGS, MagicPaintingVariant.CODEC, false);
+	public static final Codec<Holder<MagicPaintingVariant>> CODEC = RegistryCodecs.holder(TFRegistries.Keys.MAGIC_PAINTINGS, MagicPaintingVariant.CODEC, false);
 	public static final StreamCodec<? super RegistryFriendlyByteBuf, Holder<MagicPaintingVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(TFRegistries.Keys.MAGIC_PAINTINGS);
 
 	public static final ResourceKey<MagicPaintingVariant> DARKNESS = makeKey(TwilightForestMod.prefix("darkness"));

@@ -58,7 +58,7 @@ public class SlideBlock extends Entity {
 	}
 
 	private void determineMoveDirection() {
-		BlockPos pos = new BlockPos(this.blockPosition());
+		BlockPos pos = this.blockPosition();
 
 		Direction[] toCheck = switch (myState.getValue(RotatedPillarBlock.AXIS)) {
 			case X -> // horizontal blocks will go up or down if there is a block on one side and air on the other
@@ -123,7 +123,7 @@ public class SlideBlock extends Entity {
 					this.playSound(TFSounds.SLIDER.get(), 1.0F, 0.9F + (this.random.nextFloat() * 0.4F));
 				}
 
-				BlockPos pos = new BlockPos(this.blockPosition());
+				BlockPos pos = this.blockPosition();
 
 				if (this.slideTime == 1) {
 					if (this.level().getBlockState(pos) != this.myState) {
@@ -164,12 +164,13 @@ public class SlideBlock extends Entity {
 	private void damageKnockbackEntities(List<Entity> entities) {
 		for (Entity entity : entities) {
 			if (entity instanceof LivingEntity living) {
-				living.hurt(TFDamageTypes.getDamageSource(this.level(), TFDamageTypes.SLIDER), 5.0F);
+				DamageSource source = TFDamageTypes.getDamageSource(this.level(), TFDamageTypes.SLIDER);
+				living.hurt(source, 5.0F);
 
 				double kx = (this.getX() - entity.getX()) * 2.0D;
 				double kz = (this.getZ() - entity.getZ()) * 2.0D;
 
-				living.knockback(2.0F, kx, kz);
+				living.knockback(2.0F, kx, kz, source, 5.0F);
 			}
 		}
 	}

@@ -3,8 +3,9 @@ package twilightforest.entity.passive;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.*;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.core.registries.codec.RegistryFileCodec;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.biome.Biome;
@@ -18,11 +19,11 @@ public record TinyBirdVariant(Identifier texture, Optional<HolderSet<Biome>> spa
 	public static final Codec<TinyBirdVariant> DIRECT_CODEC = RecordCodecBuilder.create(
 		p_332779_ -> p_332779_.group(
 				Identifier.CODEC.fieldOf("texture").forGetter(TinyBirdVariant::texture),
-				RegistryCodecs.homogeneousList(Registries.BIOME).optionalFieldOf("biomes").forGetter(TinyBirdVariant::spawnBiomes)
+				RegistryCodecs.holderSet(Registries.BIOME).optionalFieldOf("biomes").forGetter(TinyBirdVariant::spawnBiomes)
 			)
 			.apply(p_332779_, TinyBirdVariant::new)
 	);
-	public static final Codec<Holder<TinyBirdVariant>> CODEC = RegistryFileCodec.create(TFRegistries.Keys.TINY_BIRD_VARIANT, DIRECT_CODEC);
+	public static final Codec<Holder<TinyBirdVariant>> CODEC = RegistryCodecs.holder(TFRegistries.Keys.TINY_BIRD_VARIANT, DIRECT_CODEC);
 
 	public TinyBirdVariant(Identifier texture) {
 		this(texture, Optional.empty());

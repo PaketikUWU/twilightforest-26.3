@@ -171,6 +171,6 @@ public class TrophyPedestalBlock extends Block implements SimpleWaterloggedBlock
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
-		return state.getValue(ACTIVE) ? PushReaction.NORMAL : PushReaction.BLOCK;
+		return state.getValue(ACTIVE) ? PushReaction.PUSH_PULL : PushReaction.IMMOVEABLE;
 	}
 }

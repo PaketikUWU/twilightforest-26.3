@@ -2,7 +2,7 @@ package twilightforest.init.custom;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.codec.RegistryFileCodec;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import twilightforest.TFRegistries;
@@ -12,7 +12,7 @@ import twilightforest.util.woods.WoodPalette;
 import java.util.Locale;
 
 public class WoodPalettes {
-	public static final Codec<Holder<WoodPalette>> CODEC = RegistryFileCodec.create(TFRegistries.Keys.WOOD_PALETTES, WoodPalette.CODEC, false);
+	public static final Codec<Holder<WoodPalette>> CODEC = RegistryCodecs.holder(TFRegistries.Keys.WOOD_PALETTES, WoodPalette.CODEC, false);
 
 	public static final ResourceKey<WoodPalette> OAK = makeKey(Identifier.withDefaultNamespace("oak"));
 	public static final ResourceKey<WoodPalette> SPRUCE = makeKey(Identifier.withDefaultNamespace("spruce"));

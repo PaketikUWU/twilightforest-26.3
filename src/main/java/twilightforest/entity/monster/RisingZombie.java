@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -89,7 +90,7 @@ public class RisingZombie extends Monster {
 		}
 
 		if (!this.level().isClientSide() && this.getRisingTicks() >= 130) {
-			this.convertTo(EntityType.ZOMBIE, ConversionParams.single(this, true, true), zombie -> {
+			this.convertTo(EntityTypes.ZOMBIE, ConversionParams.single(this, true, true), zombie -> {
 				zombie.setHealth(this.getHealth());
 				zombie.setYRot(this.yRotO = this.getYRot());
 			});

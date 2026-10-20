@@ -1,6 +1,5 @@
 package twilightforest.block;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -21,15 +20,8 @@ import twilightforest.loot.TFLootTables;
 
 public class CicadaBlock extends CritterBlock {
 
-	public static final MapCodec<CicadaBlock> CODEC = simpleCodec(CicadaBlock::new);
-
 	public CicadaBlock(Properties properties) {
 		super(properties);
-	}
-
-	@Override
-	protected MapCodec<? extends BaseEntityBlock> codec() {
-		return CODEC;
 	}
 
 	@Override

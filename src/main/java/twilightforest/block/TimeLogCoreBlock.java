@@ -1,6 +1,5 @@
 package twilightforest.block;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -23,15 +22,8 @@ import twilightforest.util.WorldUtil;
 
 public class TimeLogCoreBlock extends SpecialMagicLogBlock {
 
-	private static final MapCodec<SpecialMagicLogBlock> CODEC = simpleCodec(TimeLogCoreBlock::new);
-
 	public TimeLogCoreBlock(Properties properties) {
 		super(properties);
-	}
-
-	@Override
-	protected MapCodec<? extends DirectionalBlock> codec() {
-		return CODEC;
 	}
 
 	@Override

@@ -85,7 +85,7 @@ public class HedgeBlock extends Block {
 
 		for (Player player : nearbyPlayers) {
 			// are they swinging?
-			if (player.swinging) {
+			if (player.isSwinging()) {
 				BlockHitResult ray = EntityUtil.rayTrace(player);
 				// are they pointing at this block?
 				if (ray.getType() == HitResult.Type.BLOCK && pos.equals(ray.getBlockPos())) {

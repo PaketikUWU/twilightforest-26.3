@@ -94,7 +94,7 @@ public class Troll extends Monster implements RangedAttackMob {
 				if (this.rockCooldown > 0) {
 					this.rockCooldown--;
 				} else {
-					//copied from EnderMan.EndermanTakeBlockGoal.tick()
+					//copied from Enderman.EndermanTakeBlockGoal.tick()
 					RandomSource random = this.getRandom();
 					Level level = this.level();
 					int i = Mth.floor(this.getX() - 2.0D + random.nextDouble() * 4.0D);
@@ -223,7 +223,7 @@ public class Troll extends Monster implements RangedAttackMob {
 
 	private void ripenTrollBerNearby(int offset) {
 		int range = 12;
-		for (BlockPos pos : WorldUtil.getAllAround(new BlockPos(this.blockPosition()), range)) {
+		for (BlockPos pos : WorldUtil.getAllAround(this.blockPosition(), range)) {
 			ripenBer(offset, pos);
 		}
 	}
