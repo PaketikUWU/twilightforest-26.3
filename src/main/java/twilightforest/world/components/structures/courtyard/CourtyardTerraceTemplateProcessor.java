@@ -9,14 +9,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.jetbrains.annotations.Nullable;
-import twilightforest.init.TFStructureProcessors;
 
 import java.util.HashSet;
 
-public final class CourtyardTerraceTemplateProcessor extends StructureProcessor {
+public final class CourtyardTerraceTemplateProcessor implements StructureProcessor {
 	public static final CourtyardTerraceTemplateProcessor INSTANCE = new CourtyardTerraceTemplateProcessor();
 	public static final MapCodec<CourtyardTerraceTemplateProcessor> CODEC = MapCodec.unit(() -> INSTANCE);
 
@@ -60,7 +58,7 @@ public final class CourtyardTerraceTemplateProcessor extends StructureProcessor 
 	}
 
 	@Override
-	public StructureProcessorType<?> getType() {
-		return TFStructureProcessors.COURTYARD_TERRACE.get();
+	public MapCodec<CourtyardTerraceTemplateProcessor> codec() {
+		return CODEC;
 	}
 }

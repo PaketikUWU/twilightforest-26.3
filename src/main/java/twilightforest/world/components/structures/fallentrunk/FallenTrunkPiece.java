@@ -14,6 +14,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
@@ -37,11 +38,11 @@ import twilightforest.world.components.structures.type.FallenTrunkStructure;
 import java.util.*;
 
 public class FallenTrunkPiece extends StructurePiece {
-	public static final BlockStateProvider DEFAULT_LOG = BlockStateProvider.simple(TFBlocks.TWILIGHT_OAK_LOG.get());
+	public static final BlockStateProvider DEFAULT_LOG = BlockStateProvider.of(TFBlocks.TWILIGHT_OAK_LOG.get());
 
 	public static final int ERODED_LENGTH = 2;
 	protected static final float MOSS_CHANCE = 0.44F;
-	protected static final List<EntityType<?>> SPAWNER_MONSTERS = List.of(TFEntities.SWARM_SPIDER.get(), TFEntities.HOSTILE_WOLF.get(), EntityType.CAVE_SPIDER);
+	protected static final List<EntityType<?>> SPAWNER_MONSTERS = List.of(TFEntities.SWARM_SPIDER.get(), TFEntities.HOSTILE_WOLF.get(), EntityTypes.CAVE_SPIDER);
 	public static final int TERRAFORM_PIECE_SIZE = 10;
 	public static final int FEATURE_PIECE_SIZE = 3;
 	protected final BlockStateProvider log;
@@ -68,7 +69,7 @@ public class FallenTrunkPiece extends StructurePiece {
 		this.radius = tag.getIntOr("radius", 0);
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
-		log = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("log")).result().orElse(DEFAULT_LOG);
+		log = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("log")).result().orElse(DEFAULT_LOG);
 		chestLootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("chest_loot_table", "")));
 		this.holeSeed = tag.getIntOr("hole_seed", 0);
 		this.hole = new Hole(this, RandomSource.create(holeSeed));
@@ -78,7 +79,7 @@ public class FallenTrunkPiece extends StructurePiece {
 	protected void addAdditionalSaveData(StructurePieceSerializationContext context, CompoundTag tag) {
 		tag.putInt("length", this.length);
 		tag.putInt("radius", this.radius);
-		tag.put("log", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.log).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("log", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.log).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
 		tag.putString("chest_loot_table", this.chestLootTable.identifier().toString());
 		tag.putLong("hole_seed", this.holeSeed);
 	}
@@ -223,7 +224,7 @@ public class FallenTrunkPiece extends StructurePiece {
 			if (randomChild.nextFloat() <= MOSS_CHANCE && boundingbox.isInside(getWorldPos(x, y + 1, z)) && this.getBlock(level, x, y + 1, z, boundingbox).is(BlockTags.REPLACEABLE)) {
 				placeBlock(level, TFBlocks.MOSS_PATCH.get().defaultBlockState(), x, y + 1, z, boundingbox);
 				level.updateNeighborsAt(getWorldPos(x, y + 1, z), TFBlocks.MOSS_PATCH.get());  // to connect moss patches
-				level.getChunk(getWorldPos(x, y + 1, z)).markPosForPostprocessing(getWorldPos(x, y + 1, z));
+				level.getChunk(getWorldPos(x, y + 1, z)).markPosForPostProcessing(getWorldPos(x, y + 1, z));
 			}
 		}
 	}

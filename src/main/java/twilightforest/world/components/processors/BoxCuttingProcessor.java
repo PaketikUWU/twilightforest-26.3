@@ -10,11 +10,9 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.TwilightForestMod;
-import twilightforest.init.TFStructureProcessors;
 import twilightforest.util.BoundingBoxUtils;
 
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 // Despite the name, any facts about actual Box Cutters being involved are lies
-public final class BoxCuttingProcessor extends StructureProcessor {
+public final class BoxCuttingProcessor implements StructureProcessor {
 	public static final MapCodec<BoxCuttingProcessor> CODEC = BoundingBox.CODEC.listOf().xmap(BoxCuttingProcessor::new, p -> p.cutouts).fieldOf("boxes");
 
 	public final List<BoundingBox> cutouts;
@@ -43,8 +41,8 @@ public final class BoxCuttingProcessor extends StructureProcessor {
 	}
 
 	@Override
-	protected StructureProcessorType<?> getType() {
-		return TFStructureProcessors.BOX_CUTTING_PROCESSOR.get();
+	public MapCodec<BoxCuttingProcessor> codec() {
+		return CODEC;
 	}
 
 	public static BoxCuttingProcessor fromNBT(ListTag tag) {

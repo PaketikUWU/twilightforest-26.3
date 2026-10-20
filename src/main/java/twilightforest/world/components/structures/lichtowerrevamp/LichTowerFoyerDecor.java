@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.*;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
 import twilightforest.TwilightForestMod;
@@ -119,7 +120,7 @@ public class LichTowerFoyerDecor extends TwilightJigsawPiece implements PieceBea
 
 		BlockPos behind = placePos.relative(this.getSourceJigsaw().orientation().front().getOpposite());
 		if (chunkBounds.isInside(placePos)) {
-			level.getChunk(behind).markPosForPostprocessing(behind);
+			level.getChunk(behind).markPosForPostProcessing(behind);
 		}
 	}
 }

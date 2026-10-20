@@ -7,9 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacementType;
-import twilightforest.init.TFStructurePlacementTypes;
+import net.minecraft.world.level.levelgen.structure.placement.AbstractSpreadingStructurePlacement;
 import twilightforest.util.landmarks.LegacyLandmarkPlacements;
 
 import java.util.Optional;
@@ -18,7 +16,7 @@ import java.util.Optional;
  * Filters possible placements to only chunks actually demarcated to generate a Twilight Forest landmark structure
  * Does not filter for biome. That's for the structure's config to handle.
  */
-public class LandmarkGridPlacement extends StructurePlacement {
+public class LandmarkGridPlacement extends AbstractSpreadingStructurePlacement {
 	public static final MapCodec<LandmarkGridPlacement> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
 		ResourceKey.codec(Registries.STRUCTURE).optionalFieldOf("structure_grid_lock").forGetter(p -> p.landmark)
 	).apply(inst, LandmarkGridPlacement::new));
@@ -45,7 +43,7 @@ public class LandmarkGridPlacement extends StructurePlacement {
 	}
 
 	@Override
-	public StructurePlacementType<?> type() {
-		return TFStructurePlacementTypes.GRID_LANDMARK_PLACEMENT_TYPE.get();
+	public MapCodec<LandmarkGridPlacement> codec() {
+		return CODEC;
 	}
 }

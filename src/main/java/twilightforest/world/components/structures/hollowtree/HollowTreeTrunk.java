@@ -81,15 +81,15 @@ public class HollowTreeTrunk extends HollowTreePiece {
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
 
-		this.log = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("log")).result().orElse(HollowTreePiece.DEFAULT_LOG);
-		this.wood = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
-		this.root = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("root")).result().orElse(HollowTreePiece.DEFAULT_ROOT);
-		this.leaves = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("leaves")).result().orElse(HollowTreePiece.DEFAULT_LEAVES);
-		this.vine = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("vine")).result().orElse(HollowTreePiece.DEFAULT_VINE);
-		this.bug = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("bug")).result().orElse(HollowTreePiece.DEFAULT_BUG);
-		this.dungeonWood = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
-		this.dungeonAir = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
-		this.dungeonLootBlock = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
+		this.log = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("log")).result().orElse(HollowTreePiece.DEFAULT_LOG);
+		this.wood = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
+		this.root = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("root")).result().orElse(HollowTreePiece.DEFAULT_ROOT);
+		this.leaves = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("leaves")).result().orElse(HollowTreePiece.DEFAULT_LEAVES);
+		this.vine = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("vine")).result().orElse(HollowTreePiece.DEFAULT_VINE);
+		this.bug = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("bug")).result().orElse(HollowTreePiece.DEFAULT_BUG);
+		this.dungeonWood = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
+		this.dungeonAir = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
+		this.dungeonLootBlock = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
 
 		this.dungeonLootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("dungeon_loot_table", "")));
 
@@ -107,15 +107,15 @@ public class HollowTreeTrunk extends HollowTreePiece {
 		tag.putInt("trunkHeight", this.height);
 		tag.putInt("trunkRadius", this.radius);
 
-		tag.put("log", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.log).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("wood", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.wood).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("root", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.root).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("leaves", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.leaves).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("vine", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.vine).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("bug", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.bug).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("dungeon_wood", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonWood).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("dungeon_air", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonAir).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("dungeon_loot_block", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonLootBlock).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("log", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.log).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("wood", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.wood).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("root", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.root).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("leaves", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.leaves).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("vine", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.vine).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("bug", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.bug).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("dungeon_wood", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonWood).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("dungeon_air", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonAir).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("dungeon_loot_block", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonLootBlock).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
 
 		tag.putString("dungeon_loot_table", this.dungeonLootTable.identifier().toString());
 

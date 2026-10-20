@@ -56,9 +56,9 @@ public class HollowTreeLargeBranch extends HollowTreeMedBranch {
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
 
-		this.dungeonWood = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
-		this.dungeonAir = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
-		this.dungeonLootBlock = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
+		this.dungeonWood = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
+		this.dungeonAir = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
+		this.dungeonLootBlock = BlockStateProvider.DIRECT_CODEC.parse(ops, tag.getCompoundOrEmpty("dungeon_loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
 
 		this.dungeonLootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("dungeon_loot_table", "")));
 
@@ -74,9 +74,9 @@ public class HollowTreeLargeBranch extends HollowTreeMedBranch {
 
 		tag.putBoolean("has_leaf_dungeon", this.hasLeafDungeon);
 
-		tag.put("dungeon_wood", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonWood).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("dungeon_air", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonAir).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.put("dungeon_loot_block", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonLootBlock).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("dungeon_wood", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonWood).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("dungeon_air", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonAir).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
+		tag.put("dungeon_loot_block", BlockStateProvider.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, this.dungeonLootBlock).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
 
 		tag.putString("dungeon_loot_table", this.dungeonLootTable.identifier().toString());
 
