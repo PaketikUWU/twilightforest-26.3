@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/stone/terrorcotta_curves"
+        "recipes": "twilightforest:stonecutting/stone/terrorcotta_curves"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

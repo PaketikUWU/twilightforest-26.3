@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:sorting_boat"
+        "recipes": "twilightforest:sorting_boat"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

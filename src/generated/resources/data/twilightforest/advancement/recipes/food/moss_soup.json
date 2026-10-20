@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:moss_soup"
+        "recipes": "twilightforest:moss_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

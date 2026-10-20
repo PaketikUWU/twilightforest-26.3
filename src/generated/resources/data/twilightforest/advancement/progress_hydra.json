@@ -3,34 +3,29 @@
   "criteria": {
     "kill_hydra": {
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:hydra"
-            }
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:hydra"
           }
-        ]
+        }
       },
       "trigger": "minecraft:player_killed_entity"
     },
     "stroganoff": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type_specific": {
-                "type": "minecraft:player",
-                "advancements": {
-                  "twilightforest:progress_labyrinth": true
-                }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:type_specific/player": {
+              "advancements": {
+                "twilightforest:progress_labyrinth": true
               }
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:tick"
     },
@@ -46,15 +41,13 @@
     },
     "was_in_fight": {
       "conditions": {
-        "hurt_entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:hydra"
-            }
+        "hurt_entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:hydra"
           }
-        ]
+        }
       },
       "trigger": "twilightforest:hurt_boss"
     }

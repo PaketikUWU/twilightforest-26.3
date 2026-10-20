@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/travellers_wings"
+        "recipes": "twilightforest:equipment/travellers_wings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

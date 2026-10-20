@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/time_log/hollow_time_log"
+        "recipes": "twilightforest:stonecutting/time_log/hollow_time_log"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

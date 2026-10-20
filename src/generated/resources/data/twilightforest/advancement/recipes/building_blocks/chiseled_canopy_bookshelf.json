@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:chiseled_canopy_bookshelf"
+        "recipes": "twilightforest:chiseled_canopy_bookshelf"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

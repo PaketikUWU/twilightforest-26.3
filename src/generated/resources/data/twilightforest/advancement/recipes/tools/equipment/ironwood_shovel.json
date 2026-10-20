@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/ironwood_shovel"
+        "recipes": "twilightforest:equipment/ironwood_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

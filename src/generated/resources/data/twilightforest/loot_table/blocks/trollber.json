@@ -12,7 +12,7 @@
               "conditions": [
                 {
                   "ability": "shears_dig",
-                  "condition": "neoforge:can_item_perform_ability"
+                  "type": "neoforge:can_item_perform_ability"
                 }
               ],
               "name": "twilightforest:trollber"

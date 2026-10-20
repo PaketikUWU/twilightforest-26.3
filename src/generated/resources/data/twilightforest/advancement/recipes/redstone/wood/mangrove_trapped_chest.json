@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/mangrove_trapped_chest"
+        "recipes": "twilightforest:wood/mangrove_trapped_chest"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

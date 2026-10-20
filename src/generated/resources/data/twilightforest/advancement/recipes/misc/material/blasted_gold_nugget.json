@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:material/blasted_gold_nugget"
+        "recipes": "twilightforest:material/blasted_gold_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

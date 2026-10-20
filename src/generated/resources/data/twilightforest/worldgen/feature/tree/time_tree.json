@@ -4,42 +4,30 @@
     "add_first_five_chance": 1,
     "add_second_five_chance": 1,
     "branch_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "twilightforest:time_wood",
-        "Properties": {
-          "axis": "y"
-        }
+      "id": "twilightforest:time_wood",
+      "properties": {
+        "axis": "y"
       }
     },
     "check_water": false,
     "decorators": [],
     "has_leaves": false,
     "leaves_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "twilightforest:time_leaves",
-        "Properties": {
-          "distance": "7",
-          "persistent": "false",
-          "waterlogged": "false"
-        }
+      "id": "twilightforest:time_leaves",
+      "properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
       }
     },
     "minimum_size": 0,
     "roots_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "twilightforest:root"
-      }
+      "id": "twilightforest:root"
     },
     "trunk_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "twilightforest:time_log",
-        "Properties": {
-          "axis": "y"
-        }
+      "id": "twilightforest:time_log",
+      "properties": {
+        "axis": "y"
       }
     }
   }

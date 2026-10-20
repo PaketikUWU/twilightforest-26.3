@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/dark_wood/towerwood"
+        "recipes": "twilightforest:stonecutting/dark_wood/towerwood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

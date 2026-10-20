@@ -7,13 +7,10 @@
         "birch_drying_rack": {
           "type": "twilightforest:drying_rack",
           "drying_rack_block": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "twilightforest:birch_drying_rack",
-              "Properties": {
-                "facing": "north",
-                "waterlogged": "false"
-              }
+            "id": "twilightforest:birch_drying_rack",
+            "properties": {
+              "facing": "north",
+              "waterlogged": "false"
             }
           },
           "loot_table": "twilightforest:chests/camp_drying_rack"
@@ -21,13 +18,10 @@
         "camp_armor_rack": {
           "type": "twilightforest:drying_rack",
           "drying_rack_block": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "twilightforest:canopy_drying_rack",
-              "Properties": {
-                "facing": "north",
-                "waterlogged": "false"
-              }
+            "id": "twilightforest:canopy_drying_rack",
+            "properties": {
+              "facing": "north",
+              "waterlogged": "false"
             }
           },
           "loot_table": "twilightforest:chests/camp_armor_rack"
@@ -39,14 +33,11 @@
         "tent_pot": {
           "type": "twilightforest:loot",
           "loot_block": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "minecraft:decorated_pot",
-              "Properties": {
-                "cracked": "false",
-                "facing": "north",
-                "waterlogged": "false"
-              }
+            "id": "minecraft:decorated_pot",
+            "properties": {
+              "cracked": "false",
+              "facing": "north",
+              "waterlogged": "false"
             }
           },
           "loot_table": "twilightforest:chests/camp_pot"
@@ -54,12 +45,12 @@
         "twilight_oak_slab": {
           "type": "twilightforest:block_placement",
           "block_state": {
-            "type": "minecraft:weighted_state_provider",
+            "type": "minecraft:weighted",
             "entries": [
               {
                 "data": {
-                  "Name": "twilightforest:twilight_oak_slab",
-                  "Properties": {
+                  "id": "twilightforest:twilight_oak_slab",
+                  "properties": {
                     "type": "bottom",
                     "waterlogged": "false"
                   }
@@ -68,7 +59,7 @@
               },
               {
                 "data": {
-                  "Name": "minecraft:air"
+                  "id": "minecraft:air"
                 },
                 "weight": 3
               }

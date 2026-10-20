@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:castleblock/bold_castle_pillar_from_tile"
+        "recipes": "twilightforest:castleblock/bold_castle_pillar_from_tile"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

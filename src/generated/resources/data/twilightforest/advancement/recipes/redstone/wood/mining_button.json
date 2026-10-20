@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/mining_button"
+        "recipes": "twilightforest:wood/mining_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

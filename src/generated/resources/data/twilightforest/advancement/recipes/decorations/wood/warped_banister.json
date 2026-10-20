@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/warped_banister"
+        "recipes": "twilightforest:wood/warped_banister"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

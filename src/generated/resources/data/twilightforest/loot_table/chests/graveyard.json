@@ -99,7 +99,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "twilightforest:uncrafting_table_enabled"
+              "type": "twilightforest:uncrafting_table_enabled"
             }
           ],
           "name": "twilightforest:uncrafting_table"

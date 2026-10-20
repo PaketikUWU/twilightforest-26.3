@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:rainy_cloud"
+        "recipes": "twilightforest:rainy_cloud"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

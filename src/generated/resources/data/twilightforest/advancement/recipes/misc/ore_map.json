@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:ore_map"
+        "recipes": "twilightforest:ore_map"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -20,9 +20,8 @@
     "creature": [
       {
         "type": "twilightforest:raven",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
+        "weight": 10,
+        "count": 4
       }
     ],
     "misc": [],

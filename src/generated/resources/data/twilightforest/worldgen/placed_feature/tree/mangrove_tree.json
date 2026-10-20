@@ -41,8 +41,8 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "twilightforest:mangrove_sapling",
-          "Properties": {
+          "id": "twilightforest:mangrove_sapling",
+          "properties": {
             "stage": "0",
             "waterlogged": "false"
           }

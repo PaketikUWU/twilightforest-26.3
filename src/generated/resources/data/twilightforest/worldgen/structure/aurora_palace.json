@@ -10,21 +10,30 @@
       "0": [
         {
           "type": "twilightforest:snow_guardian",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "twilightforest:stable_ice_core",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "twilightforest:unstable_ice_core",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 5
+          "weight": 5,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         }
       ]
     },

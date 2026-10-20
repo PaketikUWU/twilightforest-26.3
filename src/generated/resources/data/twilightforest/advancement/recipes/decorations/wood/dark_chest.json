@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/dark_chest"
+        "recipes": "twilightforest:wood/dark_chest"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

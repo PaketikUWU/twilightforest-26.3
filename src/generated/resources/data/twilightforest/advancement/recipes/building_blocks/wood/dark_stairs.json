@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/dark_stairs"
+        "recipes": "twilightforest:wood/dark_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

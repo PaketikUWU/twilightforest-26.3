@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:root_stick"
+        "recipes": "twilightforest:root_stick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

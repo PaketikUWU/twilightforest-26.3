@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:material/armor_shard_cluster"
+        "recipes": "twilightforest:material/armor_shard_cluster"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

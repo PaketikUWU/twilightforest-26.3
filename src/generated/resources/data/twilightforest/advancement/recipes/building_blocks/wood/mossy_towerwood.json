@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/mossy_towerwood"
+        "recipes": "twilightforest:wood/mossy_towerwood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

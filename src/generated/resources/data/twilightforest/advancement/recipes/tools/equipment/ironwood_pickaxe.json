@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/ironwood_pickaxe"
+        "recipes": "twilightforest:equipment/ironwood_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

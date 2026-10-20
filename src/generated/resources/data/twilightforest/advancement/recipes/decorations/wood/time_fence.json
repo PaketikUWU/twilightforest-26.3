@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/time_fence"
+        "recipes": "twilightforest:wood/time_fence"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

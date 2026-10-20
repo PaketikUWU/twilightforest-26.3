@@ -2,7 +2,7 @@
   "type": "twilightforest:fire_jet",
   "config": {
     "state": {
-      "Name": "twilightforest:smoker"
+      "id": "twilightforest:smoker"
     }
   }
 }

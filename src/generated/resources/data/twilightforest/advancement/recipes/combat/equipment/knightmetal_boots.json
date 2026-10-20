@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/knightmetal_boots"
+        "recipes": "twilightforest:equipment/knightmetal_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

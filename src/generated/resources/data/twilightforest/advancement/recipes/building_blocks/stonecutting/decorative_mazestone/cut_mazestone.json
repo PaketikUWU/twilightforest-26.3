@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/decorative_mazestone/cut_mazestone"
+        "recipes": "twilightforest:stonecutting/decorative_mazestone/cut_mazestone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

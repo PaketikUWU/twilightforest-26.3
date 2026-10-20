@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:material/raw_ironwood"
+        "recipes": "twilightforest:material/raw_ironwood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

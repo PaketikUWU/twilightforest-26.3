@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/mangrove_wood"
+        "recipes": "twilightforest:wood/mangrove_wood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

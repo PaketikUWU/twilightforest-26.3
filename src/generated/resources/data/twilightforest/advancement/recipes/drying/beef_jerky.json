@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/beef_jerky"
+        "recipes": "twilightforest:drying/beef_jerky"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

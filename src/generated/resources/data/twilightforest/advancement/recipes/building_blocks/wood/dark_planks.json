@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/dark_planks"
+        "recipes": "twilightforest:wood/dark_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

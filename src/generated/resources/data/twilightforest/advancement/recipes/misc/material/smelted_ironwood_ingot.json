@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:material/smelted_ironwood_ingot"
+        "recipes": "twilightforest:material/smelted_ironwood_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

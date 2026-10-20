@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/cooked_meat_to_leather"
+        "recipes": "twilightforest:drying/cooked_meat_to_leather"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

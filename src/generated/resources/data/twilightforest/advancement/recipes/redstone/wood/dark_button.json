@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/dark_button"
+        "recipes": "twilightforest:wood/dark_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

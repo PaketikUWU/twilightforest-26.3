@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:material/carminite"
+        "recipes": "twilightforest:material/carminite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

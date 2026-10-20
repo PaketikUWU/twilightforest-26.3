@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:nagastone/mossy_etched_nagastone"
+        "recipes": "twilightforest:nagastone/mossy_etched_nagastone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

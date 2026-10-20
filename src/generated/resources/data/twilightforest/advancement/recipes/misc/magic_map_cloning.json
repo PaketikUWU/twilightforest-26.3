@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:magic_map_cloning"
+        "recipes": "twilightforest:magic_map_cloning"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

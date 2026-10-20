@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:encased_fire_jet"
+        "recipes": "twilightforest:encased_fire_jet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

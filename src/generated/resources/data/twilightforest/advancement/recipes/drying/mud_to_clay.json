@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/mud_to_clay"
+        "recipes": "twilightforest:drying/mud_to_clay"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

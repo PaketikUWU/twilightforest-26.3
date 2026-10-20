@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/horn_coral_fan"
+        "recipes": "twilightforest:drying/horn_coral_fan"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

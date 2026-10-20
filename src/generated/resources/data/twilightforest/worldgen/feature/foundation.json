@@ -15,37 +15,31 @@
       ]
     },
     "basement_posts": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:oak_fence",
-        "Properties": {
-          "east": "false",
-          "north": "false",
-          "south": "false",
-          "waterlogged": "false",
-          "west": "false"
-        }
+      "id": "minecraft:oak_fence",
+      "properties": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "waterlogged": "false",
+        "west": "false"
       }
     },
     "decayed_wall_block": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:mossy_cobblestone"
-      }
+      "id": "minecraft:mossy_cobblestone"
     },
     "decayed_wall_top_block": {
-      "type": "minecraft:weighted_state_provider",
+      "type": "minecraft:weighted",
       "entries": [
         {
           "data": {
-            "Name": "minecraft:mossy_cobblestone"
+            "id": "minecraft:mossy_cobblestone"
           },
           "weight": 5
         },
         {
           "data": {
-            "Name": "minecraft:mossy_cobblestone_slab",
-            "Properties": {
+            "id": "minecraft:mossy_cobblestone_slab",
+            "properties": {
               "type": "bottom",
               "waterlogged": "false"
             }
@@ -54,8 +48,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:mossy_cobblestone_stairs",
-            "Properties": {
+            "id": "minecraft:mossy_cobblestone_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom",
               "shape": "straight",
@@ -66,8 +60,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:mossy_cobblestone_stairs",
-            "Properties": {
+            "id": "minecraft:mossy_cobblestone_stairs",
+            "properties": {
               "facing": "west",
               "half": "bottom",
               "shape": "straight",
@@ -79,18 +73,18 @@
       ]
     },
     "floor": {
-      "type": "minecraft:weighted_state_provider",
+      "type": "minecraft:weighted",
       "entries": [
         {
           "data": {
-            "Name": "minecraft:oak_planks"
+            "id": "minecraft:oak_planks"
           },
           "weight": 39
         },
         {
           "data": {
-            "Name": "minecraft:oak_slab",
-            "Properties": {
+            "id": "minecraft:oak_slab",
+            "properties": {
               "type": "bottom",
               "waterlogged": "false"
             }
@@ -99,8 +93,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:oak_stairs",
-            "Properties": {
+            "id": "minecraft:oak_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom",
               "shape": "straight",
@@ -111,8 +105,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:oak_stairs",
-            "Properties": {
+            "id": "minecraft:oak_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom",
               "shape": "straight",
@@ -123,8 +117,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:oak_stairs",
-            "Properties": {
+            "id": "minecraft:oak_stairs",
+            "properties": {
               "facing": "south",
               "half": "bottom",
               "shape": "straight",
@@ -135,8 +129,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:oak_stairs",
-            "Properties": {
+            "id": "minecraft:oak_stairs",
+            "properties": {
               "facing": "west",
               "half": "bottom",
               "shape": "straight",
@@ -148,14 +142,11 @@
       ]
     },
     "loot_container": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:chest",
-        "Properties": {
-          "type": "single",
-          "facing": "north",
-          "waterlogged": "false"
-        }
+      "id": "minecraft:chest",
+      "properties": {
+        "type": "single",
+        "facing": "north",
+        "waterlogged": "false"
       }
     },
     "loot_table": "twilightforest:chests/foundation_basement",
@@ -165,10 +156,7 @@
       "min_inclusive": -2.0
     },
     "wall_block": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:cobblestone"
-      }
+      "id": "minecraft:cobblestone"
     },
     "wall_heights": {
       "type": "minecraft:uniform",
@@ -176,18 +164,18 @@
       "min_inclusive": 1
     },
     "wall_top_block": {
-      "type": "minecraft:weighted_state_provider",
+      "type": "minecraft:weighted",
       "entries": [
         {
           "data": {
-            "Name": "minecraft:cobblestone"
+            "id": "minecraft:cobblestone"
           },
           "weight": 5
         },
         {
           "data": {
-            "Name": "minecraft:cobblestone_slab",
-            "Properties": {
+            "id": "minecraft:cobblestone_slab",
+            "properties": {
               "type": "bottom",
               "waterlogged": "false"
             }
@@ -196,8 +184,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:cobblestone_stairs",
-            "Properties": {
+            "id": "minecraft:cobblestone_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom",
               "shape": "straight",
@@ -208,8 +196,8 @@
         },
         {
           "data": {
-            "Name": "minecraft:cobblestone_stairs",
-            "Properties": {
+            "id": "minecraft:cobblestone_stairs",
+            "properties": {
               "facing": "west",
               "half": "bottom",
               "shape": "straight",

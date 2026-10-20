@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/giant_sword"
+        "recipes": "twilightforest:equipment/giant_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

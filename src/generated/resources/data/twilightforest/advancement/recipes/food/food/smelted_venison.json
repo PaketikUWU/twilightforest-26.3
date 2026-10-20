@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:food/smelted_venison"
+        "recipes": "twilightforest:food/smelted_venison"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

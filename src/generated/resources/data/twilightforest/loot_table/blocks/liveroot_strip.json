@@ -6,7 +6,7 @@
       "conditions": [
         {
           "ability": "axe_strip",
-          "condition": "neoforge:can_item_perform_ability"
+          "type": "neoforge:can_item_perform_ability"
         }
       ],
       "entries": [

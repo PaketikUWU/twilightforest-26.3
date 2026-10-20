@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:alpha_yeti_banner_pattern"
+        "recipes": "twilightforest:alpha_yeti_banner_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

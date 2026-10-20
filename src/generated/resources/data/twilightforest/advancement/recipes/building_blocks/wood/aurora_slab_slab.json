@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/aurora_slab_slab"
+        "recipes": "twilightforest:wood/aurora_slab_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

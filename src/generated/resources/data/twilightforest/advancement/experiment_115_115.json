@@ -3,26 +3,23 @@
   "criteria": {
     "eat_115_e115": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type_specific": {
-                "type": "minecraft:player",
-                "stats": [
-                  {
-                    "type": "minecraft:custom",
-                    "stat": "twilightforest:e115_slices_eaten",
-                    "value": {
-                      "min": 115
-                    }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:type_specific/player": {
+              "stats": [
+                {
+                  "type": "minecraft:custom",
+                  "stat": "twilightforest:e115_slices_eaten",
+                  "value": {
+                    "min": 115
                   }
-                ]
-              }
+                }
+              ]
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:location"
     }

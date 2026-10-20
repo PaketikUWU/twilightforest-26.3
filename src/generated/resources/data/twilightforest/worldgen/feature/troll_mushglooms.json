@@ -2,7 +2,7 @@
   "type": "twilightforest:underground_plants_in_structure",
   "config": {
     "state": {
-      "Name": "twilightforest:mushgloom"
+      "id": "twilightforest:mushgloom"
     }
   }
 }

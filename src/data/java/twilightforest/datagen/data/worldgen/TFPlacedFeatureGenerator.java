@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.neoforge.common.util.ConcatenatedListView;
@@ -81,7 +81,7 @@ public class TFPlacedFeatureGenerator {
     }
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-        HolderGetter<Feature> features = context.lookup(Registries.FEATURE);
+        HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         AvoidLandmarkModifier avoidLichTower = AvoidLandmarkModifier.checkVegetation();
         AvoidLandmarkModifier avoidStrongholdPieces = new AvoidLandmarkModifier(false, false, true, 1, HolderSet.empty());
@@ -205,27 +205,27 @@ public class TFPlacedFeatureGenerator {
 
         List<PlacementModifier> avoidLichTowerList = List.of(avoidLichTower);
 
-        Holder<Feature> grassConfig = features.getOrThrow(VegetationFeatures.GRASS);
+        Holder<ConfiguredFeature<?, ?>> grassConfig = features.getOrThrow(VegetationFeatures.GRASS);
         // PlacementUtils.register(context, PATCH_GRASS_PLAIN, grassConfig, NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome(), avoidLichTower);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_GRASS_FOREST, grassConfig, ConcatenatedListView.of(Util.copyAndAdd(VegetationPlacements.worldSurfaceSquaredWithCount(2), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)), avoidLichTowerList));
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_GRASS_BADLANDS, grassConfig, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome(), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), avoidLichTower);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_GRASS_SAVANNA, grassConfig, ConcatenatedListView.of(Util.copyAndAdd(VegetationPlacements.worldSurfaceSquaredWithCount(20), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)), avoidLichTowerList));
         // PlacementUtils.register(context, PATCH_GRASS_NORMAL, grassConfig, ConcatenatedListView.of(VegetationPlacements.worldSurfaceSquaredWithCount(5), avoidLichTowerList));
 
-        Holder<Feature> taigaGrassConfig = features.getOrThrow(VegetationFeatures.TAIGA_GRASS);
+        Holder<ConfiguredFeature<?, ?>> taigaGrassConfig = features.getOrThrow(VegetationFeatures.TAIGA_GRASS);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_GRASS_TAIGA_2, taigaGrassConfig, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome(), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), avoidLichTower);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_GRASS_TAIGA, taigaGrassConfig, ConcatenatedListView.of(Util.copyAndAdd(VegetationPlacements.worldSurfaceSquaredWithCount(7), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)), avoidLichTowerList));
 
-        Holder<Feature> jungleGrassConfig = features.getOrThrow(VegetationFeatures.GRASS_JUNGLE);
+        Holder<ConfiguredFeature<?, ?>> jungleGrassConfig = features.getOrThrow(VegetationFeatures.GRASS_JUNGLE);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_GRASS_JUNGLE, jungleGrassConfig, ConcatenatedListView.of(Util.copyAndAdd(VegetationPlacements.worldSurfaceSquaredWithCount(25), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)), avoidLichTowerList));
 
-        Holder<Feature> tallGrassConfig = features.getOrThrow(VegetationFeatures.TALL_GRASS);
+        Holder<ConfiguredFeature<?, ?>> tallGrassConfig = features.getOrThrow(VegetationFeatures.TALL_GRASS);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_TALL_GRASS, tallGrassConfig, RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(), CountPlacement.of(96), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), avoidLichTower);
 
-        Holder<Feature> fernConfig = features.getOrThrow(VegetationFeatures.LARGE_FERN);
+        Holder<ConfiguredFeature<?, ?>> fernConfig = features.getOrThrow(VegetationFeatures.LARGE_FERN);
         PlacementUtils.register(context, TFPlacedFeatures.PATCH_LARGE_FERN, fernConfig, RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(), CountPlacement.of(96), RandomOffsetPlacement.ofTriangle(7, 3), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), avoidLichTower);
 
-        Holder<Feature> forestFlowersConfig = features.getOrThrow(VegetationFeatures.FOREST_FLOWERS);
+        Holder<ConfiguredFeature<?, ?>> forestFlowersConfig = features.getOrThrow(VegetationFeatures.FOREST_FLOWERS);
         PlacementUtils.register(context,
             TFPlacedFeatures.FLOWER_FOREST_FLOWERS,
             forestFlowersConfig,

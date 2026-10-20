@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/time_plate"
+        "recipes": "twilightforest:wood/time_plate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

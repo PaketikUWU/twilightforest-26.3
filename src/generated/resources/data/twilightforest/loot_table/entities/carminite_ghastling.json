@@ -5,7 +5,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "twilightforest:is_minion",
+          "type": "twilightforest:is_minion",
           "inverse": true
         }
       ],

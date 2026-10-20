@@ -2,8 +2,8 @@
   "type": "twilightforest:berry_bush",
   "config": {
     "bush": {
-      "Name": "twilightforest:blueberry_bush",
-      "Properties": {
+      "id": "twilightforest:blueberry_bush",
+      "properties": {
         "age": "0",
         "layers": "0"
       }

@@ -12,7 +12,7 @@
               "conditions": [
                 {
                   "block": "twilightforest:twilight_oak_slab",
-                  "condition": "minecraft:block_state_property",
+                  "type": "minecraft:block_state_property",
                   "properties": {
                     "type": "double"
                   }

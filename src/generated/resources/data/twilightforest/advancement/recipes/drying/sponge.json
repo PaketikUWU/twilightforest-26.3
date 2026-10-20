@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/sponge"
+        "recipes": "twilightforest:drying/sponge"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

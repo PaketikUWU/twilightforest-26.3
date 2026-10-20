@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/tube_coral_block"
+        "recipes": "twilightforest:drying/tube_coral_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

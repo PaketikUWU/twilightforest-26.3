@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/venison_jerky"
+        "recipes": "twilightforest:drying/venison_jerky"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

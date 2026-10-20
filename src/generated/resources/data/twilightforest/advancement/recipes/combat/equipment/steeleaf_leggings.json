@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/steeleaf_leggings"
+        "recipes": "twilightforest:equipment/steeleaf_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

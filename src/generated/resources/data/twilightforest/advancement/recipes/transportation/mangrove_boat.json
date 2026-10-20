@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:mangrove_boat"
+        "recipes": "twilightforest:mangrove_boat"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

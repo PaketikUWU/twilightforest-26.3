@@ -2,34 +2,34 @@
   "type": "minecraft:clamp",
   "input": {
     "type": "minecraft:add",
-    "argument1": {
+    "left": {
       "type": "twilightforest:sqrt",
       "input": {
         "type": "minecraft:clamp",
         "input": {
           "type": "minecraft:interpolated",
-          "argument": {
+          "input": {
             "type": "minecraft:add",
-            "argument1": -0.5,
-            "argument2": {
+            "left": -0.5,
+            "right": {
               "type": "minecraft:mul",
-              "argument1": 5.0,
-              "argument2": {
+              "left": 5.0,
+              "right": {
                 "type": "minecraft:add",
-                "argument1": -0.5,
-                "argument2": {
-                  "type": "minecraft:flat_cache",
-                  "argument": {
+                "left": -0.5,
+                "right": {
+                  "type": "minecraft:cache",
+                  "input": {
                     "type": "minecraft:add",
-                    "argument1": {
+                    "left": {
                       "type": "minecraft:mul",
-                      "argument1": {
+                      "left": {
                         "type": "minecraft:add",
-                        "argument1": 0.5,
-                        "argument2": {
+                        "left": 0.5,
+                        "right": {
                           "type": "minecraft:mul",
-                          "argument1": 0.5,
-                          "argument2": {
+                          "left": 0.5,
+                          "right": {
                             "type": "minecraft:noise",
                             "noise": "minecraft:ridge",
                             "xz_scale": 1.0,
@@ -37,23 +37,23 @@
                           }
                         }
                       },
-                      "argument2": {
+                      "right": {
                         "type": "minecraft:add",
-                        "argument1": 1.0,
-                        "argument2": {
+                        "left": 1.0,
+                        "right": {
                           "type": "minecraft:mul",
-                          "argument1": -1.0,
-                          "argument2": {
-                            "type": "minecraft:cache_once",
-                            "argument": {
+                          "left": -1.0,
+                          "right": {
+                            "type": "minecraft:cache",
+                            "input": {
                               "type": "minecraft:clamp",
                               "input": {
                                 "type": "minecraft:add",
-                                "argument1": 0.5,
-                                "argument2": {
+                                "left": 0.5,
+                                "right": {
                                   "type": "minecraft:mul",
-                                  "argument1": 0.5,
-                                  "argument2": {
+                                  "left": 0.5,
+                                  "right": {
                                     "type": "minecraft:noise",
                                     "noise": "minecraft:surface",
                                     "xz_scale": 1.0,
@@ -68,15 +68,15 @@
                         }
                       }
                     },
-                    "argument2": {
+                    "right": {
                       "type": "minecraft:mul",
-                      "argument1": {
+                      "left": {
                         "type": "minecraft:add",
-                        "argument1": 0.5,
-                        "argument2": {
+                        "left": 0.5,
+                        "right": {
                           "type": "minecraft:mul",
-                          "argument1": 0.5,
-                          "argument2": {
+                          "left": 0.5,
+                          "right": {
                             "type": "minecraft:noise",
                             "noise": "minecraft:ridge",
                             "xz_scale": 4.0,
@@ -84,17 +84,17 @@
                           }
                         }
                       },
-                      "argument2": {
-                        "type": "minecraft:cache_once",
-                        "argument": {
+                      "right": {
+                        "type": "minecraft:cache",
+                        "input": {
                           "type": "minecraft:clamp",
                           "input": {
                             "type": "minecraft:add",
-                            "argument1": 0.5,
-                            "argument2": {
+                            "left": 0.5,
+                            "right": {
                               "type": "minecraft:mul",
-                              "argument1": 0.5,
-                              "argument2": {
+                              "left": 0.5,
+                              "right": {
                                 "type": "minecraft:noise",
                                 "noise": "minecraft:surface",
                                 "xz_scale": 1.0,
@@ -111,31 +111,34 @@
                 }
               }
             }
-          }
+          },
+          "cell_size_xz": 8,
+          "cell_size_y": 8
         },
         "max": 2.0,
         "min": 0.0
       }
     },
-    "argument2": {
+    "right": {
       "type": "minecraft:mul",
-      "argument1": -0.25,
-      "argument2": {
+      "left": -0.25,
+      "right": {
         "type": "minecraft:abs",
-        "argument": {
+        "input": {
           "type": "minecraft:half_negative",
-          "argument": {
+          "input": {
             "type": "minecraft:mul",
-            "argument1": -1.0,
-            "argument2": {
+            "left": -1.0,
+            "right": {
               "type": "minecraft:add",
-              "argument1": "twilightforest:raw_biome_terrain",
-              "argument2": {
-                "type": "minecraft:y_clamped_gradient",
+              "left": "twilightforest:raw_biome_terrain",
+              "right": {
+                "type": "minecraft:gradient",
+                "axis": "y",
+                "from_coordinate": -31,
                 "from_value": 31.0,
-                "from_y": -31,
-                "to_value": -256.0,
-                "to_y": 256
+                "to_coordinate": 256,
+                "to_value": -256.0
               }
             }
           }

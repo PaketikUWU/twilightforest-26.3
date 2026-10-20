@@ -1,18 +1,16 @@
 {
   "type": "minecraft:ore",
-  "config": {
-    "discard_chance_on_air_exposure": 0.0,
-    "size": 10,
-    "targets": [
-      {
-        "state": {
-          "Name": "minecraft:copper_ore"
-        },
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:stone_ore_replaceables"
-        }
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 10,
+  "targets": [
+    {
+      "state": {
+        "id": "minecraft:copper_ore"
+      },
+      "target": {
+        "predicate_type": "minecraft:tag_match",
+        "tag": "minecraft:stone_ore_replaceables"
       }
-    ]
-  }
+    }
+  ]
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/thick_castle_brick/bold_castle_brick_pillar"
+        "recipes": "twilightforest:stonecutting/thick_castle_brick/bold_castle_brick_pillar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

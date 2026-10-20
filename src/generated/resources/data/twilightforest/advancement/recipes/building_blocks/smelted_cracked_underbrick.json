@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:smelted_cracked_underbrick"
+        "recipes": "twilightforest:smelted_cracked_underbrick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

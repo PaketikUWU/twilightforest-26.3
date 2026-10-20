@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:castleblock/bold_castle_brick_tile"
+        "recipes": "twilightforest:castleblock/bold_castle_brick_tile"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

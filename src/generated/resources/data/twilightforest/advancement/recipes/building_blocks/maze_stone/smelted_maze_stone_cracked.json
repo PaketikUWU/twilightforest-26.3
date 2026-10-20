@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:maze_stone/smelted_maze_stone_cracked"
+        "recipes": "twilightforest:maze_stone/smelted_maze_stone_cracked"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

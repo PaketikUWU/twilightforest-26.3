@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/transformation_planks"
+        "recipes": "twilightforest:wood/transformation_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

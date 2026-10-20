@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:canopy_window"
+        "recipes": "twilightforest:canopy_window"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

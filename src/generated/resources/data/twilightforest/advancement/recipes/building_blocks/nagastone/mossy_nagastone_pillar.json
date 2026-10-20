@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:nagastone/mossy_nagastone_pillar"
+        "recipes": "twilightforest:nagastone/mossy_nagastone_pillar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

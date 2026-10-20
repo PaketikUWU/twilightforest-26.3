@@ -9,7 +9,7 @@
           "conditions": [
             {
               "ability": "shears_dig",
-              "condition": "neoforge:can_item_perform_ability"
+              "type": "neoforge:can_item_perform_ability"
             }
           ],
           "name": "twilightforest:torchberry_plant"
@@ -25,7 +25,7 @@
           "conditions": [
             {
               "block": "twilightforest:torchberry_plant",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "has_torchberries": "true"
               }

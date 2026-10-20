@@ -15,7 +15,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "1"
                       }
@@ -35,7 +35,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "2"
                       }
@@ -55,7 +55,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "3"
                       }
@@ -75,7 +75,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "4"
                       }
@@ -95,7 +95,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "5"
                       }
@@ -115,7 +115,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "6"
                       }
@@ -135,7 +135,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "7"
                       }
@@ -155,7 +155,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:fallen_leaves",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "layers": "8"
                       }
@@ -174,7 +174,7 @@
               "conditions": [
                 {
                   "ability": "shears_dig",
-                  "condition": "neoforge:can_item_perform_ability"
+                  "type": "neoforge:can_item_perform_ability"
                 }
               ]
             }

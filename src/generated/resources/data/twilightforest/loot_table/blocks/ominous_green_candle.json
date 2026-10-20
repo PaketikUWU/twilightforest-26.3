@@ -12,7 +12,7 @@
               "conditions": [
                 {
                   "block": "twilightforest:ominous_green_candle",
-                  "condition": "minecraft:block_state_property",
+                  "type": "minecraft:block_state_property",
                   "properties": {
                     "candles": "2"
                   }
@@ -26,7 +26,7 @@
               "conditions": [
                 {
                   "block": "twilightforest:ominous_green_candle",
-                  "condition": "minecraft:block_state_property",
+                  "type": "minecraft:block_state_property",
                   "properties": {
                     "candles": "3"
                   }
@@ -40,7 +40,7 @@
               "conditions": [
                 {
                   "block": "twilightforest:ominous_green_candle",
-                  "condition": "minecraft:block_state_property",
+                  "type": "minecraft:block_state_property",
                   "properties": {
                     "candles": "4"
                   }

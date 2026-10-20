@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/transformation_banister"
+        "recipes": "twilightforest:wood/transformation_banister"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

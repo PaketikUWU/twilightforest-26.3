@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:nagastone/nagastone_spiral"
+        "recipes": "twilightforest:nagastone/nagastone_spiral"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -30,7 +30,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "1"
                       }
@@ -50,7 +50,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "2"
                       }
@@ -70,7 +70,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "3"
                       }
@@ -90,7 +90,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "4"
                       }
@@ -110,7 +110,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "5"
                       }
@@ -130,7 +130,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "6"
                       }
@@ -150,7 +150,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "7"
                       }
@@ -170,7 +170,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "8"
                       }
@@ -190,7 +190,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "9"
                       }
@@ -210,7 +210,7 @@
                   "conditions": [
                     {
                       "block": "twilightforest:firefly_particle_spawner",
-                      "condition": "minecraft:block_state_property",
+                      "type": "minecraft:block_state_property",
                       "properties": {
                         "particle_radius": "10"
                       }

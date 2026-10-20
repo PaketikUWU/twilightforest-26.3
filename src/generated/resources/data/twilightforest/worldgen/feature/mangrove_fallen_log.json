@@ -2,15 +2,15 @@
   "type": "twilightforest:fallen_small_log",
   "config": {
     "hollow": {
-      "Name": "twilightforest:hollow_mangrove_log_horizontal",
-      "Properties": {
+      "id": "twilightforest:hollow_mangrove_log_horizontal",
+      "properties": {
         "axis": "x",
         "variant": "empty"
       }
     },
     "normal": {
-      "Name": "twilightforest:mangrove_log",
-      "Properties": {
+      "id": "twilightforest:mangrove_log",
+      "properties": {
         "axis": "y"
       }
     }

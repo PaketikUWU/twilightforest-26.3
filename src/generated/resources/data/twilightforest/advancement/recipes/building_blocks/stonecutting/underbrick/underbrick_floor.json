@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/underbrick/underbrick_floor"
+        "recipes": "twilightforest:stonecutting/underbrick/underbrick_floor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

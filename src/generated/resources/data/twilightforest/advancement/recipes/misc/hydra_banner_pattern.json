@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:hydra_banner_pattern"
+        "recipes": "twilightforest:hydra_banner_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

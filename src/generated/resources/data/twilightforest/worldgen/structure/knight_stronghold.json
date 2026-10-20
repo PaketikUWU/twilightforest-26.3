@@ -10,51 +10,71 @@
       "0": [
         {
           "type": "twilightforest:block_and_chain_goblin",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "twilightforest:lower_goblin_knight",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 5
+          "weight": 5,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "twilightforest:helmet_crab",
-          "maxCount": 4,
-          "minCount": 2,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 2,
+            "max_inclusive": 4
+          }
         },
         {
           "type": "twilightforest:slime_beetle",
-          "maxCount": 3,
-          "minCount": 2,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 2,
+            "max_inclusive": 3
+          }
         },
         {
           "type": "twilightforest:redcap_sapper",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 2
+          "weight": 2,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "twilightforest:kobold",
-          "maxCount": 4,
-          "minCount": 2,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 2,
+            "max_inclusive": 4
+          }
         },
         {
           "type": "minecraft:creeper",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 5
+          "weight": 5,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "minecraft:slime",
-          "maxCount": 4,
-          "minCount": 4,
-          "weight": 5
+          "weight": 5,
+          "count": 4
         }
       ]
     },

@@ -3,12 +3,12 @@
   "allow_in_water": true,
   "biomes": "twilightforest:swamp",
   "bug": {
-    "type": "minecraft:weighted_state_provider",
+    "type": "minecraft:weighted",
     "entries": [
       {
         "data": {
-          "Name": "twilightforest:firefly",
-          "Properties": {
+          "id": "twilightforest:firefly",
+          "properties": {
             "facing": "north"
           }
         },
@@ -16,8 +16,8 @@
       },
       {
         "data": {
-          "Name": "twilightforest:cicada",
-          "Properties": {
+          "id": "twilightforest:cicada",
+          "properties": {
             "facing": "north"
           }
         },
@@ -33,31 +33,22 @@
     "chunk_clearance_radius": 0.5
   },
   "dungeon_air": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "minecraft:air"
-    }
+    "id": "minecraft:air"
   },
   "dungeon_loot_block": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "minecraft:chest",
-      "Properties": {
-        "type": "single",
-        "facing": "west",
-        "waterlogged": "false"
-      }
+    "id": "minecraft:chest",
+    "properties": {
+      "type": "single",
+      "facing": "west",
+      "waterlogged": "false"
     }
   },
   "dungeon_loot_table": "twilightforest:chests/tree_cache",
   "dungeon_monster": "twilightforest:swarm_spider",
   "dungeon_wood": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "twilightforest:twilight_oak_wood",
-      "Properties": {
-        "axis": "y"
-      }
+    "id": "twilightforest:twilight_oak_wood",
+    "properties": {
+      "axis": "y"
     }
   },
   "height": {
@@ -66,23 +57,17 @@
     "min_inclusive": 32
   },
   "leaves": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "twilightforest:twilight_oak_leaves",
-      "Properties": {
-        "distance": "7",
-        "persistent": "false",
-        "waterlogged": "false"
-      }
+    "id": "twilightforest:twilight_oak_leaves",
+    "properties": {
+      "distance": "7",
+      "persistent": "false",
+      "waterlogged": "false"
     }
   },
   "log": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "twilightforest:twilight_oak_log",
-      "Properties": {
-        "axis": "y"
-      }
+    "id": "twilightforest:twilight_oak_log",
+    "properties": {
+      "axis": "y"
     }
   },
   "radius": {
@@ -91,10 +76,7 @@
     "min_inclusive": 1
   },
   "root": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "twilightforest:root"
-    }
+    "id": "twilightforest:root"
   },
   "spawn_overrides": {
     "ambient": {
@@ -132,25 +114,19 @@
   },
   "step": "surface_structures",
   "vine": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "minecraft:vine",
-      "Properties": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
-      }
+    "id": "minecraft:vine",
+    "properties": {
+      "east": "false",
+      "north": "false",
+      "south": "false",
+      "up": "false",
+      "west": "false"
     }
   },
   "wood": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "twilightforest:twilight_oak_wood",
-      "Properties": {
-        "axis": "y"
-      }
+    "id": "twilightforest:twilight_oak_wood",
+    "properties": {
+      "axis": "y"
     }
   }
 }

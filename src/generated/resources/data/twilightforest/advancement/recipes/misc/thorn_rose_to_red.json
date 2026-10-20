@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:thorn_rose_to_red"
+        "recipes": "twilightforest:thorn_rose_to_red"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

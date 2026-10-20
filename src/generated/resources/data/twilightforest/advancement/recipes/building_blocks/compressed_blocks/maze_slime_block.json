@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:compressed_blocks/maze_slime_block"
+        "recipes": "twilightforest:compressed_blocks/maze_slime_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

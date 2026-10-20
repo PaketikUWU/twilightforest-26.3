@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:food/campfired_venison"
+        "recipes": "twilightforest:food/campfired_venison"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

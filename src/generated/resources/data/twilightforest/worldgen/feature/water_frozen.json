@@ -2,19 +2,13 @@
   "type": "twilightforest:small_lake",
   "config": {
     "fluid": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:water",
-        "Properties": {
-          "level": "0"
-        }
+      "id": "minecraft:water",
+      "properties": {
+        "level": "0"
       }
     },
     "ice": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:ice"
-      }
+      "id": "minecraft:ice"
     }
   }
 }

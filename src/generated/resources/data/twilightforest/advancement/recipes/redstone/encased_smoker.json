@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:encased_smoker"
+        "recipes": "twilightforest:encased_smoker"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

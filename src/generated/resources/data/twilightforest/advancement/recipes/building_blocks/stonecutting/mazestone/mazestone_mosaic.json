@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/mazestone/mazestone_mosaic"
+        "recipes": "twilightforest:stonecutting/mazestone/mazestone_mosaic"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

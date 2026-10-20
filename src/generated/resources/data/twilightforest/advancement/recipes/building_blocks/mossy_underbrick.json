@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:mossy_underbrick"
+        "recipes": "twilightforest:mossy_underbrick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

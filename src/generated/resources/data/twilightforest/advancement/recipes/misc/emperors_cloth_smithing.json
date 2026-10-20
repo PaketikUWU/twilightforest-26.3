@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:emperors_cloth_smithing"
+        "recipes": "twilightforest:emperors_cloth_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

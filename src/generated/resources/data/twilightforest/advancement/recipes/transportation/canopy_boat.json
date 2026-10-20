@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:canopy_boat"
+        "recipes": "twilightforest:canopy_boat"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

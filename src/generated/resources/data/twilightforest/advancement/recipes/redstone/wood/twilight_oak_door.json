@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/twilight_oak_door"
+        "recipes": "twilightforest:wood/twilight_oak_door"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -4,7 +4,10 @@
     "#minecraft:logs",
     "#minecraft:planks",
     "#minecraft:overworld_carver_replaceables",
-    "#minecraft:nether_carver_replaceables",
+    {
+      "id": "#minecraft:nether_carver_replaceables",
+      "required": false
+    },
     "#minecraft:replaceable_by_trees",
     "#minecraft:lush_ground_replaceable",
     "#minecraft:sculk_replaceable",

@@ -11,41 +11,47 @@
       "0": [
         {
           "type": "minecraft:creeper",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 5
+          "weight": 5,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "minecraft:skeleton",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 10
+          "weight": 10,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "twilightforest:troll",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 20
+          "weight": 20,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "minecraft:witch",
-          "maxCount": 1,
-          "minCount": 1,
-          "weight": 5
+          "weight": 5,
+          "count": 1
         }
       ],
       "1": [
         {
           "type": "twilightforest:giant_miner",
-          "maxCount": 1,
-          "minCount": 1,
-          "weight": 10
+          "weight": 10,
+          "count": 1
         },
         {
           "type": "twilightforest:armored_giant",
-          "maxCount": 1,
-          "minCount": 1,
-          "weight": 10
+          "weight": 10,
+          "count": 1
         }
       ]
     },

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/twisted_stone/twisted_stone_pillar"
+        "recipes": "twilightforest:stonecutting/twisted_stone/twisted_stone_pillar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/arctic_leggings_dyed"
+        "recipes": "twilightforest:equipment/arctic_leggings_dyed"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/canopy_slab"
+        "recipes": "twilightforest:wood/canopy_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

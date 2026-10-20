@@ -96,15 +96,17 @@
     "monster": [
       {
         "type": "minecraft:zombie",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 10
+        "weight": 10,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 1,
+          "max_inclusive": 2
+        }
       },
       {
         "type": "twilightforest:mosquito_swarm",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 10
+        "weight": 10,
+        "count": 1
       }
     ],
     "underground_water_creature": [],

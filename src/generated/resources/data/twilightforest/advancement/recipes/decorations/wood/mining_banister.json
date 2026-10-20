@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/mining_banister"
+        "recipes": "twilightforest:wood/mining_banister"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

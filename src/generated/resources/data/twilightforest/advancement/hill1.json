@@ -3,18 +3,16 @@
   "criteria": {
     "redcap": {
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:redcap",
-              "location": {
-                "structures": "twilightforest:small_hollow_hill"
-              }
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:redcap",
+            "minecraft:location": {
+              "structures": "twilightforest:small_hollow_hill"
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:player_killed_entity"
     }

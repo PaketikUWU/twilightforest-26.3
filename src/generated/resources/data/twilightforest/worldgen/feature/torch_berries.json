@@ -2,8 +2,8 @@
   "type": "twilightforest:underground_plants",
   "config": {
     "state": {
-      "Name": "twilightforest:torchberry_plant",
-      "Properties": {
+      "id": "twilightforest:torchberry_plant",
+      "properties": {
         "has_torchberries": "true"
       }
     }

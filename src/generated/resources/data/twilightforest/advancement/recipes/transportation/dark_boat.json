@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:dark_boat"
+        "recipes": "twilightforest:dark_boat"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

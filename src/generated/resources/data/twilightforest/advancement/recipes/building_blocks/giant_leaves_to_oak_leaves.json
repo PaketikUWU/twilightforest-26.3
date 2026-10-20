@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:giant_leaves_to_oak_leaves"
+        "recipes": "twilightforest:giant_leaves_to_oak_leaves"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

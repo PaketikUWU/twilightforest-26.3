@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:waterlily_to_magenta"
+        "recipes": "twilightforest:waterlily_to_magenta"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

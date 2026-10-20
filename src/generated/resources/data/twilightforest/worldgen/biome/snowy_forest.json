@@ -64,15 +64,13 @@
     "monster": [
       {
         "type": "twilightforest:winter_wolf",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
+        "weight": 5,
+        "count": 1
       },
       {
         "type": "twilightforest:yeti",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
+        "weight": 5,
+        "count": 1
       }
     ],
     "underground_water_creature": [],

@@ -3,15 +3,13 @@
   "criteria": {
     "naga": {
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:naga"
-            }
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:naga"
           }
-        ]
+        }
       },
       "trigger": "minecraft:player_killed_entity"
     },
@@ -37,15 +35,13 @@
     },
     "was_in_fight": {
       "conditions": {
-        "hurt_entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:naga"
-            }
+        "hurt_entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:naga"
           }
-        ]
+        }
       },
       "trigger": "twilightforest:hurt_boss"
     }

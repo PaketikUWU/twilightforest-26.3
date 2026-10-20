@@ -43,7 +43,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:berry_medley"
+        "recipes": "twilightforest:berry_medley"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

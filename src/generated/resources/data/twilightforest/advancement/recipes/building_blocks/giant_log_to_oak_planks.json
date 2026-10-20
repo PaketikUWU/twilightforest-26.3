@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:giant_log_to_oak_planks"
+        "recipes": "twilightforest:giant_log_to_oak_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

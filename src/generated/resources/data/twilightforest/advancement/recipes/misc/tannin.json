@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:tannin"
+        "recipes": "twilightforest:tannin"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

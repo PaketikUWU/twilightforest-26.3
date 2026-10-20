@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/transformation_log/hollow_transformation_log"
+        "recipes": "twilightforest:stonecutting/transformation_log/hollow_transformation_log"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

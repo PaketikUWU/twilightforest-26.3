@@ -17,7 +17,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "twilightforest:mushgloom"
+          "id": "twilightforest:mushgloom"
         }
       }
     },

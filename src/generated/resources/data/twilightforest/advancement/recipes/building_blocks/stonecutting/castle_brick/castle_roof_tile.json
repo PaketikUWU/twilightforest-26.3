@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/castle_brick/castle_roof_tile"
+        "recipes": "twilightforest:stonecutting/castle_brick/castle_roof_tile"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

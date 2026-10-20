@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/tropical_fish_jerky"
+        "recipes": "twilightforest:drying/tropical_fish_jerky"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

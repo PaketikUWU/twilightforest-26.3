@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:food/campfired_meef"
+        "recipes": "twilightforest:food/campfired_meef"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:compressed_blocks/reversed/arctic_block_to_item"
+        "recipes": "twilightforest:compressed_blocks/reversed/arctic_block_to_item"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

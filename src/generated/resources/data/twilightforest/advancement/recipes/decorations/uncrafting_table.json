@@ -8,7 +8,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:uncrafting_table"
+        "recipes": "twilightforest:uncrafting_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

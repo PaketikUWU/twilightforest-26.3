@@ -90,9 +90,12 @@
     "ambient": [
       {
         "type": "minecraft:bat",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 20
+        "weight": 20,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 2,
+          "max_inclusive": 4
+        }
       }
     ],
     "axolotls": [],
@@ -101,21 +104,26 @@
     "monster": [
       {
         "type": "minecraft:spider",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 50
+        "weight": 50,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 1,
+          "max_inclusive": 2
+        }
       },
       {
         "type": "minecraft:skeleton",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 20
+        "weight": 20,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 1,
+          "max_inclusive": 2
+        }
       },
       {
         "type": "twilightforest:skeleton_druid",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
+        "weight": 5,
+        "count": 1
       }
     ],
     "underground_water_creature": [],

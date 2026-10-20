@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:castleblock/encased_castle_pillar"
+        "recipes": "twilightforest:castleblock/encased_castle_pillar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

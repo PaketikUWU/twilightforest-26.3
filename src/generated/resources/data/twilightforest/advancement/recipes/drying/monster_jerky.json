@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/monster_jerky"
+        "recipes": "twilightforest:drying/monster_jerky"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

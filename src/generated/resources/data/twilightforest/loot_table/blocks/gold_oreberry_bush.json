@@ -6,7 +6,7 @@
       "conditions": [
         {
           "block": "twilightforest:gold_oreberry_bush",
-          "condition": "minecraft:block_state_property",
+          "type": "minecraft:block_state_property",
           "properties": {
             "age": "3"
           }

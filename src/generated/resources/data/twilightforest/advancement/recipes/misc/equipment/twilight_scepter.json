@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/twilight_scepter"
+        "recipes": "twilightforest:equipment/twilight_scepter"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

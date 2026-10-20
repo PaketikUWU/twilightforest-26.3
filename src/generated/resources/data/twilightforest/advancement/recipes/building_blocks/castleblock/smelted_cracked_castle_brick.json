@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:castleblock/smelted_cracked_castle_brick"
+        "recipes": "twilightforest:castleblock/smelted_cracked_castle_brick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

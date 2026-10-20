@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:compressed_blocks/reversed/ironwood_block_ingot"
+        "recipes": "twilightforest:compressed_blocks/reversed/ironwood_block_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

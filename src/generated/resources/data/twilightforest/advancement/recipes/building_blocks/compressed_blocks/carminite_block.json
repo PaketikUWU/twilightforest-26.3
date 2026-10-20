@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:compressed_blocks/carminite_block"
+        "recipes": "twilightforest:compressed_blocks/carminite_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

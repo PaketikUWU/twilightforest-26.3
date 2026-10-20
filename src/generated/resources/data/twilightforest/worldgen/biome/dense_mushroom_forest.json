@@ -5,7 +5,7 @@
         "particle": {
           "type": "twilightforest:wandering_firefly"
         },
-        "probability": 2.5E-4
+        "probability": 0.00025
       }
     ],
     "minecraft:visual/fog_color": "#c0ffd8",
@@ -97,57 +97,68 @@
     "creature": [
       {
         "type": "twilightforest:bighorn_sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
+        "weight": 12,
+        "count": 4
       },
       {
         "type": "twilightforest:boar",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
+        "weight": 10,
+        "count": 4
       },
       {
         "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
+        "weight": 10,
+        "count": 4
       },
       {
         "type": "twilightforest:deer",
-        "maxCount": 5,
-        "minCount": 4,
-        "weight": 15
+        "weight": 15,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 4,
+          "max_inclusive": 5
+        }
       },
       {
         "type": "minecraft:wolf",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 5
+        "weight": 5,
+        "count": 4
       },
       {
         "type": "twilightforest:tiny_bird",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 15
+        "weight": 15,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 4,
+          "max_inclusive": 8
+        }
       },
       {
         "type": "twilightforest:squirrel",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 10
+        "weight": 10,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 2,
+          "max_inclusive": 4
+        }
       },
       {
         "type": "twilightforest:dwarf_rabbit",
-        "maxCount": 5,
-        "minCount": 4,
-        "weight": 10
+        "weight": 10,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 4,
+          "max_inclusive": 5
+        }
       },
       {
         "type": "twilightforest:raven",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 10
+        "weight": 10,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 1,
+          "max_inclusive": 2
+        }
       }
     ],
     "misc": [],

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/pale_oak_drying_rack"
+        "recipes": "twilightforest:wood/pale_oak_drying_rack"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

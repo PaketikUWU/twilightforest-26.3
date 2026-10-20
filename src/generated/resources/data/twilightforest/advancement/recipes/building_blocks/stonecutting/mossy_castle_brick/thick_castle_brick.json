@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/mossy_castle_brick/thick_castle_brick"
+        "recipes": "twilightforest:stonecutting/mossy_castle_brick/thick_castle_brick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

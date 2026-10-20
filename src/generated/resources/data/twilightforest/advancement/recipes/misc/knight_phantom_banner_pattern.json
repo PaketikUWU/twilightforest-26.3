@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:knight_phantom_banner_pattern"
+        "recipes": "twilightforest:knight_phantom_banner_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

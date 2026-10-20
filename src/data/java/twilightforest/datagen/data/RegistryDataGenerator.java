@@ -16,12 +16,12 @@ import java.util.concurrent.CompletableFuture;
 public class RegistryDataGenerator extends DatapackBuiltinEntriesProvider {
 
 	public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-		.add(Registries.FEATURE, TFConfiguredFeatureGenerator::bootstrap)
+		.add(Registries.CONFIGURED_FEATURE, TFConfiguredFeatureGenerator::bootstrap)
 		.add(Registries.PLACED_FEATURE, TFPlacedFeatureGenerator::bootstrap)
 		.add(TFRegistries.Keys.STRUCTURE_SPELEOTHEM_SETTINGS, StructureSpeleothemConfigGenerator::bootstrap)
 		.add(Registries.STRUCTURE, TFStructureGenerator::bootstrap)
 		.add(Registries.STRUCTURE_SET, TFStructureSetGenerator::bootstrap)
-		.add(Registries.CARVER, TFCaveCarverGenerator::bootstrap)
+		.add(Registries.CONFIGURED_CARVER, TFCaveCarverGenerator::bootstrap)
 		.add(Registries.DENSITY_FUNCTION, TFDensityFunctionGenerator::bootstrap)
 		.add(Registries.NOISE_SETTINGS, TFDimensionGenerator::bootstrapNoise)
 		.add(TFRegistries.Keys.BIOME_STACK, TFBiomeLayerGenerator::bootstrap)

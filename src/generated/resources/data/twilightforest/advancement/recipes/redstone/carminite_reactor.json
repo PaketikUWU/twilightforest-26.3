@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:carminite_reactor"
+        "recipes": "twilightforest:carminite_reactor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

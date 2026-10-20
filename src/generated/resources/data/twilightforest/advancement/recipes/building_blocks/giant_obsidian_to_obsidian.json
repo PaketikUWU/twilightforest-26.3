@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:giant_obsidian_to_obsidian"
+        "recipes": "twilightforest:giant_obsidian_to_obsidian"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/stone/spiral_bricks"
+        "recipes": "twilightforest:stonecutting/stone/spiral_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

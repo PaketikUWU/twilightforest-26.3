@@ -3,37 +3,31 @@
   "criteria": {
     "craft_belt": {
       "conditions": {
-        "recipe_id": "twilightforest:equipment/travellers_belt"
+        "recipes": "twilightforest:equipment/travellers_belt"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "craft_boots": {
       "conditions": {
-        "recipe_id": "twilightforest:equipment/travellers_boots"
+        "recipes": "twilightforest:equipment/travellers_boots"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "craft_gloves": {
       "conditions": {
-        "recipe_id": "twilightforest:equipment/travellers_gloves"
+        "recipes": "twilightforest:equipment/travellers_gloves"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "craft_goggles": {
       "conditions": {
-        "recipe_id": "twilightforest:equipment/travellers_goggles"
-      },
-      "trigger": "minecraft:recipe_crafted"
-    },
-    "craft_vest": {
-      "conditions": {
-        "recipe_id": "twilightforest:equipment/travellers_chest"
+        "recipes": "twilightforest:equipment/travellers_goggles"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "craft_wings": {
       "conditions": {
-        "recipe_id": "twilightforest:equipment/travellers_wings"
+        "recipes": "twilightforest:equipment/travellers_wings"
       },
       "trigger": "minecraft:recipe_crafted"
     }
@@ -52,7 +46,6 @@
   "requirements": [
     [
       "craft_goggles",
-      "craft_vest",
       "craft_wings",
       "craft_boots",
       "craft_belt",

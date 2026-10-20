@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/knightmetal_sword"
+        "recipes": "twilightforest:equipment/knightmetal_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

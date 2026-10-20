@@ -22,8 +22,8 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "twilightforest:torchberry_plant",
-          "Properties": {
+          "id": "twilightforest:torchberry_plant",
+          "properties": {
             "has_torchberries": "false"
           }
         }

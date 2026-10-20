@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/canopy_plate"
+        "recipes": "twilightforest:wood/canopy_plate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

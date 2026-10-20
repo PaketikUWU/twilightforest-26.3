@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:charm_of_keeping_3"
+        "recipes": "twilightforest:charm_of_keeping_3"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

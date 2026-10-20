@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:magic_map_focus"
+        "recipes": "twilightforest:magic_map_focus"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

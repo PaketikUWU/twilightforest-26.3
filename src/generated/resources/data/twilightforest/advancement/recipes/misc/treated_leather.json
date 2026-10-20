@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:treated_leather"
+        "recipes": "twilightforest:treated_leather"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

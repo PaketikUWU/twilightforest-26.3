@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/crimson_banister"
+        "recipes": "twilightforest:wood/crimson_banister"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

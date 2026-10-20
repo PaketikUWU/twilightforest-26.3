@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/block_and_chain"
+        "recipes": "twilightforest:equipment/block_and_chain"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

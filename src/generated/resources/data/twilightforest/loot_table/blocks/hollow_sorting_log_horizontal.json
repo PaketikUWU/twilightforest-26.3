@@ -11,7 +11,7 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "condition": "minecraft:match_tool",
+                  "type": "minecraft:match_tool",
                   "predicate": {
                     "predicates": {
                       "minecraft:enchantments": [
@@ -63,7 +63,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "minecraft:match_tool",
+              "type": "minecraft:match_tool",
               "predicate": {
                 "predicates": {
                   "minecraft:enchantments": [
@@ -79,7 +79,7 @@
             },
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "moss_and_grass"
               }
@@ -97,7 +97,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "minecraft:match_tool",
+              "type": "minecraft:match_tool",
               "predicate": {
                 "predicates": {
                   "minecraft:enchantments": [
@@ -113,7 +113,7 @@
             },
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "moss_and_grass"
               }
@@ -131,7 +131,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "minecraft:match_tool",
+              "type": "minecraft:match_tool",
               "predicate": {
                 "predicates": {
                   "minecraft:enchantments": [
@@ -147,7 +147,7 @@
             },
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "moss"
               }
@@ -165,7 +165,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "minecraft:match_tool",
+              "type": "minecraft:match_tool",
               "predicate": {
                 "predicates": {
                   "minecraft:enchantments": [
@@ -181,7 +181,7 @@
             },
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "snow"
               }
@@ -199,7 +199,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "minecraft:match_tool",
+              "type": "minecraft:match_tool",
               "predicate": {
                 "predicates": {
                   "minecraft:enchantments": [
@@ -215,7 +215,7 @@
             },
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "vine"
               }
@@ -234,7 +234,7 @@
           "conditions": [
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "ladder"
               }
@@ -253,7 +253,7 @@
           "conditions": [
             {
               "block": "twilightforest:hollow_sorting_log_horizontal",
-              "condition": "minecraft:block_state_property",
+              "type": "minecraft:block_state_property",
               "properties": {
                 "variant": "ladder_waterlogged"
               }

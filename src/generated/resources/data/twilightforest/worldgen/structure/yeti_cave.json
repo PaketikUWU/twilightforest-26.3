@@ -11,9 +11,12 @@
       "0": [
         {
           "type": "twilightforest:yeti",
-          "maxCount": 2,
-          "minCount": 1,
-          "weight": 5
+          "weight": 5,
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         }
       ]
     },

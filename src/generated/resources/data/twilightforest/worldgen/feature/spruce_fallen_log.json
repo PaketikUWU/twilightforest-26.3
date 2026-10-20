@@ -2,15 +2,15 @@
   "type": "twilightforest:fallen_small_log",
   "config": {
     "hollow": {
-      "Name": "twilightforest:hollow_spruce_log_horizontal",
-      "Properties": {
+      "id": "twilightforest:hollow_spruce_log_horizontal",
+      "properties": {
         "axis": "x",
         "variant": "empty"
       }
     },
     "normal": {
-      "Name": "minecraft:spruce_log",
-      "Properties": {
+      "id": "minecraft:spruce_log",
+      "properties": {
         "axis": "y"
       }
     }

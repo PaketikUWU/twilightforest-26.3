@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/dark_stripped_wood"
+        "recipes": "twilightforest:wood/dark_stripped_wood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

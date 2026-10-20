@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:nagastone/smelted_cracked_nagastone_pillar"
+        "recipes": "twilightforest:nagastone/smelted_cracked_nagastone_pillar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/moonworm_queen_repair"
+        "recipes": "twilightforest:equipment/moonworm_queen_repair"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

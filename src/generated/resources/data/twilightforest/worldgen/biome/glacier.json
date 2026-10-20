@@ -45,9 +45,12 @@
     "creature": [
       {
         "type": "twilightforest:penguin",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 10
+        "weight": 10,
+        "count": {
+          "type": "minecraft:uniform",
+          "min_inclusive": 2,
+          "max_inclusive": 4
+        }
       }
     ],
     "misc": [],

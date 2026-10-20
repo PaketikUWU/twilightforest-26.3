@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/fiery_ingot_crafting"
+        "recipes": "twilightforest:equipment/fiery_ingot_crafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

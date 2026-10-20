@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/crimson_stem/hollow_crimson_stem"
+        "recipes": "twilightforest:stonecutting/crimson_stem/hollow_crimson_stem"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

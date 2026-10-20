@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:reappearing_block"
+        "recipes": "twilightforest:reappearing_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

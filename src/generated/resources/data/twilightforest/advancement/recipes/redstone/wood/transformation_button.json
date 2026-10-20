@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/transformation_button"
+        "recipes": "twilightforest:wood/transformation_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

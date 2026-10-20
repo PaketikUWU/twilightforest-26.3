@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/pork_jerky"
+        "recipes": "twilightforest:drying/pork_jerky"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

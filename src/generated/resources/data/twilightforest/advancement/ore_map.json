@@ -3,7 +3,7 @@
   "criteria": {
     "ore_map": {
       "conditions": {
-        "recipe_id": "twilightforest:ore_map"
+        "recipes": "twilightforest:ore_map"
       },
       "trigger": "minecraft:recipe_crafted"
     }

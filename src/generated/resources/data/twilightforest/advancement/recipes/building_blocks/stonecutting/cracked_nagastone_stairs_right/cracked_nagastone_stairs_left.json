@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/cracked_nagastone_stairs_right/cracked_nagastone_stairs_left"
+        "recipes": "twilightforest:stonecutting/cracked_nagastone_stairs_right/cracked_nagastone_stairs_left"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

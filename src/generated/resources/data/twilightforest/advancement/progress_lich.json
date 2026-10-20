@@ -3,34 +3,29 @@
   "criteria": {
     "kill_lich": {
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:lich"
-            }
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:lich"
           }
-        ]
+        }
       },
       "trigger": "minecraft:player_killed_entity"
     },
     "kill_naga": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type_specific": {
-                "type": "minecraft:player",
-                "advancements": {
-                  "twilightforest:progress_naga": true
-                }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:type_specific/player": {
+              "advancements": {
+                "twilightforest:progress_naga": true
               }
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:tick"
     },
@@ -76,15 +71,13 @@
     },
     "was_in_fight": {
       "conditions": {
-        "hurt_entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "twilightforest:lich"
-            }
+        "hurt_entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "twilightforest:lich"
           }
-        ]
+        }
       },
       "trigger": "twilightforest:hurt_boss"
     },

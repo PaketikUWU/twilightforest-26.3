@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/ironwood_boots"
+        "recipes": "twilightforest:equipment/ironwood_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

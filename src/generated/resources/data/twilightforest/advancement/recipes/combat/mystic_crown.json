@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:mystic_crown"
+        "recipes": "twilightforest:mystic_crown"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

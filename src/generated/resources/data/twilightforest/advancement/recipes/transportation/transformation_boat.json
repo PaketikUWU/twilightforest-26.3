@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:transformation_boat"
+        "recipes": "twilightforest:transformation_boat"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

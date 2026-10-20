@@ -2,15 +2,15 @@
   "type": "twilightforest:fallen_small_log",
   "config": {
     "hollow": {
-      "Name": "twilightforest:hollow_twilight_oak_log_horizontal",
-      "Properties": {
+      "id": "twilightforest:hollow_twilight_oak_log_horizontal",
+      "properties": {
         "axis": "x",
         "variant": "empty"
       }
     },
     "normal": {
-      "Name": "twilightforest:twilight_oak_log",
-      "Properties": {
+      "id": "twilightforest:twilight_oak_log",
+      "properties": {
         "axis": "y"
       }
     }

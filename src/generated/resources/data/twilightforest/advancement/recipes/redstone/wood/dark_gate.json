@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:wood/dark_gate"
+        "recipes": "twilightforest:wood/dark_gate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

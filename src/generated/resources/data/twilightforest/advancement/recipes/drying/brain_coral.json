@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:drying/brain_coral"
+        "recipes": "twilightforest:drying/brain_coral"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

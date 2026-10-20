@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:maze_map"
+        "recipes": "twilightforest:maze_map"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

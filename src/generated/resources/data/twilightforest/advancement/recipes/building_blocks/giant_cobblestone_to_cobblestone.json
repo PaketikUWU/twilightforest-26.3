@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:giant_cobblestone_to_cobblestone"
+        "recipes": "twilightforest:giant_cobblestone_to_cobblestone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

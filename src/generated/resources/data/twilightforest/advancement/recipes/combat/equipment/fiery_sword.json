@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:equipment/fiery_sword"
+        "recipes": "twilightforest:equipment/fiery_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

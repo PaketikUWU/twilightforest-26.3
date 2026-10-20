@@ -8,9 +8,9 @@
           "type": "minecraft:dynamic",
           "conditions": [
             {
-              "condition": "minecraft:inverted",
+              "type": "minecraft:inverted",
               "term": {
-                "condition": "minecraft:match_tool",
+                "type": "minecraft:match_tool",
                 "predicate": {
                   "predicates": {
                     "minecraft:enchantments": [
@@ -44,9 +44,9 @@
                   "type": "minecraft:item",
                   "conditions": [
                     {
-                      "condition": "minecraft:inverted",
+                      "type": "minecraft:inverted",
                       "term": {
-                        "condition": "minecraft:match_tool",
+                        "type": "minecraft:match_tool",
                         "predicate": {
                           "predicates": {
                             "minecraft:enchantments": [

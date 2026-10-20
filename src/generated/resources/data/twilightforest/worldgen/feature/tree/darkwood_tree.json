@@ -2,7 +2,7 @@
   "type": "twilightforest:dark_canopy_tree",
   "config": {
     "below_trunk_provider": {
-      "type": "minecraft:rule_based_state_provider",
+      "type": "minecraft:rule_based",
       "rules": [
         {
           "if_true": {
@@ -13,10 +13,7 @@
             }
           },
           "then": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "minecraft:dirt"
-            }
+            "id": "minecraft:dirt"
           }
         }
       ]
@@ -27,17 +24,17 @@
         "additional_random_strands": 1,
         "base_strand_count": 3,
         "ground_roots_provider": {
-          "type": "minecraft:weighted_state_provider",
+          "type": "minecraft:weighted",
           "entries": [
             {
               "data": {
-                "Name": "twilightforest:root"
+                "id": "twilightforest:root"
               },
               "weight": 6
             },
             {
               "data": {
-                "Name": "twilightforest:liveroot_block"
+                "id": "twilightforest:liveroot_block"
               },
               "weight": 1
             }
@@ -59,10 +56,7 @@
       "vertical_radius": 2.25
     },
     "foliage_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "twilightforest:hardened_dark_leaves"
-      }
+      "id": "twilightforest:hardened_dark_leaves"
     },
     "ignore_vines": true,
     "minimum_size": {
@@ -76,12 +70,9 @@
       "base_height": 9,
       "branch_config": {
         "branch_provider": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "twilightforest:dark_wood",
-            "Properties": {
-              "axis": "y"
-            }
+          "id": "twilightforest:dark_wood",
+          "properties": {
+            "axis": "y"
           }
         },
         "count_minimum": 4,
@@ -98,12 +89,9 @@
       "prevent_exposed_root": false
     },
     "trunk_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "twilightforest:dark_log",
-        "Properties": {
-          "axis": "y"
-        }
+      "id": "twilightforest:dark_log",
+      "properties": {
+        "axis": "y"
       }
     }
   }

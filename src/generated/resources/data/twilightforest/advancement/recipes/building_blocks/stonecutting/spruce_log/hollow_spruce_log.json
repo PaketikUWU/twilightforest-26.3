@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "twilightforest:stonecutting/spruce_log/hollow_spruce_log"
+        "recipes": "twilightforest:stonecutting/spruce_log/hollow_spruce_log"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
