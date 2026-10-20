@@ -14,7 +14,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.timeline.Timelines;
 import tamaized.beanification.Autowired;
@@ -28,7 +28,7 @@ public abstract class BiomeHelper {
 	@Autowired
 	private static TFGrassColorModifierEnumExtension grassColorModifierEnumExtension;
 
-	public static Biome.BiomeBuilder twilightForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder twilightForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_BLUEBERRY_BUSHES);
@@ -54,7 +54,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder denseForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder denseForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_RASPBERRY_BUSHES);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_BLUEBERRY_BUSHES);
@@ -86,7 +86,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder fireflyForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder fireflyForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_BLACKBERRY_BUSHES);
@@ -117,7 +117,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder clearing(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder clearing(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_RASPBERRY_BUSHES);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_BLUEBERRY_BUSHES);
@@ -139,7 +139,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder oakSavanna(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder oakSavanna(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PATCH_GRASS_TAIGA_2);
@@ -165,7 +165,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder enchantedForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder enchantedForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 		BiomeDefaultFeatures.addDefaultSoftDisks(biome);
 		BiomeDefaultFeatures.addDefaultGrass(biome);
@@ -207,7 +207,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder spookyForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder spookyForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PATCH_GRASS_JUNGLE);
 
@@ -253,7 +253,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder mushroomForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder mushroomForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_RASPBERRY_BUSHES);
@@ -284,7 +284,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder denseMushroomForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder denseMushroomForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_BLACKBERRY_BUSHES);
@@ -313,7 +313,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder finalPlateau(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder finalPlateau(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		return new Biome.BiomeBuilder()
 			.temperature(1.0F)
 			.downfall(0.2F)
@@ -327,7 +327,7 @@ public abstract class BiomeHelper {
 			.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter).build());
 	}
 
-	public static Biome.BiomeBuilder thornlands(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder thornlands(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		commonFeaturesWithoutBuildings(biome);
@@ -342,7 +342,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder highlands(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder highlands(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_BLUEBERRY_BUSHES);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_TAIGA);
@@ -367,7 +367,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder highlandsUnderground(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder highlandsUnderground(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		addHighlandCaves(biome);
@@ -381,7 +381,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder stream(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder stream(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
@@ -401,7 +401,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder lake(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder lake(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_DEEP);
@@ -421,7 +421,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder swamp(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder swamp(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_SWAMP_RASPBERRY_BUSHES);
@@ -463,7 +463,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder fireSwamp(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder fireSwamp(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = defaultGenSettingBuilder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_TAIGA_2);
@@ -498,7 +498,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder darkForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder darkForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		addDarkForestVegetation(biome);
@@ -538,7 +538,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder darkForestCenter(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder darkForestCenter(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		return darkForest(featureGetter, carverGetter)
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x493000)
 			.setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, Timelines.NIGHT_SKY_LIGHT_FACTOR)
@@ -551,7 +551,7 @@ public abstract class BiomeHelper {
 			.mobSpawnSettings(new MobSpawnSettings.Builder().build());
 	}
 
-	public static Biome.BiomeBuilder snowyForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder snowyForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_SNOWY_BLUEBERRY_BUSHES);
@@ -587,7 +587,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder glacier(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder glacier(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 		BiomeDefaultFeatures.addSurfaceFreezing(biome);
 		addCaves(biome);
@@ -609,7 +609,7 @@ public abstract class BiomeHelper {
 			.generationSettings(biome.build());
 	}
 
-	public static Biome.BiomeBuilder underground(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static Biome.BiomeBuilder underground(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		BiomeDefaultFeatures.addDefaultSoftDisks(biome);
@@ -756,7 +756,7 @@ public abstract class BiomeHelper {
 		return new BiomeSpecialEffects.Builder().waterColor(0x3F76E4);
 	}
 
-	public static BiomeGenerationSettings.Builder defaultGenSettingBuilder(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+	public static BiomeGenerationSettings.Builder defaultGenSettingBuilder(HolderGetter<PlacedFeature> featureGetter, HolderGetter<WorldCarver> carverGetter) {
 		BiomeGenerationSettings.Builder biome = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
 		BiomeDefaultFeatures.addDefaultSoftDisks(biome);

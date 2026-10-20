@@ -176,6 +176,11 @@ neoForge {
 			)
 		}
 
+		gameTestServer {
+			type = "gameTestServer"
+			systemProperty 'neoforge.enabledGameTestNamespaces', 'twilightforest'
+		}
+
 		server {
 			server()
 			systemProperty 'forge.enabledGameTestNamespaces', mod_id
