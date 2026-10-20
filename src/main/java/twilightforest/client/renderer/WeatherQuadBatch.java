@@ -97,6 +97,9 @@ public class WeatherQuadBatch implements AutoCloseable {
 				device.createCommandEncoder().writeToBuffer(this.vertexBuffer.slice(), data);
 				this.indexCount = mesh.drawState().indexCount();
 				RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS).requestIndexCount(this.indexCount);
+				// Textures must be loaded before the render pass opens; loading one inside it crashes in 26.3
+				for (Draw draw : this.draws)
+					Minecraft.getInstance().getTextureManager().getTexture(draw.texture());
 			}
 		}
 	}
