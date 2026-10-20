@@ -16,9 +16,9 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.StructureMode;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
@@ -38,7 +38,7 @@ public abstract class TemplateFeature<T extends FeatureConfiguration> extends Fe
 		RandomSource random = world.getRandom();
 		T config = ctx.config();
 
-		StructureTemplateManager templateManager = world.getLevel().getServer().getStructureManager();
+		StructureTemplateManager templateManager = world.getLevel().getServer().getStructureTemplateManager();
 		StructureTemplate template = this.getTemplate(templateManager, random);
 
 		if (template == null)

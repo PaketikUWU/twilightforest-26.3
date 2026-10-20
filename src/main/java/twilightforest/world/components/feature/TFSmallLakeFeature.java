@@ -9,9 +9,9 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.tags.TFBlockTags;
@@ -155,9 +155,9 @@ public class TFSmallLakeFeature extends Feature<TFSmallLakeFeature.Configuration
 	public record Configuration(BlockStateProvider fluid, @Nullable BlockStateProvider barrier, @Nullable BlockStateProvider ice) implements FeatureConfiguration {
 		public static final Codec<TFSmallLakeFeature.Configuration> CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
-					BlockStateProvider.CODEC.fieldOf("fluid").forGetter(Configuration::fluid),
-					BlockStateProvider.CODEC.optionalFieldOf("barrier").forGetter(configuration -> Optional.ofNullable(configuration.barrier())),
-					BlockStateProvider.CODEC.optionalFieldOf("ice").forGetter(configuration -> Optional.ofNullable(configuration.ice()))
+					BlockStateProvider.DIRECT_CODEC.fieldOf("fluid").forGetter(Configuration::fluid),
+					BlockStateProvider.DIRECT_CODEC.optionalFieldOf("barrier").forGetter(configuration -> Optional.ofNullable(configuration.barrier())),
+					BlockStateProvider.DIRECT_CODEC.optionalFieldOf("ice").forGetter(configuration -> Optional.ofNullable(configuration.ice()))
 				)
 				.apply(instance, TFSmallLakeFeature.Configuration::new)
 		);

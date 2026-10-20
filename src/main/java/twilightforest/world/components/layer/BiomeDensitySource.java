@@ -11,6 +11,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
+import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 import org.jetbrains.annotations.NotNull;
 import twilightforest.init.custom.BiomeLayerStack;
 import twilightforest.world.components.chunkgenerators.TerrainColumn;
@@ -19,6 +20,7 @@ import twilightforest.world.components.layer.vanillalegacy.area.LazyArea;
 import twilightforest.world.components.layer.vanillalegacy.context.LazyAreaContext;
 
 import java.util.Comparator;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -104,7 +106,14 @@ public class BiomeDensitySource {
 	private static final int BLEND_RADIUS_INT = Mth.floor(BLEND_RADIUS + 1.0);
 	private static final int BLOCK_XYZ_OFFSET = QuartPos.SIZE / 2;
 
-	public DensityData sampleTerrain(int blockX, int blockZ, DensityFunction.FunctionContext context) {
+	public Map<TerrainColumn, TerrainColumn.Compiled> compileColumns(DensityFunction.CompileContext context) {
+		Map<TerrainColumn, TerrainColumn.Compiled> compiled = new IdentityHashMap<>(this.biomeList.size());
+		for (TerrainColumn column : this.biomeList.values())
+			compiled.put(column, column.compile(context));
+		return compiled;
+	}
+
+	public DensityData sampleTerrain(int blockX, int blockY, int blockZ, Map<TerrainColumn, TerrainColumn.Compiled> columns, SamplerContext context) {
 		double totalMappedDepth = 0.0;
 		double totalContribution = 0.0;
 		double totalScale = 0.0;
@@ -132,11 +141,12 @@ public class BiomeDensitySource {
 			if (distSq < BLEND_RADIUS * BLEND_RADIUS) {
 				Optional<TerrainColumn> terrainColumn = this.getTerrainColumn(cx + xQuartStart, cz + zQuartStart);
 				if (terrainColumn.isPresent()) {
-					double falloff = BLEND_RADIUS * BLEND_RADIUS * terrainColumn.get().weight(context);
-					double scaleFalloff = BLEND_RADIUS * BLEND_RADIUS * terrainColumn.get().weight(context);
+					TerrainColumn.Compiled column = columns.get(terrainColumn.get());
+					double falloff = BLEND_RADIUS * BLEND_RADIUS * column.weight(context, blockX, blockY, blockZ);
+					double scaleFalloff = BLEND_RADIUS * BLEND_RADIUS * column.weight(context, blockX, blockY, blockZ);
 
-					double neighborDepth = terrainColumn.get().depth(context);
-					double neighborScale = terrainColumn.get().scale(context);
+					double neighborDepth = column.depth(context, blockX, blockY, blockZ);
+					double neighborScale = column.scale(context, blockX, blockY, blockZ);
 
 					falloff *= Math.exp((distSq * 2f + neighborDepth) * -0.4f);
 					totalMappedDepth += neighborDepth * falloff;

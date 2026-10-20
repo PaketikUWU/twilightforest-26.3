@@ -4,27 +4,31 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
 import net.minecraft.core.registries.codec.RegistryFileCodec;
-import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.util.Interval;
+import net.minecraft.world.level.levelgen.densityfunction.DensityBuffer;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.levelgen.densityfunction.DensitySampler;
+import net.minecraft.world.level.levelgen.densityfunction.DensityVolume;
+import net.minecraft.world.level.levelgen.densityfunction.DfRewriteRule;
+import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 import twilightforest.TFRegistries;
 import twilightforest.world.components.layer.BiomeDensitySource;
+
+import java.util.Map;
 
 /**
  * A DensityFunction implementation that enables Biomes to influence terrain formulations, if in the noise chunk generator.
  */
-public class TerrainDensityRouter implements DensityFunction.SimpleFunction {
+public class TerrainDensityRouter implements DensityFunction {
 	public static final MapCodec<TerrainDensityRouter> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
 		RegistryFileCodec.create(TFRegistries.Keys.BIOME_TERRAIN_DATA, BiomeDensitySource.CODEC, false).fieldOf("terrain_source").forGetter(TerrainDensityRouter::biomeDensitySourceHolder),
 		Codec.doubleRange(-64, 0).fieldOf("lower_density_bound").forGetter(TerrainDensityRouter::lowerDensityBound),
 		Codec.doubleRange(0, 64).fieldOf("upper_density_bound").forGetter(TerrainDensityRouter::upperDensityBound),
 		Codec.doubleRange(0, 32).orElse(8.0).fieldOf("depth_scalar").forGetter(TerrainDensityRouter::depthScalar),
-		DensityFunction.HOLDER_HELPER_CODEC.fieldOf("base_factor").forGetter(TerrainDensityRouter::baseFactor),
-		DensityFunction.HOLDER_HELPER_CODEC.fieldOf("base_offset").forGetter(TerrainDensityRouter::baseOffset)
+		DensityFunction.CODEC.fieldOf("base_factor").forGetter(TerrainDensityRouter::baseFactor),
+		DensityFunction.CODEC.fieldOf("base_offset").forGetter(TerrainDensityRouter::baseOffset)
 	).apply(inst, TerrainDensityRouter::new));
-	public static final KeyDispatchDataCodec<TerrainDensityRouter> KEY_CODEC = KeyDispatchDataCodec.of(CODEC);
 
 	private final Holder<BiomeDensitySource> biomeDensitySourceHolder;
 	private final double lowerDensityBound;
@@ -50,32 +54,31 @@ public class TerrainDensityRouter implements DensityFunction.SimpleFunction {
 	}
 
 	@Override
-	public double compute(FunctionContext context) {
-		BiomeDensitySource.DensityData densityData = this.computeTerrain(context);
-		double depth = this.baseOffset.compute(context) + densityData.depth * this.baseFactor.compute(context);
-		return depth + densityData.depth;
-	}
-
-	// Our default method for obtaining column samples of the biome source.
-	// This method is overridden by CachedTerrainDensityRouter, operating that subclass's cache.
-	@NotNull
-	public BiomeDensitySource.DensityData computeTerrain(FunctionContext context) {
-		return this.biomeDensitySourceHolder.value().sampleTerrain(context.blockX(), context.blockZ(), context);
+	public DensitySampler compileSampler(CompileContext context) {
+		BiomeDensitySource biomeDensitySource = this.biomeDensitySourceHolder.value();
+		return new Sampler(biomeDensitySource, biomeDensitySource.compileColumns(context), this.baseFactor.compileSampler(context), this.baseOffset.compileSampler(context));
 	}
 
 	@Override
-	public double minValue() {
-		return this.lowerDensityBound;
+	public DensityFunction rewriteChildren(DfRewriteRule rule) {
+		DensityFunction baseFactor = rule.rewrite(this.baseFactor);
+		DensityFunction baseOffset = rule.rewrite(this.baseOffset);
+		return baseFactor == this.baseFactor && baseOffset == this.baseOffset ? this : new TerrainDensityRouter(this.biomeDensitySourceHolder, this.lowerDensityBound, this.upperDensityBound, this.depthScalar, baseFactor, baseOffset);
 	}
 
 	@Override
-	public double maxValue() {
-		return this.upperDensityBound;
+	public Interval range() {
+		return Interval.of((float) this.lowerDensityBound, (float) this.upperDensityBound);
 	}
 
 	@Override
-	public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-		return KEY_CODEC;
+	public @Axes int domainAxes() {
+		return ALL_AXES;
+	}
+
+	@Override
+	public MapCodec<? extends DensityFunction> codec() {
+		return CODEC;
 	}
 
 	public Holder<BiomeDensitySource> biomeDensitySourceHolder() {
@@ -103,49 +106,36 @@ public class TerrainDensityRouter implements DensityFunction.SimpleFunction {
 	}
 
 	/**
-	 * TerrainDensityRouter is at best, a configuration class with DensityFunction capabilities.
-	 * CachedTerrainDensityRouter is the actual DensityFunction used in worldgen.
-	 * This cache is made once per Chunk in noisegen, and caches first density value obtained from each unique X-Z coordinate, ambiguating the Y value in coordinate.
+	 * Samples the biome source once per X-Z column of a volume, ambiguating the Y value in the coordinate like 26.1's per-chunk column cache did.
 	 * Plan your biome density functions accordingly! Don't use anything that's vertically sensitive
 	 */
-	@Override // NoiseChunk is the only class to ever call this, and it's typically a new chunk each time
-	public DensityFunction mapAll(Visitor visitor) {
-		return visitor.apply(new ChunkCachedDensityRouter(
-			this.biomeDensitySourceHolder,
-			this.lowerDensityBound,
-			this.upperDensityBound,
-			this.depthScalar,
-			this.baseFactor,
-			this.baseOffset
-		));
-	}
+	private record Sampler(BiomeDensitySource biomeDensitySource, Map<TerrainColumn, TerrainColumn.Compiled> columns, DensitySampler baseFactor, DensitySampler baseOffset) implements DensitySampler {
+		@Override
+		public void sampleVolume(SamplerContext context, DensityBuffer outputBuffer, DensityVolume volume) {
+			int columnY = volume.blockY(0);
 
-	public static class ChunkCachedDensityRouter extends TerrainDensityRouter {
-		private final BiomeDensitySource biomeDensitySource;
+			for (int z = 0; z < volume.sizeZ(); z++) {
+				int blockZ = volume.blockZ(z);
 
-		private final BiomeDensitySource.DensityData[] horizontalCache = new BiomeDensitySource.DensityData[16 * 16];
+				for (int x = 0; x < volume.sizeX(); x++) {
+					int blockX = volume.blockX(x);
+					BiomeDensitySource.DensityData densityData = this.biomeDensitySource.sampleTerrain(blockX, columnY, blockZ, this.columns, context);
 
-		public ChunkCachedDensityRouter(Holder<BiomeDensitySource> biomeDensitySource, double lowerDensityBound, double upperDensityBound, double depthScalar, DensityFunction baseFactor, DensityFunction baseOffset) {
-			super(biomeDensitySource, lowerDensityBound, upperDensityBound, depthScalar, baseFactor, baseOffset);
-			this.biomeDensitySource = biomeDensitySource.value();
+					for (int y = 0; y < volume.sizeY(); y++) {
+						outputBuffer.set(volume.indexUnchecked(x, y, z), this.compute(context, densityData, blockX, volume.blockY(y), blockZ));
+					}
+				}
+			}
 		}
 
-		@NotNull
 		@Override
-		public BiomeDensitySource.DensityData computeTerrain(FunctionContext context) {
-			int xInChunk = SectionPos.sectionRelative(context.blockX());
-			int zInChunk = SectionPos.sectionRelative(context.blockZ());
+		public float sampleValue(SamplerContext context, int blockX, int blockY, int blockZ) {
+			return this.compute(context, this.biomeDensitySource.sampleTerrain(blockX, blockY, blockZ, this.columns, context), blockX, blockY, blockZ);
+		}
 
-			int arrayCoord = zInChunk + (xInChunk << 4);
-
-			BiomeDensitySource.DensityData dataColumn = this.horizontalCache[arrayCoord];
-
-			if (dataColumn == null) {
-				dataColumn = this.biomeDensitySource.sampleTerrain(context.blockX(), context.blockZ(), context);
-				this.horizontalCache[arrayCoord] = dataColumn;
-			}
-
-			return dataColumn;
+		private float compute(SamplerContext context, BiomeDensitySource.DensityData densityData, int blockX, int blockY, int blockZ) {
+			double depth = this.baseOffset.sampleValue(context, blockX, blockY, blockZ) + densityData.depth * this.baseFactor.sampleValue(context, blockX, blockY, blockZ);
+			return (float) (depth + densityData.depth);
 		}
 	}
 }

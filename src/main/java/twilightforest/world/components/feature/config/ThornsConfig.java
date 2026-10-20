@@ -2,7 +2,7 @@ package twilightforest.world.components.feature.config;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import twilightforest.world.components.feature.legacy.FeatureConfiguration;
 
 public record ThornsConfig(int maxSpread, int chanceOfBranch, int chanceOfLeaf, int chanceLeafIsRose) implements FeatureConfiguration {
 	public static final Codec<ThornsConfig> CODEC = RecordCodecBuilder.create(instance -> instance.group(

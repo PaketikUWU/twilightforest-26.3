@@ -7,9 +7,9 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.NoneFeatureConfiguration;
 
 public class WebFeature extends Feature<NoneFeatureConfiguration> {
 

@@ -7,8 +7,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.HugeRedMushroomFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import twilightforest.world.components.feature.legacy.HugeRedMushroomFeature;
+import twilightforest.world.components.feature.legacy.HugeMushroomFeatureConfiguration;
 import twilightforest.util.features.FeatureLogic;
 
 

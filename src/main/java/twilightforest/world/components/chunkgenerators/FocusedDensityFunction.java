@@ -4,12 +4,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 
 // For making spheres
-public record FocusedDensityFunction(float centerX, float bottomY, float centerZ, float radius, float nearValue, float farValue) implements DensityFunction.SimpleFunction {
+public record FocusedDensityFunction(float centerX, float bottomY, float centerZ, float radius, float nearValue, float farValue) implements PointDensityFunction {
 	public static final MapCodec<FocusedDensityFunction> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.FLOAT.fieldOf("x_center").forGetter(FocusedDensityFunction::centerX),
 		Codec.FLOAT.fieldOf("y_bottom").forGetter(FocusedDensityFunction::bottomY),
@@ -18,17 +17,16 @@ public record FocusedDensityFunction(float centerX, float bottomY, float centerZ
 		Codec.FLOAT.fieldOf("near_value").forGetter(FocusedDensityFunction::nearValue),
 		Codec.FLOAT.fieldOf("far_value").forGetter(FocusedDensityFunction::farValue)
 	).apply(instance, FocusedDensityFunction::new));
-	public static final KeyDispatchDataCodec<FocusedDensityFunction> KEY_CODEC = KeyDispatchDataCodec.of(CODEC);
 
 	public static FocusedDensityFunction fromPos(BlockPos blockPos, float radius, float nearValue, float farValue) {
 		return new FocusedDensityFunction(blockPos.getX() + 0.5f, blockPos.getY() + 0.5f, blockPos.getZ() + 0.5f, radius, nearValue, farValue);
 	}
 
 	@Override
-	public double compute(FunctionContext context) {
-		float dX = this.centerX - context.blockX();
-		float dY = this.bottomY - context.blockY();
-		float dZ = this.centerZ - context.blockZ();
+	public float compute(int blockX, int blockY, int blockZ) {
+		float dX = this.centerX - blockX;
+		float dY = this.bottomY - blockY;
+		float dZ = this.centerZ - blockZ;
 
 		float dist = Mth.sqrt(dX * dX + dY * dY + dZ * dZ);
 
@@ -36,17 +34,17 @@ public record FocusedDensityFunction(float centerX, float bottomY, float centerZ
 	}
 
 	@Override
-	public double minValue() {
-		return 0;
+	public float minValue() {
+		return Math.min(this.nearValue, this.farValue);
 	}
 
 	@Override
-	public double maxValue() {
-		return this.radius;
+	public float maxValue() {
+		return Math.max(this.nearValue, this.farValue);
 	}
 
 	@Override
-	public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-		return KEY_CODEC;
+	public MapCodec<? extends DensityFunction> codec() {
+		return CODEC;
 	}
 }

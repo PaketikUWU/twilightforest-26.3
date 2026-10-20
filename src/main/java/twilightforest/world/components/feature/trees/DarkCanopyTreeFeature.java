@@ -11,10 +11,9 @@ import net.minecraft.world.level.LevelWriter;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -34,14 +33,14 @@ import java.util.function.BiConsumer;
  */
 
 //Lots of things from TreeFeature, but we're checking for dirt to place on
-public class DarkCanopyTreeFeature extends Feature<TreeConfiguration> {
+public class DarkCanopyTreeFeature extends Feature<TreeFeature> {
 
-	public DarkCanopyTreeFeature(Codec<TreeConfiguration> config) {
+	public DarkCanopyTreeFeature(Codec<TreeFeature> config) {
 		super(config);
 	}
 
 	@Override
-	public boolean place(FeaturePlaceContext<TreeConfiguration> ctx) {
+	public boolean place(FeaturePlaceContext<TreeFeature> ctx) {
 		WorldGenLevel reader = ctx.level();
 		BlockPos pos = ctx.origin();
 		RandomSource rand = ctx.random();
@@ -78,7 +77,7 @@ public class DarkCanopyTreeFeature extends Feature<TreeConfiguration> {
 		}
 
 		//Taken from TreeFeature.generate, adjusting our BoundingBox to fit where the dirt is
-		TreeConfiguration treeconfiguration = ctx.config();
+		TreeFeature treeconfiguration = ctx.config();
 		Set<BlockPos> set = Sets.newHashSet();
 		Set<BlockPos> set1 = Sets.newHashSet();
 		Set<BlockPos> set2 = Sets.newHashSet();
@@ -109,9 +108,9 @@ public class DarkCanopyTreeFeature extends Feature<TreeConfiguration> {
 		};
 		boolean flag = this.doPlace(reader, rand, pos, biconsumer, biconsumer1, setter, treeconfiguration);
 		if (flag && (!set1.isEmpty() || !set2.isEmpty())) {
-			if (!treeconfiguration.decorators.isEmpty()) {
+			if (!treeconfiguration.decorators().isEmpty()) {
 				TreeDecorator.Context treedecorator$context = new TreeDecorator.Context(reader, biconsumer3, rand, set1, set2, set);
-				treeconfiguration.decorators.forEach((p_225282_) -> {
+				treeconfiguration.decorators().forEach((p_225282_) -> {
 					p_225282_.place(treedecorator$context);
 				});
 			}
@@ -127,24 +126,24 @@ public class DarkCanopyTreeFeature extends Feature<TreeConfiguration> {
 	}
 
 	//Mostly [VanillaCopy] of TreeFeature.doPlace, edits noted
-	private boolean doPlace(WorldGenLevel level, RandomSource random, BlockPos pos, BiConsumer<BlockPos, BlockState> consumer, BiConsumer<BlockPos, BlockState> consumer1, FoliagePlacer.FoliageSetter foliageSetter, TreeConfiguration config) {
-		int i = config.trunkPlacer.getTreeHeight(random);
-		int j = config.foliagePlacer.foliageHeight(random, i, config);
+	private boolean doPlace(WorldGenLevel level, RandomSource random, BlockPos pos, BiConsumer<BlockPos, BlockState> consumer, BiConsumer<BlockPos, BlockState> consumer1, FoliagePlacer.FoliageSetter foliageSetter, TreeFeature config) {
+		int i = config.trunkPlacer().getTreeHeight(random);
+		int j = config.foliagePlacer().foliageHeight(random, i, config);
 		int k = i - j;
-		int l = config.foliagePlacer.foliageRadius(random, k);
-		BlockPos blockpos = config.rootPlacer.map((placer) -> placer.getTrunkOrigin(pos, random)).orElse(pos);
+		int l = config.foliagePlacer().foliageRadius(random, k);
+		BlockPos blockpos = config.rootPlacer().map((placer) -> placer.getTrunkOrigin(pos, random)).orElse(pos);
 		int i1 = Math.min(pos.getY(), blockpos.getY());
 		int j1 = Math.max(pos.getY(), blockpos.getY()) + i + 1;
 		if (i1 >= level.getMinY() + 1 && j1 <= level.getMaxY() + 1) {
-			OptionalInt optionalint = config.minimumSize.minClippedHeight();
+			OptionalInt optionalint = config.minimumSize().minClippedHeight();
 			int k1 = this.getMaxFreeTreeHeight(level, i, blockpos, config);
 			if (k1 >= i || optionalint.isPresent() && k1 >= optionalint.getAsInt()) {
-				if (config.rootPlacer.isPresent() && !config.rootPlacer.get().placeRoots(level, consumer, random, pos, blockpos, config)) {
+				if (config.rootPlacer().isPresent() && !config.rootPlacer().get().placeRoots(level, consumer, random, pos, blockpos, config)) {
 					return false;
 				} else {
-					List<FoliagePlacer.FoliageAttachment> list = config.trunkPlacer.placeTrunk(level, consumer1, random, k1, blockpos, config);
+					List<FoliagePlacer.FoliageAttachment> list = config.trunkPlacer().placeTrunk(level, consumer1, random, k1, blockpos, config);
 					list.forEach((attachment) -> {
-						config.foliagePlacer.createFoliage(level, foliageSetter, random, config, k1, attachment, j, l);
+						config.foliagePlacer().createFoliage(level, foliageSetter, random, config, k1, attachment, j, l);
 					});
 					return true;
 				}
@@ -157,16 +156,16 @@ public class DarkCanopyTreeFeature extends Feature<TreeConfiguration> {
 	}
 
 	//everything beyond this point is a [VanillaCopy] of TreeFeature
-	private int getMaxFreeTreeHeight(WorldGenLevel level, int trunkHeight, BlockPos pos, TreeConfiguration config) {
+	private int getMaxFreeTreeHeight(WorldGenLevel level, int trunkHeight, BlockPos pos, TreeFeature config) {
 		BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
 		for (int i = 0; i <= trunkHeight + 1; ++i) {
-			int j = config.minimumSize.getSizeAtHeight(trunkHeight, i);
+			int j = config.minimumSize().getSizeAtHeight(trunkHeight, i);
 
 			for (int k = -j; k <= j; ++k) {
 				for (int l = -j; l <= j; ++l) {
 					mutable.setWithOffset(pos, k, i, l);
-					if (!config.trunkPlacer.isFree(level, mutable) || !config.ignoreVines && TreeFeature.isVine(level, mutable)) {
+					if (!config.trunkPlacer().isFree(level, mutable) || !config.ignoreVines() && TreeFeature.isVine(level, mutable)) {
 						return i - 2;
 					}
 				}

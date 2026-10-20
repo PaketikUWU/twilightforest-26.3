@@ -6,8 +6,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import twilightforest.world.components.feature.config.WeightedListFeatureConfig;
 

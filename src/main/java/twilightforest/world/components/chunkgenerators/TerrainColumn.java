@@ -12,6 +12,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
+import net.minecraft.world.level.levelgen.densityfunction.DensitySampler;
+import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 import twilightforest.util.Codecs;
 
 import java.util.Map;
@@ -24,9 +26,9 @@ public final class TerrainColumn implements Comparable<TerrainColumn> {
 		instance.group(
 			RegistryFixedCodec.create(Registries.BIOME).fieldOf("key_biome").forGetter(o -> o.keyBiome),
 			Codecs.doubleTreeCodec(Biome.CODEC).fieldOf("biome_layers").forGetter(o -> o.biomes),
-			DensityFunction.HOLDER_HELPER_CODEC.fieldOf("depth").forGetter(o -> o.noiseDepth),
-			DensityFunction.HOLDER_HELPER_CODEC.fieldOf("scale").forGetter(o -> o.noiseScale),
-			DensityFunction.HOLDER_HELPER_CODEC.fieldOf("weight").forGetter(o -> o.noiseWeight)
+			DensityFunction.CODEC.fieldOf("depth").forGetter(o -> o.noiseDepth),
+			DensityFunction.CODEC.fieldOf("scale").forGetter(o -> o.noiseScale),
+			DensityFunction.CODEC.fieldOf("weight").forGetter(o -> o.noiseWeight)
 		).apply(instance, TerrainColumn::new));
 	private final ResourceKey<Biome> resourceKey;
 	private final Holder<Biome> keyBiome;
@@ -82,16 +84,22 @@ public final class TerrainColumn implements Comparable<TerrainColumn> {
 		return this.biomes.double2ObjectEntrySet().stream().reduce(reducer).map(Map.Entry::getValue).orElse(other);
 	}
 
-	public double depth(DensityFunction.FunctionContext context) {
-		return this.noiseDepth.compute(context);
+	public Compiled compile(DensityFunction.CompileContext context) {
+		return new Compiled(this.noiseDepth.compileSampler(context), this.noiseScale.compileSampler(context), this.noiseWeight.compileSampler(context));
 	}
 
-	public double scale(DensityFunction.FunctionContext context) {
-		return this.noiseScale.compute(context);
-	}
+	public record Compiled(DensitySampler depth, DensitySampler scale, DensitySampler weight) {
+		public double depth(SamplerContext context, int blockX, int blockY, int blockZ) {
+			return this.depth.sampleValue(context, blockX, blockY, blockZ);
+		}
 
-	public double weight(DensityFunction.FunctionContext context) {
-		return this.noiseWeight.compute(context);
+		public double scale(SamplerContext context, int blockX, int blockY, int blockZ) {
+			return this.scale.sampleValue(context, blockX, blockY, blockZ);
+		}
+
+		public double weight(SamplerContext context, int blockX, int blockY, int blockZ) {
+			return this.weight.sampleValue(context, blockX, blockY, blockZ);
+		}
 	}
 
 	public ResourceKey<Biome> getResourceKey() {

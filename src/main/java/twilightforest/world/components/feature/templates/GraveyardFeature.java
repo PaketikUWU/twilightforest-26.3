@@ -17,9 +17,9 @@ import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.StructureMode;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
 import net.neoforged.neoforge.event.EventHooks;
@@ -90,7 +90,7 @@ public class GraveyardFeature extends Feature<NoneFeatureConfiguration> {
 
 		int flags = 16 | 2 | 1;
 
-		StructureTemplateManager templatemanager = world.getLevel().getServer().getStructureManager();
+		StructureTemplateManager templatemanager = world.getLevel().getServer().getStructureTemplateManager();
 		StructureTemplate base = templatemanager.getOrCreate(GRAVEYARD);
 		if (base == null)
 			return false;

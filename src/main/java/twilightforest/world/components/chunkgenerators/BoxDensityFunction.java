@@ -3,7 +3,6 @@ package twilightforest.world.components.chunkgenerators;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.levelgen.Beardifier;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
@@ -13,7 +12,7 @@ import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 
 import java.util.List;
 
-public class BoxDensityFunction implements DensityFunction.SimpleFunction {
+public class BoxDensityFunction implements PointDensityFunction {
 	public static final MapCodec<BoxDensityFunction> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
 		Codec.INT.fieldOf("minX").forGetter(f -> f.minX),
 		Codec.INT.fieldOf("minY").forGetter(f -> f.minY),
@@ -25,7 +24,6 @@ public class BoxDensityFunction implements DensityFunction.SimpleFunction {
 		Codec.DOUBLE.fieldOf("maxValue").forGetter(f -> f.maxValue),
 		TerrainAdjustment.CODEC.fieldOf("beardifier").forGetter(f -> f.terrainAdjustment)
 	).apply(inst, BoxDensityFunction::new));
-	public static final KeyDispatchDataCodec<BoxDensityFunction> KEY_CODEC = KeyDispatchDataCodec.of(CODEC);
 
 	private final int minX, minY, minZ, maxX, maxY, maxZ;
 	private final double minValue, maxValue;
@@ -60,10 +58,10 @@ public class BoxDensityFunction implements DensityFunction.SimpleFunction {
 	}
 
 	@Override // Parallels vanilla Beardifier behavior
-	public double compute(FunctionContext context) {
-		int blockX = context.blockX();
-		int blockY = context.blockY();
-		int blockZ = context.blockZ();
+	public float compute(int blockX, int blockY, int blockZ) {
+		int blockX = blockX;
+		int blockY = blockY;
+		int blockZ = blockZ;
 
 		// Dist is zero if inside the box
 		int xDist = Math.max(0, Math.max(this.minX - blockX, blockX - this.maxX));
@@ -77,27 +75,27 @@ public class BoxDensityFunction implements DensityFunction.SimpleFunction {
 		};
 
 		double densityValue = switch (this.terrainAdjustment) {
-			case BURY -> Beardifier.getBuryContribution(xDist, yDist * 0.5, zDist);
+			case BURY -> Beardifier.getBuryContribution(xDist, yDist * 0.5F, zDist);
 			case BEARD_THIN, BEARD_BOX -> Beardifier.getBeardContribution(xDist, yDist, zDist, distAboveBottom) * 0.8;
-			case ENCAPSULATE -> Beardifier.getBuryContribution(xDist * 0.5, yDist * 0.5, zDist * 0.5) * 0.8;
+			case ENCAPSULATE -> Beardifier.getBuryContribution(xDist * 0.5F, yDist * 0.5F, zDist * 0.5F) * 0.8;
 			default -> 0;
 		};
 
-		return Mth.clamp(densityValue, this.minValue, this.maxValue);
+		return (float) Mth.clamp(densityValue, this.minValue, this.maxValue);
 	}
 
 	@Override
-	public double minValue() {
-		return this.minValue;
+	public float minValue() {
+		return (float) this.minValue;
 	}
 
 	@Override
-	public double maxValue() {
-		return this.maxValue;
+	public float maxValue() {
+		return (float) this.maxValue;
 	}
 
 	@Override
-	public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-		return KEY_CODEC;
+	public MapCodec<? extends DensityFunction> codec() {
+		return CODEC;
 	}
 }

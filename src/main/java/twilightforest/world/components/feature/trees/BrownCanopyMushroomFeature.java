@@ -2,7 +2,7 @@ package twilightforest.world.components.feature.trees;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import twilightforest.world.components.feature.legacy.HugeMushroomFeatureConfiguration;
 
 public class BrownCanopyMushroomFeature extends CanopyMushroomFeature {
 	public BrownCanopyMushroomFeature(Codec<HugeMushroomFeatureConfiguration> featureConfigurationCodec) {

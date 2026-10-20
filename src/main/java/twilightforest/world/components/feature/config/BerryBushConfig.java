@@ -6,7 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import twilightforest.world.components.feature.legacy.FeatureConfiguration;
 
 public record BerryBushConfig(BlockState bushState, TagKey<Block> placesOn, boolean canBeSnowy) implements FeatureConfiguration {
 

@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import twilightforest.world.components.feature.legacy.Feature;
+import twilightforest.world.components.feature.legacy.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.storage.loot.LootTable;
 import twilightforest.util.features.FeatureLogic;
@@ -149,6 +149,6 @@ public class FoundationFeature extends Feature<RuinedFoundationConfig> {
 
 		world.setBlock(placeAt, state, Block.UPDATE_ALL);
 
-		world.getChunk(placeAt).markPosForPostprocessing(placeAt);
+		world.getChunk(placeAt).markPosForPostProcessing(placeAt);
 	}
 }
