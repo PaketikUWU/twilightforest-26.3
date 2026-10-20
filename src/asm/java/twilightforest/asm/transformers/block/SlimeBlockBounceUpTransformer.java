@@ -21,21 +21,16 @@ public final class SlimeBlockBounceUpTransformer extends SimpleMethodProcessor {
 
 	@Override
 	public void transform(MethodNode node, SimpleTransformationContext context) {
-		ASMUtil.findMethodInstructions(
-			node,
-			Opcodes.INVOKEVIRTUAL,
-			"net/minecraft/world/entity/Entity",
-			"getDeltaMovement",
-			"()Lnet/minecraft/world/phys/Vec3;"
-		).findFirst().ifPresent(target -> node.instructions.insertBefore(
+		// 26.3 moved slime bouncing into Entity; NeoForge routes the bounciness of the block below through this method
+		ASMUtil.findInstructions(node, Opcodes.DRETURN).toList().forEach(target -> node.instructions.insertBefore(
 			target,
 			ASMUtil.listOf(
-				new VarInsnNode(Opcodes.ALOAD, 1),
+				new VarInsnNode(Opcodes.ALOAD, 0),
 				new MethodInsnNode(
 					Opcodes.INVOKESTATIC,
 					"twilightforest/asmhooks/BlockHooks",
 					"stopBouncing",
-					"(Lnet/minecraft/world/entity/Entity;)V",
+					"(DLjava/lang/Object;)D",
 					false
 				)
 			)
@@ -45,9 +40,9 @@ public final class SlimeBlockBounceUpTransformer extends SimpleMethodProcessor {
 	@Override
 	public Set<Target> targets() {
 		return Set.of(new Target(
-			"net.minecraft.world.level.block.SlimeBlock",
-			"bounceUp",
-			"(Lnet/minecraft/world/entity/Entity;)V"
+			"net.neoforged.neoforge.common.extensions.IEntityExtension",
+			"getBlockBounciness",
+			"(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)D"
 		));
 	}
 }

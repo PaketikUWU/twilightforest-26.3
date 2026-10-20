@@ -23,32 +23,29 @@ public class ChunkStatusTaskTransformer extends SimpleMethodProcessor {
 
 	@Override
 	public void transform(MethodNode node, SimpleTransformationContext context) {
-		ASMUtil.findMethodInstructions(
-			node,
-			Opcodes.INVOKEVIRTUAL,
-			"net/minecraft/world/level/chunk/ChunkGenerator",
-			"buildSurface",
-			"(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/chunk/ChunkAccess;)V"
-		).findFirst().ifPresent(target -> node.instructions.insert(
-			target,
-			ASMUtil.listOf(
-				new VarInsnNode(Opcodes.ALOAD, 3), // ChunkAccess param
-				new VarInsnNode(Opcodes.ALOAD, 5), // WorldGenRegion variable
-				new MethodInsnNode(
-					Opcodes.INVOKESTATIC,
-					"twilightforest/asmhooks/WorldgenHooks",
-					"chunkBlanketing",
-					"(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/server/level/WorldGenRegion;)V"
+		// 26.3 builds noise, surface and carvers in one async ChunkGenerator#buildTerrain; blanketing runs once it completes
+		ASMUtil.streamInstructions(node)
+			.filter(insn -> insn instanceof MethodInsnNode method && method.getOpcode() == Opcodes.INVOKEVIRTUAL && "net/minecraft/world/level/chunk/ChunkGenerator".equals(method.owner) && "buildTerrain".equals(method.name))
+			.findFirst()
+			.ifPresent(target -> node.instructions.insert(
+				target,
+				ASMUtil.listOf(
+					new VarInsnNode(Opcodes.ALOAD, 5), // WorldGenRegion variable
+					new MethodInsnNode(
+						Opcodes.INVOKESTATIC,
+						"twilightforest/asmhooks/WorldgenHooks",
+						"chunkBlanketing",
+						"(Ljava/util/concurrent/CompletableFuture;Lnet/minecraft/server/level/WorldGenRegion;)Ljava/util/concurrent/CompletableFuture;"
+					)
 				)
-			)
-		));
+			));
 	}
 
 	@Override
 	public Set<Target> targets() {
 		return Set.of(new Target(
 			"net.minecraft.world.level.chunk.status.ChunkStatusTasks",
-			"generateSurface",
+			"buildTerrain",
 			"(Lnet/minecraft/world/level/chunk/status/WorldGenContext;Lnet/minecraft/world/level/chunk/status/ChunkStep;Lnet/minecraft/util/StaticCache2D;Lnet/minecraft/world/level/chunk/ChunkAccess;)Ljava/util/concurrent/CompletableFuture;"
 		));
 	}

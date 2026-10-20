@@ -23,7 +23,7 @@ public class ArmorVisibilityRenderingTransformer extends SimpleMethodProcessor {
 
 	@Override
 	public void transform(MethodNode node, SimpleTransformationContext context) {
-		ASMUtil.findVarInstructions(node, Opcodes.FSTORE, 4)
+		ASMUtil.findVarInstructions(node, Opcodes.FSTORE, 5) // coverPercentage, after the new ServerLevel parameter
 			.findFirst()
 			.ifPresent(target -> node.instructions.insertBefore(
 				target,
@@ -44,7 +44,7 @@ public class ArmorVisibilityRenderingTransformer extends SimpleMethodProcessor {
 		return Set.of(new Target(
 			"net.minecraft.world.entity.LivingEntity",
 			"getVisibilityPercent",
-			"(Lnet/minecraft/world/entity/Entity;)D"
+			"(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;)D"
 		));
 	}
 

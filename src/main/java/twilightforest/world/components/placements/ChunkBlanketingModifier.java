@@ -58,12 +58,19 @@ public class ChunkBlanketingModifier implements PlacementModifier {
 		int chunkOriginX = chunk.getPos().getMinBlockX();
 		int chunkOriginZ = chunk.getPos().getMinBlockZ();
 
+		// 26.3 merged the surface and carver steps into terrain, so worldgen-only heightmaps are no longer kept up to date for features
+		Heightmap.Types heightmap = switch (this.heightmap) {
+			case OCEAN_FLOOR_WG -> Heightmap.Types.OCEAN_FLOOR;
+			case WORLD_SURFACE_WG -> Heightmap.Types.WORLD_SURFACE;
+			default -> this.heightmap;
+		};
+
 		for (int zInChunk = 0; zInChunk < 16; zInChunk++) {
 			for (int xInChunk = 0; xInChunk < 16; xInChunk++) {
 				if (random.nextFloat() > this.integrity)
 					continue;
 
-				BlockPos pos = new BlockPos(chunkOriginX + xInChunk, chunk.getHeight(this.heightmap, xInChunk, zInChunk) + 1, chunkOriginZ + zInChunk);
+				BlockPos pos = new BlockPos(chunkOriginX + xInChunk, chunk.getHeight(heightmap, xInChunk, zInChunk) + 1, chunkOriginZ + zInChunk);
 
 				if (this.biomeRLOptional.isEmpty() || this.biomeRLOptional.get().contains(level.getBiome(pos))) {
 					coordinates.add(pos);

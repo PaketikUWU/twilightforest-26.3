@@ -139,10 +139,11 @@ public class BlockHooks {
 	 * {@link twilightforest.asm.transformers.block.SlimeBlockBounceUpTransformer}<p/>
 	 * <p>
 	 * Injection Point:<br/>
-	 * {@link net.minecraft.world.level.block.SlimeBlock#bounceUp(Entity)}
+	 * {@link net.neoforged.neoforge.common.extensions.IEntityExtension#getBlockBounciness}
 	 */
-	public static void stopBouncing(Entity entity) {
-		if (TravellersModifiersManager.isModifierActive(entity, TravellersModifiersManager.UNRESTRAINED_MODIFIER) && entity.getDeltaMovement().y() > -0.08)
-			entity.setDeltaMovement(new Vec3(entity.getDeltaMovement().x, Math.max(0, entity.getDeltaMovement().y), entity.getDeltaMovement().z));
+	public static double stopBouncing(double bounciness, Object self) {
+		if (self instanceof Entity entity && TravellersModifiersManager.isModifierActive(entity, TravellersModifiersManager.UNRESTRAINED_MODIFIER) && entity.getDeltaMovement().y() > -0.08)
+			return 0.0;
+		return bounciness;
 	}
 }

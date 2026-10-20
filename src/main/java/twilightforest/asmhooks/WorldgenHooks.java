@@ -31,6 +31,7 @@ import twilightforest.world.components.structures.CustomDensitySource;
 import twilightforest.world.components.structures.util.CustomStructureData;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings({"JavadocReference", "unused"})
 public class WorldgenHooks {
@@ -73,10 +74,13 @@ public class WorldgenHooks {
 	 * {@link twilightforest.asm.transformers.chunk.ChunkStatusTaskTransformer}<p/>
 	 *
 	 * Injection Point:<br/>
-	 * {@link net.minecraft.world.level.chunk.status.ChunkStatusTasks#generateSurface(WorldGenContext, ChunkStep, StaticCache2D, ChunkAccess)}
+	 * {@link net.minecraft.world.level.chunk.status.ChunkStatusTasks#buildTerrain(WorldGenContext, ChunkStep, StaticCache2D, ChunkAccess)}
 	 */
-	public static void chunkBlanketing(ChunkAccess access, WorldGenRegion region) {
-		ChunkBlanketProcessors.chunkBlanketing(access, region);
+	public static CompletableFuture<ChunkAccess> chunkBlanketing(CompletableFuture<ChunkAccess> terrain, WorldGenRegion region) {
+		return terrain.thenApply(access -> {
+			ChunkBlanketProcessors.chunkBlanketing(access, region);
+			return access;
+		});
 	}
 
 	/**
