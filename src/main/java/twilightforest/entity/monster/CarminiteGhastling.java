@@ -75,7 +75,7 @@ public class CarminiteGhastling extends CarminiteGhastguard {
 		return TFSounds.CARMINITE_GHASTLING_WARN.get();
 	}
 
-	// Loosely based on EnderMan.isLookingAtMe
+	// Loosely based on Enderman.isLookingAtMe
 	@Override
 	public boolean shouldAttack(LivingEntity living) {
 		ItemStack helmet = living.getItemBySlot(EquipmentSlot.HEAD);

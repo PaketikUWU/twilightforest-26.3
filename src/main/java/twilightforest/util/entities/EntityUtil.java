@@ -17,6 +17,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.decoration.painting.Painting;
@@ -154,7 +155,7 @@ public class EntityUtil {
 				if (flingSound != null) {
 					entity.playSound(flingSound, 1.0F, 1.0F);
 				}
-				livingentity.knockback(f1 * 0.5F, Mth.sin(entity.getYRot() * Mth.DEG_TO_RAD), -Mth.cos(entity.getYRot() * Mth.DEG_TO_RAD));
+				livingentity.knockback(f1 * 0.5F, Mth.sin(entity.getYRot() * Mth.DEG_TO_RAD), -Mth.cos(entity.getYRot() * Mth.DEG_TO_RAD), source, f);
 				entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
 			}
 
@@ -184,7 +185,7 @@ public class EntityUtil {
 	public static boolean tryHangPainting(WorldGenLevel world, BlockPos pos, Direction direction, @Nullable Holder<PaintingVariant> chosenPainting) {
 		if (chosenPainting == null) return false;
 
-		Painting painting = createEntityIgnoreException(EntityType.PAINTING, world);
+		Painting painting = createEntityIgnoreException(EntityTypes.PAINTING, world);
 
 		painting.setPos(pos.getX(), pos.getY(), pos.getZ());
 		try {

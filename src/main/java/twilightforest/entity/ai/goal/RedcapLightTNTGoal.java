@@ -74,7 +74,7 @@ public class RedcapLightTNTGoal extends RedcapBaseGoal {
 			redcap.playAmbientSound();
 
 			Blocks.TNT.onCaughtFire(Blocks.TNT.defaultBlockState(), this.redcap.level(), this.tntPos, Direction.UP, this.redcap);
-			this.redcap.swing(InteractionHand.MAIN_HAND);
+			this.redcap.swingForAttack(InteractionHand.MAIN_HAND);
 			this.redcap.level().setBlock(this.tntPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
 			this.redcap.gameEvent(GameEvent.PRIME_FUSE);
 			this.redcap.getNavigation().stop();

@@ -10,6 +10,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -24,7 +25,7 @@ import twilightforest.network.ParticlePacket;
 import java.util.function.Consumer;
 
 public class GlassSwordItem extends Item {
-	protected static final BlockParticleOption GLASS_PARTICLE = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.WHITE_STAINED_GLASS.defaultBlockState());
+	protected static final BlockParticleOption GLASS_PARTICLE = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STAINED_GLASS.pick(DyeColor.WHITE).defaultBlockState());
 
 	public GlassSwordItem(Properties properties) {
 		super(properties);

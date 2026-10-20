@@ -3,8 +3,9 @@ package twilightforest.entity.passive;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.*;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.core.registries.codec.RegistryFileCodec;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.biome.Biome;
@@ -18,11 +19,11 @@ public record DwarfRabbitVariant(Identifier texture, Optional<HolderSet<Biome>> 
 	public static final Codec<DwarfRabbitVariant> DIRECT_CODEC = RecordCodecBuilder.create(
 		p_332779_ -> p_332779_.group(
 				Identifier.CODEC.fieldOf("texture").forGetter(DwarfRabbitVariant::texture),
-				RegistryCodecs.homogeneousList(Registries.BIOME).optionalFieldOf("biomes").forGetter(DwarfRabbitVariant::spawnBiomes)
+				RegistryCodecs.holderSet(Registries.BIOME).optionalFieldOf("biomes").forGetter(DwarfRabbitVariant::spawnBiomes)
 			)
 			.apply(p_332779_, DwarfRabbitVariant::new)
 	);
-	public static final Codec<Holder<DwarfRabbitVariant>> CODEC = RegistryFileCodec.create(TFRegistries.Keys.DWARF_RABBIT_VARIANT, DIRECT_CODEC);
+	public static final Codec<Holder<DwarfRabbitVariant>> CODEC = RegistryCodecs.holder(TFRegistries.Keys.DWARF_RABBIT_VARIANT, DIRECT_CODEC);
 
 	public DwarfRabbitVariant(Identifier texture) {
 		this(texture, Optional.empty());

@@ -46,6 +46,7 @@ public final class TwilightForestMod {
 		TFItems.ITEMS.register(bus);
 		TFStats.STATS.register(bus);
 		TFLoot.NUMBERS.register(bus);
+		TFLoot.FLOAT_NUMBERS.register(bus);
 		TFBlocks.BLOCKS.register(bus);
 		TFPOITypes.POIS.register(bus);
 		TFSounds.SOUNDS.register(bus);

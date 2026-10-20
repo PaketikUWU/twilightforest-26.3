@@ -1,6 +1,5 @@
 package twilightforest.block;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
@@ -36,7 +35,6 @@ public class FallenLeavesBlock extends TFPlantBlock {
 
 	public static final int MAX_HEIGHT = 8;
 	public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
-	public static final MapCodec<FallenLeavesBlock> CODEC = simpleCodec(FallenLeavesBlock::new);
 	protected static final VoxelShape[] SHAPE_BY_LAYER = Util.make(new VoxelShape[9], arr -> {
 		arr[0] = Block.box(0.0, 0.0, 0.0, 16.0, 0.2, 16.0);
 		for (int i = 1; i <= 8; i++) {
@@ -48,11 +46,6 @@ public class FallenLeavesBlock extends TFPlantBlock {
 	public FallenLeavesBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.getStateDefinition().any().setValue(LAYERS, 1));
-	}
-
-	@Override
-	public MapCodec<? extends VegetationBlock> codec() {
-		return CODEC;
 	}
 
 	@Override

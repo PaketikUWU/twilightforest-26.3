@@ -1,26 +1,19 @@
 package twilightforest.init;
 
-import com.google.common.collect.Maps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
+import net.minecraft.resources.Identifier;
+import twilightforest.TwilightForestMod;
 
-import java.util.Map;
-
+// 26.3: MaterialAssetGroup is gone, trim materials now reference a palette id directly (per-armor overrides moved to the client equipment assets)
 public class TFMaterialAssetGroup {
 
-	public static final MaterialAssetGroup IRONWOOD = create("twilightforest_ironwood");
-	public static final MaterialAssetGroup STEELEAF = create("twilightforest_steeleaf");
-	public static final MaterialAssetGroup KNIGHTMETAL = create("twilightforest_knightmetal");
-	public static final MaterialAssetGroup FIERY = create("twilightforest_fiery");
-	public static final MaterialAssetGroup NAGA_SCALE = create("twilightforest_naga_scale");
-	public static final MaterialAssetGroup CARMINITE = create("twilightforest_carminite");
+	public static final Identifier IRONWOOD = create("ironwood");
+	public static final Identifier STEELEAF = create("steeleaf");
+	public static final Identifier KNIGHTMETAL = create("knightmetal");
+	public static final Identifier FIERY = create("fiery");
+	public static final Identifier NAGA_SCALE = create("naga_scale");
+	public static final Identifier CARMINITE = create("carminite");
 
-	public static MaterialAssetGroup create(String base) {
-		return create(base, Map.of());
-	}
-
-	public static MaterialAssetGroup create(String base, Map<ResourceKey<EquipmentAsset>, String> overrides) {
-		return new MaterialAssetGroup(new MaterialAssetGroup.AssetInfo(base), Map.copyOf(Maps.transformValues(overrides, MaterialAssetGroup.AssetInfo::new)));
+	public static Identifier create(String base) {
+		return TwilightForestMod.prefix("trim/" + base);
 	}
 }

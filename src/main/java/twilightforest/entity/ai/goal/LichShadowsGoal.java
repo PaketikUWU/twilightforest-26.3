@@ -78,7 +78,7 @@ public class LichShadowsGoal extends Goal {
 			lich.launchProjectileAt(new LichBomb(lich.level(), lich));
 		}
 
-		lich.swing(InteractionHand.MAIN_HAND);
+		lich.swingForAttack(InteractionHand.MAIN_HAND);
 
 		if (lich.getRandom().nextInt(3) > 0) lich.setNextAttackType(0);
 		else lich.setNextAttackType(1);

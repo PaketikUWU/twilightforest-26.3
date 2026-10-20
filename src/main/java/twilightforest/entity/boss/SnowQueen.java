@@ -372,7 +372,7 @@ public class SnowQueen extends BaseTFBoss implements IBreathAttacker {
 				attemptY = targetedEntity.getY() + this.getRandom().nextGaussian() * 8.0D;
 				attemptZ = targetedEntity.getZ() + this.getRandom().nextGaussian() * 6.0D;
 			}
-			if (minion.randomTeleport(attemptX, attemptY, attemptZ, true)) {
+			if (minion.randomTeleport(attemptX, attemptY, attemptZ, true, _ -> false)) {
 				this.gameEvent(GameEvent.ENTITY_PLACE, minion);
 				break;
 			}
