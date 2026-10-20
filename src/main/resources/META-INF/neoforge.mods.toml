@@ -20,14 +20,14 @@ enumExtensions="META-INF/enumextensions.json"
 [[dependencies.twilightforest]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.1.2.112,)"
+versionRange = "[26.3.0.95,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.twilightforest]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.1.2]"
+versionRange = "[26.3]"
 ordering = "NONE"
 side = "BOTH"
 

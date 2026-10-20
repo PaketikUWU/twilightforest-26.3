@@ -75,7 +75,7 @@ public final class LichTowerSegment extends TwilightJigsawPiece implements Piece
 		structureTag.putBoolean("put_gallery", this.putGallery);
 	}
 
-	public static void buildTowerBySegments(StructurePieceAccessor pieceAccessor, Structure.GenerationContext context, final BlockPos sourceJigsawPos, final FrontAndTop sourceOrientation, final TwilightJigsawPiece parentBase, StructureTemplateManager structureManager, final int segments) {
+	public static void buildTowerBySegments(StructurePiecesBuilder pieceAccessor, Structure.GenerationContext context, final BlockPos sourceJigsawPos, final FrontAndTop sourceOrientation, final TwilightJigsawPiece parentBase, StructureTemplateManager structureManager, final int segments) {
 		Identifier segmentId = TwilightForestMod.prefix("lich_tower/tower_slice");
 		ArrayList<TwilightJigsawPiece> pieces = new ArrayList<>();
 
@@ -133,7 +133,7 @@ public final class LichTowerSegment extends TwilightJigsawPiece implements Piece
 	}
 
 	@Override
-	protected void processJigsaw(TwilightJigsawPiece parent, StructurePieceAccessor pieceAccessor, Structure.GenerationContext context, JigsawRecord connection, int jigsawIndex) {
+	protected void processJigsaw(TwilightJigsawPiece parent, StructurePiecesBuilder pieceAccessor, Structure.GenerationContext context, JigsawRecord connection, int jigsawIndex) {
 		switch (connection.target()) {
 			case "twilightforest:lich_tower/bridge" -> {
 				if (!this.putWings) return;

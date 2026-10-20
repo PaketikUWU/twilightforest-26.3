@@ -6,7 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;

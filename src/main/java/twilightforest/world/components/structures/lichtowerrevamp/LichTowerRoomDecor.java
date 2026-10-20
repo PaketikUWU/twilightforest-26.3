@@ -41,7 +41,7 @@ public class LichTowerRoomDecor extends TwilightJigsawPiece implements PieceBear
 		LichTowerUtil.addDefaultProcessors(this.placeSettings.addProcessor(lichTowerUtil.getRoomSpawnerProcessor()));
 	}
 
-	public static void addDecor(TwilightJigsawPiece parent, StructurePieceAccessor pieceAccessor, Structure.GenerationContext context, JigsawRecord connection, int newDepth, StructureTemplateManager structureManager) {
+	public static void addDecor(TwilightJigsawPiece parent, StructurePiecesBuilder pieceAccessor, Structure.GenerationContext context, JigsawRecord connection, int newDepth, StructureTemplateManager structureManager) {
 		Identifier decorId = lichTowerUtil.rollRandomDecor(context.random(), false);
 		JigsawPlaceContext placeableJunction = JigsawPlaceContext.pickPlaceableJunction(parent.templatePosition(), connection.pos(), connection.orientation(), structureManager, decorId, "twilightforest:lich_tower/decor", context.random());
 
@@ -76,7 +76,7 @@ public class LichTowerRoomDecor extends TwilightJigsawPiece implements PieceBear
 	}
 
 	@Override
-	protected void processJigsaw(TwilightJigsawPiece parent, StructurePieceAccessor pieceAccessor, Structure.GenerationContext context, JigsawRecord connection, int jigsawIndex) {
+	protected void processJigsaw(TwilightJigsawPiece parent, StructurePiecesBuilder pieceAccessor, Structure.GenerationContext context, JigsawRecord connection, int jigsawIndex) {
 	}
 
 	@Override

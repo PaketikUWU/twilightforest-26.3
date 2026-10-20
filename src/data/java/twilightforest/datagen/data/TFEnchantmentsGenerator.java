@@ -15,7 +15,7 @@ import net.minecraft.world.item.enchantment.effects.ChangeItemDamage;
 import net.minecraft.world.item.enchantment.effects.Ignite;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.providers.number.EnchantmentLevelProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.EnchantmentLevelProvider;
 import twilightforest.enchantment.ApplyFrostedEffect;
 import twilightforest.enchantment.RechargeScepterEffect;
 import twilightforest.enchantment.SmashBlocksEffect;

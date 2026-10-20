@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import org.jetbrains.annotations.Nullable;
@@ -125,7 +125,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 	}
 
 	@Override
-	public void addChildren(StructurePiece parent, StructurePieceAccessor list, RandomSource rand) {
+	public void addChildren(StructurePiece parent, StructurePiecesBuilder list, RandomSource rand) {
 		// we should have a door where we started
 		addOpening(0, 1, size / 2, Rotation.CLOCKWISE_180);
 
@@ -150,7 +150,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 		}
 	}
 
-	public boolean makeTowerWing(StructurePieceAccessor list, RandomSource rand, int index, int x, int y, int z, int wingSize, int wingHeight, Rotation rotation) {
+	public boolean makeTowerWing(StructurePiecesBuilder list, RandomSource rand, int index, int x, int y, int z, int wingSize, int wingHeight, Rotation rotation) {
 		// kill too-small towers
 		if (wingHeight < 6) {
 			return false;
@@ -184,7 +184,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 	}
 
 
-	protected boolean makeBridge(StructurePieceAccessor list, RandomSource rand, int index, int x, int y, int z, int wingSize, int wingHeight, Rotation rotation) {
+	protected boolean makeBridge(StructurePiecesBuilder list, RandomSource rand, int index, int x, int y, int z, int wingSize, int wingHeight, Rotation rotation) {
 		// bridges are size 3 always
 		Direction direction = getStructureRelativeRotation(rotation);
 		int[] dx = offsetTowerCoords(x, y, z, 3, direction);
@@ -232,7 +232,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 	/**
 	 * Add a beard to this structure.  There is only one type of beard.
 	 */
-	public void makeABeard(StructurePiece parent, StructurePieceAccessor list, RandomSource rand) {
+	public void makeABeard(StructurePiece parent, StructurePiecesBuilder list, RandomSource rand) {
 
 		boolean attached = parent.getBoundingBox().minY() < this.boundingBox.minY();
 
@@ -253,7 +253,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 	 * <p>
 	 * This function keeps trying roofs starting with the largest and fanciest, and then keeps trying smaller and plainer ones
 	 */
-	public void makeARoof(StructurePiece parent, StructurePieceAccessor list, RandomSource rand) {
+	public void makeARoof(StructurePiece parent, StructurePiecesBuilder list, RandomSource rand) {
 
 		// we are attached if our parent is taller than we are
 		boolean attached = parent.getBoundingBox().maxY() > this.boundingBox.maxY();
@@ -267,7 +267,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 	}
 
 
-	protected void makeAttachedRoof(StructurePieceAccessor list, RandomSource rand) {
+	protected void makeAttachedRoof(StructurePiecesBuilder list, RandomSource rand) {
 		int index = this.getGenDepth();
 		TowerRoofComponent roof;
 
@@ -301,7 +301,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 	 * Check to see if this roof fits.  If it does:
 	 * Add the specified roof to this tower and set the roofType variable.
 	 */
-	protected void tryToFitRoof(StructurePieceAccessor list, RandomSource rand, TowerRoofComponent roof) {
+	protected void tryToFitRoof(StructurePiecesBuilder list, RandomSource rand, TowerRoofComponent roof) {
 		if (roof.fits(this, list)) {
 			list.addPiece(roof);
 			roof.addChildren(this, list, rand);
@@ -309,7 +309,7 @@ public class TowerWingComponent extends TFStructureComponentOld {
 		}
 	}
 
-	protected void makeFreestandingRoof(StructurePieceAccessor list, RandomSource rand) {
+	protected void makeFreestandingRoof(StructurePiecesBuilder list, RandomSource rand) {
 		int index = this.getGenDepth();
 		TowerRoofComponent roof;
 

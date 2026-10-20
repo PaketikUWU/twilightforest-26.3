@@ -24,7 +24,7 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import twilightforest.TwilightForestMod;
@@ -84,7 +84,7 @@ public class FallenTrunkPiece extends StructurePiece {
 	}
 
 	@Override
-	public void addChildren(StructurePiece parent, StructurePieceAccessor list, RandomSource rand) {
+	public void addChildren(StructurePiece parent, StructurePiecesBuilder list, RandomSource rand) {
 		StructurePiece terraformingPiece = new UtilityPiece(0, boundingBox.inflatedBy(TERRAFORM_PIECE_SIZE));
 		list.addPiece(terraformingPiece);
 

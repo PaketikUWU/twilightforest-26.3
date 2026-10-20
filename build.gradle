@@ -93,7 +93,7 @@ java {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror"
+	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror" << "-Xmaxerrs" << "100000"
 	options.encoding = 'UTF-8'
 }
 
@@ -265,7 +265,7 @@ dependencies {
 	implementation "top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.base_minecraft_version}"
 
 	//curse maven
-	implementation "curse.maven:jade-324717:8651070"
+	compileOnly "curse.maven:jade-324717:8651070"
 //	implementation "curse.maven:cosmetic-armor-reworked-237307:5961480"
 //	runtimeOnly "curse.maven:jeed-532286:5483315"
 //	runtimeOnly "curse.maven:museum-curator-859070:4629894"
@@ -280,7 +280,7 @@ dependencies {
 
 	//mods we dont have compat with but are nice to have
 //	runtimeOnly "com.telepathicgrunt:CommandStructures-Neoforge:4.4.3+1.21.4"
-	runtimeOnly "curse.maven:world-edit-225608:8037379"
+//	runtimeOnly "curse.maven:world-edit-225608:8037379"
 
 	testImplementation "net.neoforged:testframework:${project.neoforge_version}"
 	testImplementation "org.junit.jupiter:junit-jupiter:6.0.1"

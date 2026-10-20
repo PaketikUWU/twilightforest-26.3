@@ -6,7 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.levelgen.DensityFunction;
+import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 
 // Negative radius values cause a bowling-up shaped zero-threshold over this DensityFunction's field, making it useful for the hollow hill's floor alongside as its regular mound shape
 public record HollowHillFunction(float centerX, float bottomY, float centerZ, float radius, float heightScale) implements DensityFunction.SimpleFunction {
