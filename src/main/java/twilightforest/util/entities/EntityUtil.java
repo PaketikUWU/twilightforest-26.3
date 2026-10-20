@@ -279,7 +279,7 @@ public class EntityUtil {
 				ChunkAccess chunk = world.getChunk(i1, j1, ChunkStatus.STRUCTURE_STARTS);
 				if (chunk instanceof ProtoChunk proto) {
 					proto.getEntities().forEach(nbt -> {
-						Entity entity = EntityType.loadEntityRecursive(nbt, world.getLevel(), EntitySpawnReason.NATURAL, e -> e);
+						Entity entity = EntityType.loadEntityRecursive(nbt, world.getLevel(), new EntitySpawnRequest(EntitySpawnReason.NATURAL, false), e -> e);
 						if (entity != null && boundingBox.intersects(entity.getBoundingBox())) {
 							list.add(entity);
 						}

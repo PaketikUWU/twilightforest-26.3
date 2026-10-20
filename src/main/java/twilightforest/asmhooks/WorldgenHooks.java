@@ -6,19 +6,26 @@ import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.util.StaticCache2D;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.chunk.CarverOutput;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.status.ChunkStep;
 import net.minecraft.world.level.chunk.status.WorldGenContext;
 import net.minecraft.world.level.levelgen.Beardifier;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 import net.minecraft.world.level.levelgen.NoiseSettings;
+import net.minecraft.world.level.levelgen.NoiseChunk;
 import net.minecraft.world.level.levelgen.RandomState;
+import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.world.level.levelgen.carver.WorldCarver;
+import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import twilightforest.init.custom.ChunkBlanketProcessors;
+import twilightforest.world.components.TFCavesCarver;
 import twilightforest.world.components.chunkgenerators.CustomTerrainBeardifier;
 import twilightforest.world.components.structures.CustomDensitySource;
 import twilightforest.world.components.structures.util.CustomStructureData;
@@ -36,7 +43,7 @@ public class WorldgenHooks {
 	 */
 	public static Beardifier gatherCustomTerrain(Beardifier vanilla, StructureManager structureManager, ChunkAccess chunkAccess) {
 		ChunkPos chunkPos = chunkAccess.getPos();
-		List<StructureStart> structureStarts = structureManager.startsForStructure(chunkPos, s -> s instanceof CustomDensitySource);
+		List<StructureStart> structureStarts = structureManager.startsForStructure(chunkPos.x(), chunkPos.z(), s -> s instanceof CustomDensitySource);
 
 		if (structureStarts.isEmpty())
 			return vanilla;
@@ -48,6 +55,18 @@ public class WorldgenHooks {
 				customStructureTerraforms.add(customDensitySource.getStructureTerraformer(chunkPos, structureStart));
 
 		return customStructureTerraforms.isEmpty() ? vanilla : new CustomTerrainBeardifier(vanilla, customStructureTerraforms);
+	}
+
+	/**
+	 * {@link twilightforest.asm.transformers.carver.CarveDirectlyIntoChunkTransformer}<p/>
+	 *
+	 * Injection point:<br/>
+	 * {@link net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator#generateCarvers}
+	 */
+	public static boolean carve(WorldCarver carver, WorldGenerationContext context, RandomSource random, ChunkPos chunkPos, ChunkPos sourceChunkPos, CarverOutput output, ChunkAccess chunk, NoiseChunk noiseChunk, RandomState randomState, MaterialRule materialRule) {
+		if (carver instanceof TFCavesCarver tfCavesCarver)
+			return tfCavesCarver.carveIntoChunk(context, random, sourceChunkPos, chunk, noiseChunk, randomState, materialRule);
+		return carver.carve(context, random, chunkPos, sourceChunkPos, output);
 	}
 
 	/**

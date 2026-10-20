@@ -59,9 +59,6 @@ public class BoxDensityFunction implements PointDensityFunction {
 
 	@Override // Parallels vanilla Beardifier behavior
 	public float compute(int blockX, int blockY, int blockZ) {
-		int blockX = blockX;
-		int blockY = blockY;
-		int blockZ = blockZ;
 
 		// Dist is zero if inside the box
 		int xDist = Math.max(0, Math.max(this.minX - blockX, blockX - this.maxX));

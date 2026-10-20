@@ -32,7 +32,7 @@ public class StructureTreeGrower extends TreeGrower {
 		if (!(structure instanceof TreeGrowerStartable treeGrowerStartable) || !treeGrowerStartable.checkSaplingClearance(level, pos))
 			return false;
 
-		StructureStart structurestart = treeGrowerStartable.generateFromSapling(level.registryAccess(), generator, generator.getBiomeSource(), level.getChunkSource().randomState(), level.getStructureManager(), level.getSeed(), pos, level);
+		StructureStart structurestart = treeGrowerStartable.generateFromSapling(level.registryAccess(), generator, generator.getBiomeSource(), level.getChunkSource().randomState(), level.structureManager(), level.getSeed(), pos, level);
 
 		if (!structurestart.isValid())
 			return false;

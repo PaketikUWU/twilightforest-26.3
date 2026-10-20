@@ -25,8 +25,8 @@ import java.util.List;
 
 public record SwizzleConfig(HolderSet<WoodPalette> targets, WeightedList<Weighted<HolderSet<WoodPalette>>> paletteChoices, List<ProcessorRule> preprocessingRules) implements FeatureConfiguration {
 	public static final Codec<SwizzleConfig> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-		RegistryCodecs.homogeneousList(TFRegistries.Keys.WOOD_PALETTES).fieldOf("target_palettes").forGetter(SwizzleConfig::targets),
-		WeightedList.codec(Weighted.codec(RegistryCodecs.homogeneousList(TFRegistries.Keys.WOOD_PALETTES))).fieldOf("palette_choices").forGetter(SwizzleConfig::paletteChoices),
+		RegistryCodecs.holderSet(TFRegistries.Keys.WOOD_PALETTES).fieldOf("target_palettes").forGetter(SwizzleConfig::targets),
+		WeightedList.codec(Weighted.codec(RegistryCodecs.holderSet(TFRegistries.Keys.WOOD_PALETTES))).fieldOf("palette_choices").forGetter(SwizzleConfig::paletteChoices),
 		ProcessorRule.CODEC.listOf().fieldOf("preprocessing_rules").orElseGet(Collections::emptyList).forGetter(SwizzleConfig::preprocessingRules)
 	).apply(instance, SwizzleConfig::new));
 

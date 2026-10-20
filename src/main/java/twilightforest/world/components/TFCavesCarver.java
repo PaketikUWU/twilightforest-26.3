@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.CarverOutput;
-import net.minecraft.world.level.chunk.CarvingMask;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.levelgen.Aquifer;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
@@ -33,7 +32,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.WorldGenerationContext;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-import net.minecraft.world.level.levelgen.material.MaterialRule;
+import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
 import net.minecraft.world.level.levelgen.synth.PerlinNoise;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.jspecify.annotations.Nullable;
@@ -93,8 +92,7 @@ public class TFCavesCarver implements WorldCarver {
 	}
 
 	public boolean carveIntoChunk(WorldGenerationContext context, RandomSource random, ChunkPos sourceChunkPos, ChunkAccess access, NoiseChunk noiseChunk, RandomState randomState, MaterialRule materialRule) {
-		CarvingMask mask = new CarvingMask(context.getMinGenY() + 1, context.getMinGenY() + context.getGenDepth() - 1);
-		return this.carve(new Target(context, access.getPos(), mask, new ChunkTarget(access, noiseChunk, randomState, materialRule)), random, sourceChunkPos);
+		return this.carve(new Target(context, access.getPos(), new CarvedMask(context.getMinGenY()), new ChunkTarget(access, noiseChunk, randomState, materialRule)), random, sourceChunkPos);
 	}
 
 	private boolean carve(Target target, RandomSource random, ChunkPos accessPos) {
@@ -170,7 +168,7 @@ public class TFCavesCarver implements WorldCarver {
 								if (target.chunk() == null) {
 									target.output().carve(xIndex, worldY, zIndex);
 									carved = true;
-								} else if (!((CarvingMask) target.output()).get(xIndex, worldY, zIndex)) {
+								} else if (!((CarvedMask) target.output()).isCarved(xIndex, worldY, zIndex)) {
 									target.output().carve(xIndex, worldY, zIndex);
 									blockPos.set(worldX, worldY, worldZ);
 									carved |= this.carveBlock(target.chunk(), target.context(), blockPos, hasGrass);
@@ -373,6 +371,39 @@ public class TFCavesCarver implements WorldCarver {
 			return true;
 		} else {
 			return posX * posX + posY * posY + posZ * posZ >= 1.0D;
+		}
+	}
+
+	// Stands in for 26.1's per-chunk carving mask, which also stopped a block from being carved twice
+	private static final class CarvedMask implements CarverOutput {
+		private final int minY;
+		private final it.unimi.dsi.fastutil.longs.LongOpenHashSet carved = new it.unimi.dsi.fastutil.longs.LongOpenHashSet();
+
+		private CarvedMask(int minY) {
+			this.minY = minY;
+		}
+
+		private static long key(int x, int y, int z) {
+			return ((long) y << 8) | (x << 4) | z;
+		}
+
+		private boolean isCarved(int x, int y, int z) {
+			return this.carved.contains(key(x, y, z));
+		}
+
+		@Override
+		public void carve(int x, int y, int z) {
+			this.carved.add(key(x, y, z));
+		}
+
+		@Override
+		public int minY() {
+			return this.minY;
+		}
+
+		@Override
+		public int maxY() {
+			return Integer.MAX_VALUE;
 		}
 	}
 

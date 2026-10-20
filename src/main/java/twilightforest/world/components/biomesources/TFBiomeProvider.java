@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.codec.RegistryFileCodec;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Climate;
 import twilightforest.TFRegistries;
@@ -39,8 +40,9 @@ public class TFBiomeProvider extends BiomeSource {
 	}
 
 	@Override
-	public Holder<Biome> getNoiseBiome(int biomeX, int biomeY, int biomeZ, Climate.Sampler sampler) {
-		return this.biomeTerrainDataHolder.value().getNoiseBiome(biomeX, biomeY, biomeZ);
+	public BiomeResolver createResolver(Climate.Sampler sampler) {
+		BiomeDensitySource biomeDensitySource = this.biomeTerrainDataHolder.value();
+		return biomeDensitySource::getNoiseBiome;
 	}
 
 	public Holder<Biome> getMainBiome(int biomeX, int biomeZ) {
