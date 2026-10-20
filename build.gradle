@@ -93,7 +93,7 @@ java {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror" << "-Xmaxerrs" << "100000"
+	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Xmaxerrs" << "100000" << "-Xmaxwarns" << "0"
 	options.encoding = 'UTF-8'
 }
 

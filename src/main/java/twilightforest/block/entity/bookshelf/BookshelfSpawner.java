@@ -56,6 +56,12 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 	private int requiredPlayerRange = 8;
 	private final PlayerDetector detector = PlayerDetector.INCLUDING_CREATIVE_PLAYERS;
 
+	public void setEntityId(EntityType<?> type, @Nullable Level level, RandomSource random, BlockPos pos) {
+		this.getOrCreateNextSpawnData(level, random, pos)
+			.getEntityToSpawn()
+			.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
+	}
+
 	public void setEntityData(TypedEntityData<EntityType<?>> entityData, @Nullable Level level, RandomSource random, BlockPos pos) {
 		entityData.loadInto(this.getOrCreateNextSpawnData(level, random, pos), BuiltInRegistries.ENTITY_TYPE);
 	}

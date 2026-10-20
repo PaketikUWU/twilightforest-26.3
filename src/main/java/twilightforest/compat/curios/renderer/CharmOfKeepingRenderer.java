@@ -5,7 +5,8 @@ import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.ItemInHandRenderer;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -25,8 +26,9 @@ public class CharmOfKeepingRenderer implements ICurioRenderer {
 			ms.translate(-0.0D, 0.15D, -0.15D);
 			ms.rotateDegrees(Axis.YP, 0.0F);
 			ms.scale(0.3F, -0.3F, -0.3F);
-			ItemInHandRenderer renderer = new ItemInHandRenderer(Minecraft.getInstance(), Minecraft.getInstance().getEntityRenderDispatcher(), Minecraft.getInstance().getItemModelResolver());
-			renderer.renderItem(slotContext.entity(), stack, ItemDisplayContext.FIXED, ms, buffer, light);
+			ItemStackRenderState itemState = new ItemStackRenderState();
+			Minecraft.getInstance().getItemModelResolver().updateForLiving(itemState, stack, ItemDisplayContext.FIXED, slotContext.entity());
+			itemState.submit(ms, buffer, light, OverlayTexture.NO_OVERLAY, 0);
 			ms.popPose();
 		}
 	}

@@ -79,6 +79,12 @@ public class SinisterSpawnerBlockEntity extends BlockEntity implements Spawner {
 	}
 
 	@Override
+	public void setEntityId(EntityType<?> type, RandomSource random) {
+		this.spawner.setEntityId(type, this.level, random, this.worldPosition);
+		this.setChanged();
+	}
+
+	@Override
 	public void setEntityData(TypedEntityData<EntityType<?>> data, RandomSource random) {
 		this.spawner.setEntityData(data, this.level, random, this.worldPosition);
 		this.setChanged();

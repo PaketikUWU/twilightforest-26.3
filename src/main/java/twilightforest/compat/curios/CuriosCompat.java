@@ -91,8 +91,7 @@ public class CuriosCompat {
 					for (int i = 0; i < modifiable.getSlots(); ++i) {
 						int finalI = i;
 						//TODO: This is just what Curios does.
-						@SuppressWarnings("removal")
-						Predicate<ItemStack> isEquippedCurio = stack -> stack == modifiable.getEquippedCurios().getStackInSlot(finalI);
+						Predicate<ItemStack> isEquippedCurio = stack -> !stack.isEmpty() && modifiable.getEquippedCurios().getResource(finalI).matches(stack);
 						event.addOverride(isEquippedCurio, DropRule.ALWAYS_KEEP);
 					}
 				});

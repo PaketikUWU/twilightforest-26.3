@@ -10,6 +10,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -174,7 +175,7 @@ public abstract class TFBushBlock extends Block implements SnowLoggable {
 
 	@Override
 	public void spawnDestroyByEntityParticles(Level level, @Nullable Entity player, BlockPos pos, BlockState state) {
-		if (!player.isSecondaryUseActive() && state.getValue(SNOW_LAYERS) > MIN_SNOW_LAYERS) {
+		if (!(player instanceof Player p && p.isSecondaryUseActive()) && state.getValue(SNOW_LAYERS) > MIN_SNOW_LAYERS) {
 			return;
 		}
 		super.spawnDestroyByEntityParticles(level, player, pos, state);
@@ -182,7 +183,7 @@ public abstract class TFBushBlock extends Block implements SnowLoggable {
 
 	@Override
 	public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, ItemStack toolStack, boolean willHarvest, FluidState fluid) {
-		if (!player.isSecondaryUseActive() && state.getValue(SNOW_LAYERS) > MIN_SNOW_LAYERS) {
+		if (!(player instanceof Player p && p.isSecondaryUseActive()) && state.getValue(SNOW_LAYERS) > MIN_SNOW_LAYERS) {
 			this.handleBreakingLogic(level, pos, state, player, null);
 			return false;
 		}

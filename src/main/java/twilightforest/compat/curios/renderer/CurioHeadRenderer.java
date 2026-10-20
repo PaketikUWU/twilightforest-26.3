@@ -9,8 +9,8 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.renderer.ItemInHandRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -27,8 +27,9 @@ public class CurioHeadRenderer implements ICurioRenderer {
 			matrixStack.translate(0.0D, -0.25D, 0.0D);
 			matrixStack.rotateDegrees(Axis.YP, 180.0F);
 			matrixStack.scale(0.625F, -0.625F, -0.625F);
-			ItemInHandRenderer renderer = new ItemInHandRenderer(Minecraft.getInstance(), Minecraft.getInstance().getEntityRenderDispatcher(), Minecraft.getInstance().getItemModelResolver());
-			renderer.renderItem(slotContext.entity(), stack, ItemDisplayContext.HEAD, matrixStack, renderTypeBuffer, light);
+			ItemStackRenderState itemState = new ItemStackRenderState();
+			Minecraft.getInstance().getItemModelResolver().updateForLiving(itemState, stack, ItemDisplayContext.HEAD, slotContext.entity());
+			itemState.submit(matrixStack, renderTypeBuffer, light, OverlayTexture.NO_OVERLAY, 0);
 			matrixStack.popPose();
 		}
 	}

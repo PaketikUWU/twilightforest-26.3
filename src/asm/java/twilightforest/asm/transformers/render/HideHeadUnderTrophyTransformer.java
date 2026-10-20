@@ -23,47 +23,36 @@ public class HideHeadUnderTrophyTransformer extends SimpleMethodProcessor {
 
 	@Override
 	public void transform(MethodNode node, SimpleTransformationContext context) {
-		ASMUtil.findMethodInstructions(
-			node,
-			Opcodes.INVOKEVIRTUAL,
-			"net/minecraft/client/model/Model",
-			"setupAnim",
-			"(Ljava/lang/Object;)V"
-		).findFirst().ifPresent(target -> {
-			node.instructions.insert(target, ASMUtil.listOf(
-				new VarInsnNode(Opcodes.ALOAD, 1),
-				new MethodInsnNode(Opcodes.INVOKESTATIC,
-					"twilightforest/asmhooks/RenderHooks",
-					"applyHeadVisibility",
-					"(Lnet/minecraft/client/renderer/SubmitNodeStorage$ModelSubmit;)V",
-					false)
-			));
-		});
-
-		ASMUtil.findLast(ASMUtil.findMethodInstructions(
-			node,
-			Opcodes.INVOKEVIRTUAL,
-			"com/mojang/blaze3d/vertex/PoseStack",
-			"popPose",
-			"()V"
-		)).ifPresent(target -> {
-			node.instructions.insertBefore(target, ASMUtil.listOf(
-				new VarInsnNode(Opcodes.ALOAD, 1),
-				new MethodInsnNode(Opcodes.INVOKESTATIC,
-					"twilightforest/asmhooks/RenderHooks",
-					"restoreHeadVisibility",
-					"(Lnet/minecraft/client/renderer/SubmitNodeStorage$ModelSubmit;)V",
-					false)
-			));
-		});
+		// Applied right before the model is drawn (after setupAnim and NeoForge's visibility modifiers) and restored right after
+		ASMUtil.streamInstructions(node)
+			.filter(insn -> insn instanceof MethodInsnNode method && method.getOpcode() == Opcodes.INVOKEVIRTUAL && "net/minecraft/client/model/Model".equals(method.owner) && "renderToBuffer".equals(method.name))
+			.findFirst()
+			.ifPresent(target -> {
+				node.instructions.insertBefore(target, ASMUtil.listOf(
+					new VarInsnNode(Opcodes.ALOAD, 1),
+					new MethodInsnNode(Opcodes.INVOKESTATIC,
+						"twilightforest/asmhooks/RenderHooks",
+						"applyHeadVisibility",
+						"(Lnet/minecraft/client/renderer/feature/ModelFeatureRenderer$Submit;)V",
+						false)
+				));
+				node.instructions.insert(target, ASMUtil.listOf(
+					new VarInsnNode(Opcodes.ALOAD, 1),
+					new MethodInsnNode(Opcodes.INVOKESTATIC,
+						"twilightforest/asmhooks/RenderHooks",
+						"restoreHeadVisibility",
+						"(Lnet/minecraft/client/renderer/feature/ModelFeatureRenderer$Submit;)V",
+						false)
+				));
+			});
 	}
 
 	@Override
 	public Set<SimpleMethodProcessor.Target> targets() {
 		return Set.of(new SimpleMethodProcessor.Target(
 				"net.minecraft.client.renderer.feature.ModelFeatureRenderer",
-				"renderModel",
-				"(Lnet/minecraft/client/renderer/SubmitNodeStorage$ModelSubmit;Lnet/minecraft/client/renderer/rendertype/RenderType;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/client/renderer/OutlineBufferSource;Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;)V"
+				"prepareModel",
+				"(Lnet/minecraft/client/renderer/feature/ModelFeatureRenderer$Submit;)V"
 			)
 		);
 	}

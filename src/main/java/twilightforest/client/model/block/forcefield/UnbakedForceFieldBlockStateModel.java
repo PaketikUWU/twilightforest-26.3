@@ -52,7 +52,7 @@ public record UnbakedForceFieldBlockStateModel(Material texture, boolean ambient
 					side,
 					BlockModelRotation.IDENTITY,
 					null,
-					element.shade(),
+					element.shade() ? null : Direction.UP,
 					element.lightEmission()
 				);
 
