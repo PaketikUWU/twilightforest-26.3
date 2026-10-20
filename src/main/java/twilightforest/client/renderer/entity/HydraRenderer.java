@@ -73,7 +73,7 @@ public class HydraRenderer extends MobRenderer<Hydra, HydraRenderState, HydraMod
 	}
 
 	@Override
-	protected AABB getBoundingBoxForCulling(Hydra entity) {
+	protected AABB getBoundingBoxForCulling(Hydra entity, float partialTicks) {
 		return entity.getBoundingBox().inflate(16.0D, 16.0D, 16.0D);
 	}
 }

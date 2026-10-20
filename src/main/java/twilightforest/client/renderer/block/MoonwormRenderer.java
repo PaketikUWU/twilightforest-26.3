@@ -38,7 +38,9 @@ public class MoonwormRenderer implements BlockEntityRenderer<MoonwormBlockEntity
 		stack.rotateDegrees(Axis.ZP, 180.0F);
 		stack.rotateDegrees(Axis.YP, 180.0F + state.rotation);
 		stack.rotateDegrees(Axis.YN, state.yaw);
-		collector.submitModel(model, state, stack, model.renderType(TEXTURE), light, overlay, outlineColor, breakProgress);
+		collector.submitModel(model, state, stack, model.renderType(TEXTURE), light, overlay, outlineColor);
+		if (breakProgress != null)
+			collector.submitCrumblingOverlay(model, state, stack, model.renderType(TEXTURE), light, overlay, -1, breakProgress);
 		stack.popPose();
 	}
 

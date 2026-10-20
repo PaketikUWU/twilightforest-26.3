@@ -11,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -51,7 +52,7 @@ public class TorchberryPlantBlock extends TFPlantBlock implements BonemealableBl
 			if (level instanceof ServerLevel serverLevel) {
 				dropFromBlockInteractLootTable(
 					serverLevel,
-					TFLootTables.TORCHBERRY_PLANT_DROPS,
+					TFLootTables.TORCHBERRY_PLANT_DROPS, pos,
 					state,
 					null,
 					null,
@@ -72,17 +73,17 @@ public class TorchberryPlantBlock extends TFPlantBlock implements BonemealableBl
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader getter, BlockPos pos, BlockState state) {
+	public boolean isValidBonemealTarget(LevelReader getter, BlockPos pos, BlockState state, BonemealSource source) {
 		return !state.getValue(HAS_BERRIES);
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level level, RandomSource rand, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level level, RandomSource rand, BlockPos pos, BlockState state, BonemealSource source) {
 		return true;
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state, BonemealSource source) {
 		level.setBlock(pos, state.setValue(HAS_BERRIES, true), Block.UPDATE_CLIENTS);
 	}
 

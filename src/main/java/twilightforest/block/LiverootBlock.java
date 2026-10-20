@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.neoforge.common.ItemAbilities;
+import net.minecraft.tags.ItemTags;
 import twilightforest.init.TFBlocks;
 import twilightforest.loot.TFLootTables;
 
@@ -25,12 +25,12 @@ public class LiverootBlock extends Block {
 
 	@Override
 	protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		if (stack.getItem().canPerformAction(stack, ItemAbilities.AXE_STRIP)) {
+		if (stack.is(ItemTags.AXES)) {
 			level.setBlockAndUpdate(pos, TFBlocks.ROOT_BLOCK.get().defaultBlockState());
 			if (level instanceof ServerLevel serverLevel) {
 				dropFromBlockInteractLootTable(
 					serverLevel,
-					TFLootTables.LIVEROOT_STRIP_DROPS,
+					TFLootTables.LIVEROOT_STRIP_DROPS, pos,
 					state,
 					null,
 					stack,
@@ -38,7 +38,7 @@ public class LiverootBlock extends Block {
 					(server, itemStack) -> Block.popResource(server, pos, itemStack)
 				);
 			}
-			level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+			level.playSound(null, pos, SoundEvents.AXE_STRIP.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
 			stack.hurtAndBreak(1, player, hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
 			return InteractionResult.SUCCESS;
 		}

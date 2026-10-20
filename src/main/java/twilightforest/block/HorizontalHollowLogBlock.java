@@ -34,6 +34,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.ItemAbilities;
 import twilightforest.enums.HollowLogVariants;
 import twilightforest.init.TFBlocks;
@@ -165,7 +166,7 @@ public class HorizontalHollowLogBlock extends Block implements WaterloggedBlock 
 
 				return InteractionResult.SUCCESS;
 			}
-		} else if (stack.canPerformAction(ItemAbilities.SHOVEL_FLATTEN)) {
+		} else if (stack.is(ItemTags.SHOVELS)) {
 			if (variant == HollowLogVariants.Horizontal.SNOW) {
 				level.setBlock(pos, state.setValue(VARIANT, HollowLogVariants.Horizontal.EMPTY), Block.UPDATE_ALL);
 				playBreakSound(Blocks.SNOW.defaultBlockState(), level, pos, player);

@@ -1,6 +1,7 @@
 package twilightforest.block.entity.bookshelf;
 
 import com.mojang.datafixers.util.Either;
+import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -98,8 +99,8 @@ public class ChiseledCanopyShelfBlockEntity extends ChiseledBookShelfBlockEntity
 	}
 
 	@Override
-	public void setEntityId(EntityType<?> type, RandomSource random) {
-		this.spawner.setEntityId(type, this.level, random, this.worldPosition);
+	public void setEntityData(TypedEntityData<EntityType<?>> data, RandomSource random) {
+		this.spawner.setEntityData(data, this.level, random, this.worldPosition);
 		if (this.level != null) {
 			this.level.setBlockAndUpdate(this.worldPosition, this.getBlockState().setValue(ChiseledCanopyShelfBlock.SPAWNER, true));
 		}

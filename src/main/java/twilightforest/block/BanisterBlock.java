@@ -35,7 +35,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.ItemAbilities;
+import net.minecraft.tags.ItemTags;
 import org.jspecify.annotations.Nullable;
 import twilightforest.enums.BanisterShape;
 import twilightforest.tags.TFBlockTags;
@@ -212,11 +212,11 @@ public class BanisterBlock extends HorizontalDirectionalBlock implements SimpleW
 
 	@Override
 	protected InteractionResult useItemOn(ItemStack held, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		if (held.canPerformAction(ItemAbilities.AXE_WAX_OFF)) {
+		if (held.is(ItemTags.AXES)) {
 			BlockState newState = state.cycle(SHAPE);
 			BlockState belowState = level.getBlockState(pos.below());
 
-			level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+			level.playSound(null, pos, SoundEvents.AXE_STRIP.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
 			if (belowState.getBlock() instanceof BanisterBlock && belowState.getValue(SHAPE) != BanisterShape.SHORT) {
 				// If the state below is a non-short banister, we never use extended banisters
 				level.setBlock(pos, newState.setValue(EXTENDED, false), Block.UPDATE_ALL);

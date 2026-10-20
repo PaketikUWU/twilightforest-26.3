@@ -25,7 +25,7 @@ public class ProtectionBoxRenderer extends EntityRenderer<ProtectionBox, Protect
 	}
 
 	@Override
-	public boolean shouldRender(ProtectionBox entity, Frustum frustum, double x, double y, double z) {
+	public boolean shouldRender(ProtectionBox entity, Frustum frustum, double x, double y, double z, float partialTicks) {
 		return true;
 	}
 

@@ -1,6 +1,7 @@
 package twilightforest.block.entity.bookshelf;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -55,10 +56,8 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 	private int requiredPlayerRange = 8;
 	private final PlayerDetector detector = PlayerDetector.INCLUDING_CREATIVE_PLAYERS;
 
-	public void setEntityId(EntityType<?> type, @Nullable Level level, RandomSource random, BlockPos pos) {
-		this.getOrCreateNextSpawnData(level, random, pos)
-			.getEntityToSpawn()
-			.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
+	public void setEntityData(TypedEntityData<EntityType<?>> entityData, @Nullable Level level, RandomSource random, BlockPos pos) {
+		entityData.loadInto(this.getOrCreateNextSpawnData(level, random, pos), BuiltInRegistries.ENTITY_TYPE);
 	}
 
 	private boolean isNearPlayer(ServerLevel level, BlockPos pos) {
@@ -207,7 +206,7 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 					return false;
 				}
 
-				Entity entity = EntityType.loadEntityRecursive(tag, level, EntitySpawnReason.SPAWNER, processed -> {
+				Entity entity = EntityType.loadEntityRecursive(tag, level, new EntitySpawnRequest(EntitySpawnReason.SPAWNER, false), processed -> {
 					processed.snapTo(x, y, z, processed.getYRot(), processed.getXRot());
 					//set entity on fire if told to do so
 					if (fire) {

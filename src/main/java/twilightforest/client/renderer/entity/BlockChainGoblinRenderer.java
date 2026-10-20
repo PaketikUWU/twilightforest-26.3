@@ -79,8 +79,8 @@ public class BlockChainGoblinRenderer extends HumanoidMobRenderer<BlockChainGobl
 	}
 
 	@Override
-	public boolean shouldRender(BlockChainGoblin entity, Frustum frustum, double camX, double camY, double camZ) {
-		if (super.shouldRender(entity, frustum, camX, camY, camZ)) {
+	public boolean shouldRender(BlockChainGoblin entity, Frustum frustum, double camX, double camY, double camZ, float partialTicks) {
+		if (super.shouldRender(entity, frustum, camX, camY, camZ, partialTicks)) {
 			return true;
 		} else {
 			Vec3 vec3d = this.getPosition(entity.block, entity.block.getBbHeight() * 0.5D);

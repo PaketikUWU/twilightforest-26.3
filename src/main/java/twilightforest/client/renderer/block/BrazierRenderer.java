@@ -53,9 +53,13 @@ public class BrazierRenderer implements BlockEntityRenderer<BrazierBlockEntity, 
 		stack.translate(0.5F, 1.5F, 0.5F);
 		stack.rotateDegrees(Axis.ZP, 180.0F);
 		Identifier loc = state.light.isLit() ? TEXTURE_ON : TEXTURE_OFF;
-		collector.submitModel(this.model, Unit.INSTANCE, stack, this.model.renderType(loc), state.lightCoords, OverlayTexture.NO_OVERLAY, 0, state.breakProgress);
+		collector.submitModel(this.model, Unit.INSTANCE, stack, this.model.renderType(loc), state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+		if (state.breakProgress != null)
+			collector.submitCrumblingOverlay(this.model, Unit.INSTANCE, stack, this.model.renderType(loc), state.lightCoords, OverlayTexture.NO_OVERLAY, -1, state.breakProgress);
 		if (state.light.isLit()) {
-			collector.order(1).submitModel(this.model, Unit.INSTANCE, stack, this.model.renderType(TEXTURE_OVERLAY), LightCoordsUtil.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0, state.breakProgress);
+			collector.order(1).submitModel(this.model, Unit.INSTANCE, stack, this.model.renderType(TEXTURE_OVERLAY), LightCoordsUtil.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0);
+			if (state.breakProgress != null)
+				collector.order(1).submitCrumblingOverlay(this.model, Unit.INSTANCE, stack, this.model.renderType(TEXTURE_OVERLAY), LightCoordsUtil.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, -1, state.breakProgress);
 		}
 		stack.popPose();
 	}

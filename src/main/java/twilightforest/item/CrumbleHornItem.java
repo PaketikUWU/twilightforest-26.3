@@ -107,7 +107,7 @@ public class CrumbleHornItem extends Item {
 
 		if (crumbleMap.result() == Blocks.AIR) {
 			if (serverLevel.getRandom().nextFloat() < crumbleMap.chanceToCrumble()) {
-				if (living instanceof Player player) {
+				if (living instanceof ServerPlayer player) {
 					if (block.canHarvestBlock(state, serverLevel, pos, player)) {
 						serverLevel.removeBlock(pos, false);
 						block.playerDestroy(serverLevel, player, pos, state, serverLevel.getBlockEntity(pos), ItemStack.EMPTY);

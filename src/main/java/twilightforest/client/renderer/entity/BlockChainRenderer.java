@@ -37,7 +37,7 @@ public class BlockChainRenderer extends EntityRenderer<ChainBlock, ChainBlockRen
 	public void submit(ChainBlockRenderState state, PoseStack stack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
 		super.submit(state, stack, submitNodeCollector, camera);
 		stack.pushPose();
-		RenderType foilRenderType = ItemFeatureRenderer.getFoilRenderType(chainModel.renderType(TEXTURE), false);
+		RenderType foilRenderType = RenderTypes.armorCutoutNoCullGlint(TEXTURE);
 		stack.rotateDegrees(Axis.YP, state.yRot - 90.0F);
 		stack.rotateDegrees(Axis.ZP, state.xRot);
 
@@ -62,18 +62,18 @@ public class BlockChainRenderer extends EntityRenderer<ChainBlock, ChainBlockRen
 	}
 
 	@Override
-	protected AABB getBoundingBoxForCulling(ChainBlock chainBlock) {
+	protected AABB getBoundingBoxForCulling(ChainBlock chainBlock, float partialTicks) {
 		if (chainBlock.getOwner() != null) {
-			AABB dis = super.getBoundingBoxForCulling(chainBlock);
+			AABB dis = super.getBoundingBoxForCulling(chainBlock, partialTicks);
 			AABB owner = chainBlock.getOwner().getBoundingBox();
 			return dis.minmax(owner);
 		}
-		return super.getBoundingBoxForCulling(chainBlock);
+		return super.getBoundingBoxForCulling(chainBlock, partialTicks);
 	}
 
 	public static void renderChain(boolean renderFoil, Vec3 offset, PoseStack stack, SubmitNodeCollector collector, int light, int outlineColor, ChainModel model) {
 		stack.pushPose();
-		RenderType foilRenderType = ItemFeatureRenderer.getFoilRenderType(model.renderType(TEXTURE), false);
+		RenderType foilRenderType = RenderTypes.armorCutoutNoCullGlint(TEXTURE);
 
 		stack.translate(offset.x(), offset.y(), offset.z());
 

@@ -24,8 +24,8 @@ public class ThrownIceRenderer extends EntityRenderer<IceBomb, FallingBlockRende
 	}
 
 	@Override
-	public boolean shouldRender(IceBomb entity, Frustum culler, double camX, double camY, double camZ) {
-		return super.shouldRender(entity, culler, camX, camY, camZ) && entity.getBlockState() != entity.level().getBlockState(entity.blockPosition());
+	public boolean shouldRender(IceBomb entity, Frustum culler, double camX, double camY, double camZ, float partialTicks) {
+		return super.shouldRender(entity, culler, camX, camY, camZ, partialTicks) && entity.getBlockState() != entity.level().getBlockState(entity.blockPosition());
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class ThrownIceRenderer extends EntityRenderer<IceBomb, FallingBlockRende
 		if (blockState.getRenderShape() == RenderShape.MODEL) {
 			stack.pushPose();
 			stack.translate(-0.5D, 0.0D, -0.5D);
-			collector.submitMovingBlock(stack, state.movingBlockRenderState);
+			collector.submitMovingBlock(stack, state.movingBlockRenderState, state.outlineColor);
 			stack.popPose();
 			super.submit(state, stack, collector, camera);
 		}

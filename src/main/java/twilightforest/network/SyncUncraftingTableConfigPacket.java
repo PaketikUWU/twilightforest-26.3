@@ -1,7 +1,9 @@
 package twilightforest.network;
 
+import io.netty.buffer.ByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
@@ -19,11 +21,13 @@ public record SyncUncraftingTableConfigPacket(
 	public static final Type<SyncUncraftingTableConfigPacket> TYPE = new Type<>(TwilightForestMod.prefix("sync_uncrafting_config"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, SyncUncraftingTableConfigPacket> STREAM_CODEC = CustomPacketPayload.codec(SyncUncraftingTableConfigPacket::write, SyncUncraftingTableConfigPacket::new);
 
+	private static final StreamCodec<ByteBuf, List<String>> STRING_LIST = ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list());
+
 	public SyncUncraftingTableConfigPacket(FriendlyByteBuf buf) {
 		this(buf.readDouble(), buf.readDouble(),
 			buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(),
-			buf.readList(FriendlyByteBuf::readUtf), buf.readBoolean(),
-			buf.readList(FriendlyByteBuf::readUtf), buf.readBoolean());
+			STRING_LIST.decode(buf), buf.readBoolean(),
+			STRING_LIST.decode(buf), buf.readBoolean());
 	}
 
 	public void write(FriendlyByteBuf buf) {
@@ -33,9 +37,9 @@ public record SyncUncraftingTableConfigPacket(
 		buf.writeBoolean(this.disableIngredientSwitching());
 		buf.writeBoolean(this.disabledUncrafting());
 		buf.writeBoolean(this.disabledTable());
-		buf.writeCollection(this.disabledRecipes(), FriendlyByteBuf::writeUtf);
+		STRING_LIST.encode(buf, List.copyOf(this.disabledRecipes()));
 		buf.writeBoolean(this.flipRecipeList());
-		buf.writeCollection(this.disabledModids(), FriendlyByteBuf::writeUtf);
+		STRING_LIST.encode(buf, List.copyOf(this.disabledModids()));
 		buf.writeBoolean(this.flipModidList());
 	}
 

@@ -3,6 +3,7 @@ package twilightforest.events;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.SectionPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -211,7 +212,7 @@ public class EntityEvents {
 		if (source.getMsgId().equals("arrow") && trueSource instanceof Player player) {
 
 			if (player.getItemInHand(player.getUsedItemHand()).is(TFItems.TRIPLE_BOW.get())) {
-				living.invulnerableTime = 0;
+				living.setInvulnerableTime(0);
 			}
 		}
 	}
@@ -258,7 +259,7 @@ public class EntityEvents {
 
 				if (entity instanceof LivingEntity entityBlocking) {
 					if (entityBlocking.isBlocking() && entityBlocking.getUseItem().getUseDuration(entityBlocking) - entityBlocking.getUseItemRemainingTicks() <= TFConfig.shieldParryTicks) {
-						projectile.deflect(ProjectileDeflection.AIM_DEFLECT, entityBlocking, EntityReference.of(entityBlocking), true);
+						projectile.deflect(ProjectileDeflection.AIM_DEFLECT, entityBlocking, EntityReference.of(entityBlocking), true, 1.0);
 						event.setCanceled(true);
 					}
 				}
@@ -374,7 +375,7 @@ public class EntityEvents {
 	}
 
 	public static void gatherPotentialSpawns(StructureManager structureManager, MobCategory classification, BlockPos pos, Consumer<Weighted<MobSpawnSettings.SpawnerData>> consumer) {
-		List<StructureStart> structureStarts = structureManager.startsForStructure(ChunkPos.containing(pos), s -> s instanceof ControlledSpawns);
+		List<StructureStart> structureStarts = structureManager.startsForStructure(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()), s -> s instanceof ControlledSpawns);
 
 		for (StructureStart start : structureStarts) {
 			if (start.getStructure() instanceof ControlledSpawns landmark) {

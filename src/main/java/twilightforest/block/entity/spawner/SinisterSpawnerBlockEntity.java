@@ -1,6 +1,7 @@
 package twilightforest.block.entity.spawner;
 
 import com.mojang.datafixers.util.Either;
+import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleOptions;
@@ -78,8 +79,8 @@ public class SinisterSpawnerBlockEntity extends BlockEntity implements Spawner {
 	}
 
 	@Override
-	public void setEntityId(EntityType<?> type, RandomSource random) {
-		this.spawner.setEntityId(type, this.level, random, this.worldPosition);
+	public void setEntityData(TypedEntityData<EntityType<?>> data, RandomSource random) {
+		this.spawner.setEntityData(data, this.level, random, this.worldPosition);
 		this.setChanged();
 	}
 

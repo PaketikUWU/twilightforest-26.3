@@ -48,7 +48,7 @@ public class CloudEvents {
 
 		if (!mc.isPaused()) {
 			if (mc.level != null && TFConfig.getClientCloudBlockPrecipitationDistance() > 0) { // Semi vanilla copy of the weather tick, but made to work with cloud blocks instead
-				Vec3 vec3 = mc.gameRenderer.getMainCamera().position();
+				Vec3 vec3 = mc.gameRenderer.mainCamera().position();
 				if (mc.level.getGameTime() % 10L == 0L) {
 					RENDER_HELPER.clear();
 

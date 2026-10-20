@@ -346,8 +346,8 @@ public class KnightPhantom extends BaseTFBoss {
 	}
 
 	@Override
-	public void knockback(double damage, double xRatio, double zRatio) {
-		this.hurtMarked = true;
+	public void knockback(double damage, double xRatio, double zRatio, DamageSource source, float damageAmount, boolean comesFromEffect) {
+		this.needsSync = true;
 		float f = Mth.sqrt((float) (xRatio * xRatio + zRatio * zRatio));
 		float distance = 0.2F;
 		this.setDeltaMovement(new Vec3(this.getDeltaMovement().x() / 2.0D, this.getDeltaMovement().y() / 2.0D, this.getDeltaMovement().z() / 2.0D));

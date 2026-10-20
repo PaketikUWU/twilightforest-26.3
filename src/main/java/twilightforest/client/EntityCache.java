@@ -53,7 +53,7 @@ public class EntityCache {
                     input.setOldRot();
                     input.setCustomNameVisible(false);
                     input.needsSync = false;
-                    input.hurtMarked = false;
+                    input.needsSync = false;
                     if (input instanceof Mob mob) {
                         mob.setNoAi(true);
                     }

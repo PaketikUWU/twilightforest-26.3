@@ -155,7 +155,7 @@ public class UrGhast extends BaseTFBoss {
 	}
 
 	@Override
-	public void knockback(double strength, double xRatio, double zRatio) {
+	public void knockback(double strength, double xRatio, double zRatio, DamageSource source, float damage, boolean comesFromEffect) {
 		// Don't take knockback
 	}
 

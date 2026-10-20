@@ -181,7 +181,7 @@ public class JarRenderer<T extends JarBlockEntity> implements BlockEntityRendere
 		collector.submitMultiLayerBlockModel(poseStack, List.of(part), translucent, BlockModelRenderState.EMPTY_TINTS, lightCoords, OverlayTexture.NO_OVERLAY, 0);
 
 		if (crumblingOverlay != null) {
-			collector.submitBreakingBlockModel(poseStack, new SingleVariant(part), 0L, crumblingOverlay.progress());
+			collector.submitBreakingBlockModel(poseStack, List.of(part), crumblingOverlay.progress(), false);
 		}
 	}
 

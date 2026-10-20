@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -209,7 +210,7 @@ public class AntibuilderBlockEntity extends BlockEntity {
 	}
 
 	private boolean revertBlock(Level level, BlockPos pos, BlockState stateThere, BlockState replaceWith) {
-		if (stateThere.isAir() && !replaceWith.blocksMotion()) {
+		if (stateThere.isAir() && !(replaceWith.isSolid() && !replaceWith.is(Blocks.COBWEB) && !replaceWith.is(Blocks.BAMBOO_SAPLING))) {
 			return false;
 		}
 		if (stateThere.getDestroySpeed(level, pos) < 0 || this.isUnrevertable(stateThere, replaceWith)) {

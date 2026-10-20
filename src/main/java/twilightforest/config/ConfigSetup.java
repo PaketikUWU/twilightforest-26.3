@@ -22,7 +22,7 @@ public final class ConfigSetup {
 	static {
 		{
 			final Pair<TFCommonConfig, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(TFCommonConfig::new);
-			ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, COMMON_SPEC = specPair.getRight());
+			ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.LOCAL, COMMON_SPEC = specPair.getRight());
 			COMMON_CONFIG = specPair.getLeft();
 		}
 		{
