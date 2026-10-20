@@ -40,7 +40,7 @@ public record MasonJarSpecialRenderer(Optional<Item> defaultLid, ItemModelResolv
 			Item testLid = jarLid == null ? this.defaultLid().orElse(null) : jarLid.lid();
 			StandaloneModelKey<BlockStateModelPart> lid = testLid == null ? null : JarRenderer.LIDS.get().get(testLid);
 			if (lid != null) {
-				JarRenderer.submitModel(lid, stack, collector, light, null);
+				JarRenderer.submitModel(lid, stack, collector, light);
 			}
 
 			ItemContainerContents contents = map.get(DataComponents.CONTAINER);

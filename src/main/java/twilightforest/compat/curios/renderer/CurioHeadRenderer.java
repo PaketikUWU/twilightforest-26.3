@@ -25,7 +25,7 @@ public class CurioHeadRenderer implements ICurioRenderer {
 			matrixStack.pushPose();
 			headModel.getHead().translateAndRotate(matrixStack);
 			matrixStack.translate(0.0D, -0.25D, 0.0D);
-			matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+			matrixStack.rotateDegrees(Axis.YP, 180.0F);
 			matrixStack.scale(0.625F, -0.625F, -0.625F);
 			ItemInHandRenderer renderer = new ItemInHandRenderer(Minecraft.getInstance(), Minecraft.getInstance().getEntityRenderDispatcher(), Minecraft.getInstance().getItemModelResolver());
 			renderer.renderItem(slotContext.entity(), stack, ItemDisplayContext.HEAD, matrixStack, renderTypeBuffer, light);

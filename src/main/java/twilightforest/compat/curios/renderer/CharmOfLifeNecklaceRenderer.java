@@ -39,7 +39,7 @@ public class CharmOfLifeNecklaceRenderer implements ICurioRenderer {
 			stack.pushPose();
 			model.body.translateAndRotate(stack);
 			stack.translate(-0.0D, 0.23D, -0.135D);
-			stack.mulPose(Axis.YP.rotationDegrees(0.0F));
+			stack.rotateDegrees(Axis.YP, 0.0F);
 			stack.scale(-0.4F, -0.4F, 0.4F);
 			ItemInHandRenderer renderer = new ItemInHandRenderer(Minecraft.getInstance(), Minecraft.getInstance().getEntityRenderDispatcher(), Minecraft.getInstance().getItemModelResolver());
 			renderer.renderItem(slotContext.entity(), item, ItemDisplayContext.FIXED, stack, buffer, light);

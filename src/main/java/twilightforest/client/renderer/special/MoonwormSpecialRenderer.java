@@ -43,9 +43,9 @@ public record MoonwormSpecialRenderer(MoonwormModel model) implements NoDataSpec
 	public void getExtents(Consumer<Vector3fc> output) {
 		PoseStack poseStack = new PoseStack();
 		poseStack.translate(0.5F, 0.5F, 0.5F);
-		poseStack.mulPose(Direction.NORTH.getRotation());
-		poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+		poseStack.rotate(Direction.NORTH.getRotation());
+		poseStack.rotateDegrees(Axis.ZP, 180.0F);
+		poseStack.rotateDegrees(Axis.YP, 180.0F);
 		model.root().getExtentsForGui(poseStack, output);
 	}
 

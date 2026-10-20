@@ -132,6 +132,9 @@ public class UrGhastModel extends TFGhastModel<TFGhastRenderState> implements Tr
 			stack.translate(0.0F, -1.0F, 0.0F);
 		}
 		stack.scale(0.5F, 0.5F, 0.5F);
-		collector.submitModelPart(this.body, stack, RenderTypes.entityCutout(UrGhastRenderer.TEXTURE), light, overlay, null, -1, breakProgress);
+		collector.submitModelPart(this.body, stack, RenderTypes.entityCutout(UrGhastRenderer.TEXTURE), light, overlay, null, -1);
+		if (breakProgress != null) {
+			collector.order(1).submitCrumblingOverlay(this.body, stack, RenderTypes.entityCutout(UrGhastRenderer.TEXTURE), light, overlay, -1, breakProgress);
+		}
 	}
 }

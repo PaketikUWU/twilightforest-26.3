@@ -45,7 +45,7 @@ public abstract class TFPartRenderer<T extends TFPart<?>, S extends PartEntitySt
 			int overlay = this.getOverlayCoords(state);
 			int j = ghostly ? 654311423 : -1;
 			int k = ARGB.multiply(j, this.getModelTint(state));
-			buffer.submitModel(this.model, state, stack, rendertype, state.lightCoords, overlay, k, null, state.outlineColor, null);
+			buffer.submitModel(this.model, state, stack, rendertype, state.lightCoords, overlay, k, null, state.outlineColor);
 		}
 
 		stack.popPose();
@@ -80,10 +80,10 @@ public abstract class TFPartRenderer<T extends TFPart<?>, S extends PartEntitySt
 				f = 1.0F;
 			}
 
-			stack.mulPose(Axis.ZP.rotationDegrees(f * this.getFlipDegrees()));
+			stack.rotateDegrees(Axis.ZP, f * this.getFlipDegrees());
 		} else if (state.isUpsideDown) {
 			stack.translate(0.0F, (state.boundingBoxHeight + 0.1F) / partialTicks, 0.0F);
-			stack.mulPose(Axis.ZP.rotationDegrees(180.0F));
+			stack.rotateDegrees(Axis.ZP, 180.0F);
 		}
 	}
 
