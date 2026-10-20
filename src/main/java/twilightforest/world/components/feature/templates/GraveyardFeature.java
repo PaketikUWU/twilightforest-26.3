@@ -28,7 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import twilightforest.TwilightForestMod;
 import twilightforest.entity.monster.Wraith;
 import twilightforest.init.TFEntities;
-import twilightforest.init.TFStructureProcessors;
 import twilightforest.loot.TFLootTables;
 import twilightforest.util.features.FeatureLogic;
 
@@ -221,7 +220,7 @@ public class GraveyardFeature extends Feature<NoneFeatureConfiguration> {
 		}
 	}
 
-	public static class WebTemplateProcessor extends StructureProcessor {
+	public static class WebTemplateProcessor implements StructureProcessor {
 		public static final WebTemplateProcessor INSTANCE = new WebTemplateProcessor();
 		public static final MapCodec<WebTemplateProcessor> CODEC = MapCodec.unit(() -> INSTANCE);
 
@@ -229,8 +228,8 @@ public class GraveyardFeature extends Feature<NoneFeatureConfiguration> {
 		}
 
 		@Override
-		protected StructureProcessorType<?> getType() {
-			return TFStructureProcessors.WEB.get();
+		public MapCodec<WebTemplateProcessor> codec() {
+			return CODEC;
 		}
 
 		@Nullable

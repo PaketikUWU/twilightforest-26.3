@@ -36,7 +36,7 @@ public class InjectCustomTerrainBeardifierDuringCreateNoiseChunkTransformer exte
 					Opcodes.INVOKESTATIC,
 					"twilightforest/asmhooks/WorldgenHooks",
 					"gatherCustomTerrain",
-					"(Lnet/minecraft/world/level/levelgen/Beardifier;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkAccess;)Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;"
+					"(Lnet/minecraft/world/level/levelgen/Beardifier;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkAccess;)Lnet/minecraft/world/level/levelgen/Beardifier;"
 				)
 			)
 		));
@@ -47,7 +47,7 @@ public class InjectCustomTerrainBeardifierDuringCreateNoiseChunkTransformer exte
 		return Set.of(new Target(
 			"net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator",
 			"createNoiseChunk",
-			"(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/levelgen/blending/Blender;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/levelgen/NoiseChunk;"
+			"(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/levelgen/blending/Blender;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/NoiseSettings;)Lnet/minecraft/world/level/levelgen/NoiseChunk;"
 		));
 	}
 
