@@ -18,7 +18,13 @@
     "continents": 0.0,
     "depth": 0.0,
     "erosion": 0.0,
-    "final_density": "twilightforest:forested_terrain",
+    "final_density": {
+      "type": "minecraft:add",
+      "left": "twilightforest:forested_terrain",
+      "right": {
+        "type": "minecraft:beardifier"
+      }
+    },
     "ridges": 0.0,
     "temperature": 0.0,
     "vegetation": 0.0,
