@@ -95,6 +95,7 @@ public final class TwilightForestMod {
 		TFRemapper.addRegistryAliases();
 
 		if (ModList.get().isLoaded("curios")) loadCuriosCompat(bus);
+		if (ModList.get().isLoaded("thaumcraft")) twilightforest.compat.thaumcraft.ThaumcraftCompat.init();
 		// Uncomment this when Cosmetic Armor Reworked is ready
 //		if (ModList.get().isLoaded("cosmeticarmorreworked")) NeoForge.EVENT_BUS.addListener(CosmeticArmorCompat::keepCosmeticArmor);
 	}
