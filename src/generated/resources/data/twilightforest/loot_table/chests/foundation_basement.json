@@ -2,7 +2,6 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:loot_table",
@@ -11,9 +10,9 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:water"
             }
           ],
@@ -22,15 +21,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 6.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:rotten_flesh",
@@ -38,15 +36,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 2.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:poisonous_potato",
@@ -59,15 +56,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 12.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:torch",
@@ -82,28 +78,26 @@
       "rolls": 4.0
     },
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 6.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:wheat"
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:awkward"
             }
           ],
@@ -111,9 +105,9 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:mundane"
             }
           ],
@@ -121,9 +115,9 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:thick"
             }
           ],
@@ -131,45 +125,42 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 6.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:rotten_flesh"
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 5.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:melon_seeds"
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 5.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:pumpkin_seeds"
@@ -178,19 +169,17 @@
       "rolls": 2.0
     },
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 12.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:glistering_melon_slice",
@@ -213,15 +202,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 2.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:golden_apple",
@@ -229,15 +217,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 2.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:golden_carrot",

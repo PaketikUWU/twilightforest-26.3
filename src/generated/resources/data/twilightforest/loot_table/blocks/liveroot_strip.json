@@ -2,21 +2,18 @@
   "type": "minecraft:block_interact",
   "pools": [
     {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "ability": "axe_strip",
-          "type": "neoforge:can_item_perform_ability"
-        }
-      ],
+      "condition": {
+        "ability": "axe_strip",
+        "type": "neoforge:can_item_perform_ability"
+      },
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
+              "type": "minecraft:apply_bonus",
               "enchantment": "minecraft:fortune",
-              "formula": "minecraft:ore_drops",
-              "function": "minecraft:apply_bonus"
+              "formula": "minecraft:ore_drops"
             }
           ],
           "name": "twilightforest:liveroot"

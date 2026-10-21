@@ -2,19 +2,17 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 2.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:rotten_flesh",
@@ -22,15 +20,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 4.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:bone",
@@ -38,15 +35,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 5.0,
                 "min": 3.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:charcoal",
@@ -54,15 +50,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 3.0,
                 "min": 2.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "twilightforest:raven_feather",
@@ -70,15 +65,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 3.0,
                 "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "twilightforest:torchberries",
@@ -86,15 +80,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 5.0,
                 "min": 3.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:stick",
@@ -102,15 +95,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 3.0,
                 "min": 2.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:bread",
@@ -118,15 +110,14 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "max": 5.0,
                 "min": 3.0
-              },
-              "function": "minecraft:set_count"
+              }
             }
           ],
           "name": "minecraft:potato",

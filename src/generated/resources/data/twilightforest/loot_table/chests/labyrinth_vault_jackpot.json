@@ -2,7 +2,6 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:loot_table",
@@ -12,19 +11,17 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
-              "add": false,
+              "type": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:efficiency": 4.0,
                 "minecraft:fortune": 2.0,
                 "minecraft:unbreaking": 3.0
-              },
-              "function": "minecraft:set_enchantments"
+              }
             }
           ],
           "name": "twilightforest:mazebreaker_pickaxe"

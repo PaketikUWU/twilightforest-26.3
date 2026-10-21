@@ -2,13 +2,10 @@
   "type": "minecraft:entity",
   "pools": [
     {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "type": "twilightforest:is_minion",
-          "inverse": true
-        }
-      ],
+      "condition": {
+        "type": "twilightforest:is_minion",
+        "inverse": true
+      },
       "entries": [
         {
           "type": "minecraft:loot_table",

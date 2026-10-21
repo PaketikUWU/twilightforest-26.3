@@ -1,9 +1,7 @@
 {
   "type": "twilightforest:giant_block_grouping",
-  "conditions": [
-    {
-      "type": "twilightforest:giant_pick_used",
-      "entity": "this"
-    }
-  ]
+  "condition": {
+    "type": "twilightforest:giant_pick_used",
+    "entity": "this"
+  }
 }

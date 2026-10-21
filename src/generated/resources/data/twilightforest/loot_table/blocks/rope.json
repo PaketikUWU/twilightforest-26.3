@@ -2,60 +2,53 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
+              "type": "minecraft:set_count",
               "add": true,
-              "conditions": [
-                {
-                  "block": "twilightforest:rope",
-                  "type": "minecraft:block_state_property",
-                  "properties": {
-                    "x": "true"
-                  }
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "twilightforest:rope",
+                "state": {
+                  "x": "true"
                 }
-              ],
-              "count": 1.0,
-              "function": "minecraft:set_count"
+              },
+              "count": 1.0
             },
             {
+              "type": "minecraft:set_count",
               "add": true,
-              "conditions": [
-                {
-                  "block": "twilightforest:rope",
-                  "type": "minecraft:block_state_property",
-                  "properties": {
-                    "y": "true"
-                  }
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "twilightforest:rope",
+                "state": {
+                  "y": "true"
                 }
-              ],
-              "count": 1.0,
-              "function": "minecraft:set_count"
+              },
+              "count": 1.0
             },
             {
+              "type": "minecraft:set_count",
               "add": true,
-              "conditions": [
-                {
-                  "block": "twilightforest:rope",
-                  "type": "minecraft:block_state_property",
-                  "properties": {
-                    "z": "true"
-                  }
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "twilightforest:rope",
+                "state": {
+                  "z": "true"
                 }
-              ],
-              "count": 1.0,
-              "function": "minecraft:set_count"
+              },
+              "count": 1.0
             },
             {
+              "type": "minecraft:set_count",
               "add": true,
-              "count": -1.0,
-              "function": "minecraft:set_count"
+              "count": -1.0
             },
             {
-              "function": "minecraft:explosion_decay"
+              "type": "minecraft:explosion_decay"
             }
           ],
           "name": "twilightforest:rope"

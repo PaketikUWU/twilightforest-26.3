@@ -2,66 +2,60 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:dynamic",
-          "conditions": [
-            {
-              "type": "minecraft:inverted",
-              "term": {
-                "type": "minecraft:match_tool",
-                "predicate": {
-                  "predicates": {
-                    "minecraft:enchantments": [
-                      {
-                        "enchantments": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
-                        }
+          "condition": {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "predicates": {
+                  "minecraft:enchantments": [
+                    {
+                      "enchantments": "minecraft:silk_touch",
+                      "levels": {
+                        "min": 1
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
               }
             }
-          ],
+          },
           "name": "twilightforest:candles"
         }
       ],
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
             {
               "type": "minecraft:item",
-              "conditions": [
-                {
-                  "type": "minecraft:inverted",
-                  "term": {
-                    "type": "minecraft:match_tool",
-                    "predicate": {
-                      "predicates": {
-                        "minecraft:enchantments": [
-                          {
-                            "enchantments": "minecraft:silk_touch",
-                            "levels": {
-                              "min": 1
-                            }
+              "condition": {
+                "type": "minecraft:inverted",
+                "term": {
+                  "type": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
                           }
-                        ]
-                      }
+                        }
+                      ]
                     }
                   }
                 }
-              ],
-              "functions": [
+              },
+              "modifier": [
                 {
-                  "function": "minecraft:copy_components",
+                  "type": "minecraft:copy_components",
                   "include": [
                     "minecraft:profile",
                     "minecraft:note_block_sound",
@@ -74,9 +68,9 @@
             },
             {
               "type": "minecraft:item",
-              "functions": [
+              "modifier": [
                 {
-                  "function": "minecraft:copy_components",
+                  "type": "minecraft:copy_components",
                   "include": [
                     "twilightforest:skull_candles",
                     "minecraft:profile",

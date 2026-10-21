@@ -2,7 +2,6 @@
   "type": "minecraft:entity",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -12,12 +11,12 @@
       "rolls": 1.0
     },
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "modifier": [
             {
+              "type": "minecraft:set_contents",
               "component": "minecraft:bundle_contents",
               "entries": [
                 {
@@ -28,8 +27,7 @@
                   "type": "minecraft:loot_table",
                   "value": "twilightforest:gameplay/questing_ram_reward_blocks"
                 }
-              ],
-              "function": "minecraft:set_contents"
+              ]
             }
           ],
           "name": "minecraft:bundle"
