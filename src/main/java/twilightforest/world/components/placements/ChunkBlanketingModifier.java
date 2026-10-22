@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.core.registries.Registries;
@@ -70,10 +71,14 @@ public class ChunkBlanketingModifier implements PlacementModifier {
 				if (random.nextFloat() > this.integrity)
 					continue;
 
-				BlockPos pos = new BlockPos(chunkOriginX + xInChunk, chunk.getHeight(heightmap, xInChunk, zInChunk) + 1, chunkOriginZ + zInChunk);
+				BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(chunkOriginX + xInChunk, chunk.getHeight(heightmap, xInChunk, zInChunk) + 1, chunkOriginZ + zInChunk);
+				// the heightmap can lag behind the terrain, so climb to the first free block above the ground
+				int topY = chunk.getMaxY();
+				while (pos.getY() < topY && !chunk.getBlockState(pos).isAir())
+					pos.move(Direction.UP);
 
 				if (this.biomeRLOptional.isEmpty() || this.biomeRLOptional.get().contains(level.getBiome(pos))) {
-					coordinates.add(pos);
+					coordinates.add(pos.immutable());
 				}
 			}
 		}
